@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #33ff36;
+  background: #2effff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2994,7 +2994,13 @@ pre .javascript .function {
 .content-wrap {
   background-color: rgba(255,0,0,0.1);
 }
-.tag-cloud-tags {
+.tag-cloud-tags a {
   color: #000;
   text-decoration: none;
+}
+body {
+  background: url("https://source.unsplash.com/random/1600x900");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
 }
