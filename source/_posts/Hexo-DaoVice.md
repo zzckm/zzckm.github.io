@@ -3,14 +3,14 @@ title: Hexo-DaoVice
 date: 2019-03-27 11:43:29
 tags: [Hexo]
 ---
-<h2>注册</h2>
+## 注册
 <hr/>
 首先需要注册一个 DaoVoice，点击注册。
 
 注册成功后，进入后台控制台，进入到 应用设置-->安装到网站 页面，可以得到一个 app_id：
 ![](https://i.loli.net/2019/03/27/5c9af1cd7a200.png)
 
-<h2>设置</h2>
+## 设置
 以 next 主题为例，打开 themes/next/layout/_partials/head.swig 文件中添加如下代码，位置随意：
 ```
 {% if theme.daovoice %}

@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: To树-博客纪
-subtitle:
-description: —— 努力的人，运气不会太差
-keywords:
+title: To树-HOME
+subtitle: 只可意会
+description: —— Hard-working people, not too bad luck
+keywords: 
 author: Ckm_zz
 language: zh-Hans
 timezone:
@@ -95,10 +95,10 @@ live2d:
   model:
     use: live2d-widget-model-shizuku
   display:
-    position: left
-    width: 130
-    height: 280
+    position: right
+    width: 120
+    height: 270
   mobile:
-    show: false
+    show: true
 
 
