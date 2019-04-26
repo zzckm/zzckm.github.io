@@ -6,8 +6,8 @@
 <script>
     (function(){
         if('{{ page.password }}'){
-            if (prompt('请输入密码') !== '{{ page.password }}'){
-                alert('密码错误');
+            if (prompt('请输入查看该篇文章的密码') !== '{{ page.password }}'){
+                alert('密码错误，请咨询博主');
                 history.back();
             }
         }

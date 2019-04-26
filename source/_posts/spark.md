@@ -48,7 +48,7 @@ scala > rdd5.saveAsTextFile("/log.txt")
 ```
 
 **tranformations**:由rdd生成新的rdd 如 **map filter  groupby reducebykey**
-**actions** :由rdd生成一个值**reduce saveasTextFile  foreach  count**
+**actions** :由rdd生成，返回一个结果**reduce saveasTextFile  foreach  count**
 
 注：对于转换次数比较多的rdd可以使用cache（persist方法，将rdd缓存到内存中，以空间换时间，减少计算时间）。
 

@@ -2,6 +2,7 @@
 title: Scala
 date: 2019-04-01 17:05:37
 tags: [scala]
+password: 123
 ---
 # scala 简介 
 1. 为什么要学习scala 
@@ -26,7 +27,7 @@ JDK是SDK的一种
 - Any : 所有类的父类
 - Nothing 所有类都的子类
 - Null 所有引用类的子类
-- - Unit
+-  Unit
 
 **AnyVal** 
 （Byte,Short,Int,Long，Float,Double|Char,Boolean,Unit(空)）
