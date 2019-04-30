@@ -2,6 +2,7 @@
 title: 'HBase详细'
 date: 2019-04-25 23:00:51
 tags: [HBase]
+categories: Hadoop
 ---
 # HBase
 
@@ -491,7 +492,7 @@ hive (default)> select * from hive_external_hbase_student;
 
 
 相关参数
-: 
+
 |参数 |描述|
 |---|---|
 |--column-family <family> |Sets the target column family for the import设置导入的目标列族。|
@@ -654,7 +655,7 @@ zookeeper优化
 
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/z2skchqgath71c6035l4gjbq/image_1cs4fmo7c9ncq77hvn14nt1c7f8c.png
-  [2]: http://static.zybuluo.com/zhangwen100/gcbugppkjnnqgopwa5vfo30k/image_1clfil80u13cl2tkpib1fuv1jj39.png
-  [3]: http://archive.apache.org/dist/hbase/stable/
-  [4]: http://hbase.apache.org/book.html#number.of.cfs
+  ![1](http://static.zybuluo.com/zhangwen100/z2skchqgath71c6035l4gjbq/image_1cs4fmo7c9ncq77hvn14nt1c7f8c.png)
+  ![2](http://static.zybuluo.com/zhangwen100/gcbugppkjnnqgopwa5vfo30k/image_1clfil80u13cl2tkpib1fuv1jj39.png)
+  ![3](http://archive.apache.org/dist/hbase/stable/)
+  ![4](http://hbase.apache.org/book.html#number.of.cfs)

@@ -2,6 +2,7 @@
 title: 'Hadoop-Mapreduce'
 date: 2019-04-25 23:00:48
 tags: [Hadoop,Mapreduce]
+categories: Hadoop
 ---
 # Hadoop-Mapreduce
 
@@ -221,17 +222,17 @@ MapReduce 编程规范
     
 2.6 Hadoop常用序列化数据类型与Java中类型对比
 : 
-     |Java 类型|Hadoop Writable 类型|
-     |---|---|
-    |boolean|BooleanWritable|
-    |byte|ByteWritable|
-    |int|IntWritable|
-    |float|FloatWritable|
-    |long|LongWritable|
-    |double|DoubleWritable|
-    |string|Text|
-    |map|MapWritable|
-    |array|ArrayWritable|
+  |Java 类型|Hadoop Writable 类型|
+  |---|---|
+  |boolean|BooleanWritable|
+  |byte|ByteWritable|
+  |int|IntWritable|
+  |float|FloatWritable|
+  |long|LongWritable|
+  |double|DoubleWritable|
+  |string|Text|
+  |map|MapWritable|
+  |array|ArrayWritable|
 
 2.7 自定义数据类型步骤
 : 
@@ -455,28 +456,28 @@ Map join (Distributedcache 分布式缓存)
 
 5.5.2 MR 支持的压缩编码
 : 
-     |压缩格式| hadoop 自带？| 算法 |文件扩展名 |是否可切分|换成压缩格式后，原来的程序是否需要修改|
-     |---|---|---|---|---|---|
-    |DEFAULT|是，直接使用|DEFAULT|.deflate|否|和文本处理一样，不需要修改|
-    |Gzip|是，直接使用|DEFAULT|.gz|否|和文本处理一样，不需要修改|
-    |bzip2|是，直接使用|bzip2|.bz2|是|和文本处理一样，不需要修改|
-    |LZO|否，需要安装|LZO|.lzo|是|需要建索引，还需要指定输入格式|
-    |Snappy|否，需要安装|Snappy|.snappy|否|和文本处理一样，不需要修改|
+  |压缩格式| hadoop 自带？| 算法 |文件扩展名 |是否可切分|换成压缩格式后，原来的程序是否需要修改|
+  |---|---|---|---|---|---|
+  |DEFAULT|是，直接使用|DEFAULT|.deflate|否|和文本处理一样，不需要修改|
+  |Gzip|是，直接使用|DEFAULT|.gz|否|和文本处理一样，不需要修改|
+  |bzip2|是，直接使用|bzip2|.bz2|是|和文本处理一样，不需要修改|
+  |LZO|否，需要安装|LZO|.lzo|是|需要建索引，还需要指定输入格式|
+  |Snappy|否，需要安装|Snappy|.snappy|否|和文本处理一样，不需要修改|
  为了支持多种压缩/解压缩算法，Hadoop 引入了编码/解码器，如下表所示
-    |压缩格式|对应的编码/解码器|
-    |---|---|
-    |DEFLATE|org.apache.hadoop.io.compress.DefaultCodec|
-    |gzip|org.apache.hadoop.io.compress.GzipCodec|
-    |bzip2|org.apache.hadoop.io.compress.BZip2Codec|
-    |LZO|com.hadoop.compression.lzo.LzopCodec|
-    |Snappy|org.apache.hadoop.io.compress.SnappyCodec|
-    压缩性能的比较
-    |压缩算法|原始文件大小|压缩文件大小|压缩速度|解压速度|
-    |---|---|---|---|---|
-    |gzip|8.3GB| 1.8GB| 17.5MB/s| 58MB/s|
-    |bzip2| 8.3GB| 1.1GB| 2.4MB/s |9.5MB/s|
-    |LZO| 8.3GB |2.9GB| 49.3MB/s |74.6MB/s|
-    ![image_1ck7vuneq13ultn7q6k8ud1kqq9.png-224.1kB][2]
+  |压缩格式|对应的编码/解码器|
+  |---|---|
+  |DEFLATE|org.apache.hadoop.io.compress.DefaultCodec|
+  |gzip|org.apache.hadoop.io.compress.GzipCodec|
+  |bzip2|org.apache.hadoop.io.compress.BZip2Codec|
+  |LZO|com.hadoop.compression.lzo.LzopCodec|
+  |Snappy|org.apache.hadoop.io.compress.SnappyCodec|
+  压缩性能的比较
+  |压缩算法|原始文件大小|压缩文件大小|压缩速度|解压速度|
+  |---|---|---|---|---|
+  |gzip|8.3GB| 1.8GB| 17.5MB/s| 58MB/s|
+  |bzip2| 8.3GB| 1.1GB| 2.4MB/s |9.5MB/s|
+  |LZO| 8.3GB |2.9GB| 49.3MB/s |74.6MB/s|
+  ![image_1ck7vuneq13ultn7q6k8ud1kqq9.png-224.1kB][2]
     
 5.5.3  压缩方式的选择
 : 
@@ -741,6 +742,6 @@ JVM 重用理解：一个 map 运行一个 jvm，重用的话，在一个 map �
 ![image_1cjq3hkab12uruaf9mqrob2eo9.png-45.5kB][3]
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/58fam2ltmkwdafzwh9bz1jcd/image_1cjoi1fe0phatn11dm8188il049.png
-  [2]: http://static.zybuluo.com/zhangwen100/r7v96uf0cfwm0rodayev4nb6/image_1ck7vuneq13ultn7q6k8ud1kqq9.png
-  [3]: http://static.zybuluo.com/zhangwen100/v6pdlks370tkrbtdxg2ae2af/image_1cjq3hkab12uruaf9mqrob2eo9.png
+  ![1](http://static.zybuluo.com/zhangwen100/58fam2ltmkwdafzwh9bz1jcd/image_1cjoi1fe0phatn11dm8188il049.png)
+  ![2](http://static.zybuluo.com/zhangwen100/r7v96uf0cfwm0rodayev4nb6/image_1ck7vuneq13ultn7q6k8ud1kqq9.png)
+  ![3](http://static.zybuluo.com/zhangwen100/v6pdlks370tkrbtdxg2ae2af/image_1cjq3hkab12uruaf9mqrob2eo9.png)

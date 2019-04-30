@@ -2,6 +2,7 @@
 title: 'Hadoop-HDFS'
 date: 2019-04-25 23:00:47
 tags: [Hadoop,HDFS]
+categories: Hadoop
 ---
 
 # Hadoop-HDFS
@@ -845,5 +846,5 @@ hadoop fs -mv /user/root/.Trash/Current/aaa.log /
  hdfs dfs -expunge
 ```
  
-  [1]: http://static.zybuluo.com/zhangwen100/lfxi7wxy0urqe5c3fgbo1gxq/image_1cjj6r8ng19kaqu91ekteot11ud9.png
-  [2]: http://static.zybuluo.com/zhangwen100/c2nlhlf2jaxyiglq3bif5upk/image_1cjj8j28fiav1vaar38146dov8m.png
+  ![1](http://static.zybuluo.com/zhangwen100/lfxi7wxy0urqe5c3fgbo1gxq/image_1cjj6r8ng19kaqu91ekteot11ud9.png)
+  ![2](http://static.zybuluo.com/zhangwen100/c2nlhlf2jaxyiglq3bif5upk/image_1cjj8j28fiav1vaar38146dov8m.png)

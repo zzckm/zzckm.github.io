@@ -2,6 +2,7 @@
 title: 'WEB组件数据交互'
 date: 2019-04-23 23:00:40
 tags: [WEB]
+categories: JavaWeb
 ---
 # WEB组件数据交互
 

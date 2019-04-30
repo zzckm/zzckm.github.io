@@ -2,6 +2,7 @@
 title: 'Spark 第四天之Spark Streaming'
 date: 2019-04-25 23:18:40
 tags: [Spark,SparkStreaming]
+categories: Spark
 ---
 # Spark 第四天之Spark Streaming
 
@@ -535,23 +536,23 @@ object TestStreamWindow extends App{
 ## 5. DStream 输出
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/i9y871pa5shhfhpjpv1dl5vf/image_1cml8qbgv17na10dm1sip1oirpu59.png
-  [2]: http://static.zybuluo.com/zhangwen100/xjw0mqn99taqn7myo0u48lcx/image_1cml9cufv12ds1pfbuac9f98bt44.png
-  [3]: http://static.zybuluo.com/zhangwen100/u068ijakf0y9fi95mmepuskx/image_1cml9dhl91th01e7i1pthras1atk4h.png
-  [4]: http://static.zybuluo.com/zhangwen100/puyx1dyt52yhduf7vtwew72m/image_1cml974rq5e01i91bqq1tj51t0g2t.png
-  [5]: http://static.zybuluo.com/zhangwen100/iuu7ny8uqh7h1nnl1k030kit/image_1cml97ol8s7l3ked0o1tig2p23a.png
-  [6]: http://static.zybuluo.com/zhangwen100/q90cw7xjavoco4zq2cj4t3ct/image_1cml98ft71an9i9qmmtjr1rlb3n.png
-  [7]: http://static.zybuluo.com/zhangwen100/axtm0xm7m3b7xqglrutclvtz/image_1cmla1g621cnv66o1rgeqq71gvv4u.png
-  [8]: http://static.zybuluo.com/zhangwen100/1chjp2gsq2sqxjeimztimi9s/image_1cmla1soocrm17rcn7u157v7sl5b.png
-  [9]: http://static.zybuluo.com/zhangwen100/htd69r24iaa3fcpz8oeqi9gd/image_1cmlaatu7cb28641eedcs7g905o.png
-  [10]: http://static.zybuluo.com/zhangwen100/9gfn8dmo87oncbtaxism7spw/image_1cmlail2212531ab3hkf16gb134h8s.png
-  [11]: http://static.zybuluo.com/zhangwen100/ao1epwqtpzh8nqsa3l42jrix/image_1cmlahq4hhvbhsi1g44amm87b8f.png
-  [12]: http://static.zybuluo.com/zhangwen100/6orqnv9aj7lb888je5qy8mxm/image_1cmlbb14j7al1qkcnl715i918r89m.png
-  [13]: http://static.zybuluo.com/zhangwen100/ehjbzb0v7ipcnr46w1nyj7cp/image_1cmlbcq4919t7g31e5q12kr8rcb0.png
-  [14]: http://static.zybuluo.com/zhangwen100/ygy5m2s4o21w57oivr2v0eyx/image_1cmlcf8ikeptuu01f6b2djk6r9.png
-  [15]: http://static.zybuluo.com/zhangwen100/p5do00ukdqbp4v6ry6mvivkj/image_1cmnmm4da1h1agsh1p26j5a1auo9.png
-  [16]: http://static.zybuluo.com/zhangwen100/2jrtyd2xdvt8ymxd2uptncb7/image_1cmldu0l61v555v59v8172210e4m.png
-  [17]: http://static.zybuluo.com/zhangwen100/paeh9dd9aayx3115ky5a6x3r/image_1cmle3dk11olvbjjub4ge1avo13.png
-  [18]: http://static.zybuluo.com/zhangwen100/pjrgfqjo0q3kkuf7wafaaw04/image_1cmnv4jl11l7qmhkd7gtvgvgu9.png
-  [19]: http://static.zybuluo.com/zhangwen100/yj1lw0mxsynl36ydacxdcyw3/image_1cmo3v7r81ggk1til14iodcl1r28m.png
-  [20]: http://static.zybuluo.com/zhangwen100/nsvebmswbv04f2lvzu7epqle/image_1cmon3m5813v69t2upj1r6g2di13.png
+  ![1]( http://static.zybuluo.com/zhangwen100/i9y871pa5shhfhpjpv1dl5vf/image_1cml8qbgv17na10dm1sip1oirpu59.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/xjw0mqn99taqn7myo0u48lcx/image_1cml9cufv12ds1pfbuac9f98bt44.png)
+  ![3]( http://static.zybuluo.com/zhangwen100/u068ijakf0y9fi95mmepuskx/image_1cml9dhl91th01e7i1pthras1atk4h.png)
+  ![4]( http://static.zybuluo.com/zhangwen100/puyx1dyt52yhduf7vtwew72m/image_1cml974rq5e01i91bqq1tj51t0g2t.png)
+  ![5]( http://static.zybuluo.com/zhangwen100/iuu7ny8uqh7h1nnl1k030kit/image_1cml97ol8s7l3ked0o1tig2p23a.png)
+  ![6]( http://static.zybuluo.com/zhangwen100/q90cw7xjavoco4zq2cj4t3ct/image_1cml98ft71an9i9qmmtjr1rlb3n.png)
+  ![7]( http://static.zybuluo.com/zhangwen100/axtm0xm7m3b7xqglrutclvtz/image_1cmla1g621cnv66o1rgeqq71gvv4u.png)
+  ![8]( http://static.zybuluo.com/zhangwen100/1chjp2gsq2sqxjeimztimi9s/image_1cmla1soocrm17rcn7u157v7sl5b.png)
+  ![9]( http://static.zybuluo.com/zhangwen100/htd69r24iaa3fcpz8oeqi9gd/image_1cmlaatu7cb28641eedcs7g905o.png)
+  ![10]( http://static.zybuluo.com/zhangwen100/9gfn8dmo87oncbtaxism7spw/image_1cmlail2212531ab3hkf16gb134h8s.png)
+  ![11]( http://static.zybuluo.com/zhangwen100/ao1epwqtpzh8nqsa3l42jrix/image_1cmlahq4hhvbhsi1g44amm87b8f.png)
+  ![12]( http://static.zybuluo.com/zhangwen100/6orqnv9aj7lb888je5qy8mxm/image_1cmlbb14j7al1qkcnl715i918r89m.png)
+  ![13]( http://static.zybuluo.com/zhangwen100/ehjbzb0v7ipcnr46w1nyj7cp/image_1cmlbcq4919t7g31e5q12kr8rcb0.png)
+  ![14]( http://static.zybuluo.com/zhangwen100/ygy5m2s4o21w57oivr2v0eyx/image_1cmlcf8ikeptuu01f6b2djk6r9.png)
+  ![15]( http://static.zybuluo.com/zhangwen100/p5do00ukdqbp4v6ry6mvivkj/image_1cmnmm4da1h1agsh1p26j5a1auo9.png)
+  ![16]( http://static.zybuluo.com/zhangwen100/2jrtyd2xdvt8ymxd2uptncb7/image_1cmldu0l61v555v59v8172210e4m.png)
+  ![17]( http://static.zybuluo.com/zhangwen100/paeh9dd9aayx3115ky5a6x3r/image_1cmle3dk11olvbjjub4ge1avo13.png)
+  ![18]( http://static.zybuluo.com/zhangwen100/pjrgfqjo0q3kkuf7wafaaw04/image_1cmnv4jl11l7qmhkd7gtvgvgu9.png)
+  ![19]( http://static.zybuluo.com/zhangwen100/yj1lw0mxsynl36ydacxdcyw3/image_1cmo3v7r81ggk1til14iodcl1r28m.png)
+  ![20]( http://static.zybuluo.com/zhangwen100/nsvebmswbv04f2lvzu7epqle/image_1cmon3m5813v69t2upj1r6g2di13.png)

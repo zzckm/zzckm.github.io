@@ -2,6 +2,7 @@
 title: ' hbase-note'
 date: 2019-03-27 14:38:40
 tags: [Hbase]
+categories: hadoop
 ---
 # Hbase基础理论
 HBase以表的形式存储数据。表有行和列组成。划分为若干个列族。

@@ -1,7 +1,8 @@
 ---
-title: spark-入门
+title: spark-入门笔记
 date: 2019-04-08 10:29:07
 tags: [spark,scala]
+categories: spark
 ---
 
 # Spark

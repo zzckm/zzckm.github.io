@@ -2,6 +2,7 @@
 title: 'Spark第一天'
 date: 2019-04-25 23:13:40
 tags: [Spark]
+categories: Spark
 ---
 # Spark第一天
 
@@ -128,5 +129,5 @@ scala> sc.textFile("hdfs://master:9000/wc.txt").flatMap(_.split(" ")).map((_,1))
 
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/e3f7343atttccfyebj5j33rp/image_1cmdes1api2akv1194gsr0hnj9.png
-  [2]: http://static.zybuluo.com/zhangwen100/9jubl5d55y5010bq746nlbyj/image_1cmdevnb21s9kbj0rss1ae9js0m.png
+  ![1](http://static.zybuluo.com/zhangwen100/e3f7343atttccfyebj5j33rp/image_1cmdes1api2akv1194gsr0hnj9.png)
+  ![2](http://static.zybuluo.com/zhangwen100/9jubl5d55y5010bq746nlbyj/image_1cmdevnb21s9kbj0rss1ae9js0m.png)

@@ -2,6 +2,7 @@
 title: Hexo-DaoVice
 date: 2019-03-27 11:43:29
 tags: [Hexo]
+categories: Hexo
 ---
 ## 注册
 <hr/>

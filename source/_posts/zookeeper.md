@@ -1,7 +1,8 @@
 ---
-title: zookeeper
+title: zookeeper部分笔记
 date: 2019-03-28 11:16:43
 tags: [zookeeper]
+categories: zookeeper
 ---
 ## Zookeeper简介
 Zookeeper 多个相同的节点，每一个里面存储的都一模一样，并且随时同步，且运行时所有数据存放在内存当中。

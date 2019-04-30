@@ -2,6 +2,7 @@
 title: 'Spark 之 Graphx'
 date: 2019-04-25 23:08:40
 tags: [Spark,Graphx]
+categories: Spark
 ---
 # Spark 之 Graphx
 
@@ -512,13 +513,13 @@ object GraphxHelloWorld extends App{
 PageRank算法
 (网页排名，Google左侧排名，佩奇排名)
 
-  [1]: http://static.zybuluo.com/zhangwen100/kh18p52pv06zmt1k0ogqiky7/image_1cmv2t6351udeheo17feif818sgm.png
-  [2]: http://static.zybuluo.com/zhangwen100/9p5r02ll0bccjvw86zsqatgt/image_1cmv2i1fs13e9bi1sftrs919bg9.png
-  [3]: http://static.zybuluo.com/zhangwen100/bltmke3lcusrpiyiwblu5a4r/image_1cmv30vj68jrssb1c9m27term1j.png
-  [4]: http://static.zybuluo.com/zhangwen100/qrmkq0guq9b3tffcqra2unke/image_1cmv35mns1gdo1sei1jvk16uceac20.png
-  [5]: http://static.zybuluo.com/zhangwen100/93u1q7av2gbu0n1ay76992zs/image_1cmv39mjn186e1nu61fdv1vt1luf2d.png
-  [6]: http://static.zybuluo.com/zhangwen100/v4qrrv2dugiebwd31aojp2f9/image_1cmv3h2369kt12m51jtilon1ro52q.png
-  [7]: http://static.zybuluo.com/zhangwen100/pt0h1jhxr6tghfl0uz2i3u9y/image_1cmv3u1as1pbqv9jgrqv6trfj3k.png
-  [8]: http://static.zybuluo.com/zhangwen100/26a41h63j7xxd4fejg4baxpv/image_1cmv4s5hm1co815181ijg2qg1t0h41.png
-  [9]: http://static.zybuluo.com/zhangwen100/w1w3c0qw5xy2hy4ulid17zu0/image_1cmv52otn11c3g1v1uecte21qgk4e.png
-  [10]: http://static.zybuluo.com/zhangwen100/o7nmie0lcnhly58n709ddzhj/image_1cmv5rcf6g27obk1rvkd0ko8a4r.png
+  ![1]( http://static.zybuluo.com/zhangwen100/kh18p52pv06zmt1k0ogqiky7/image_1cmv2t6351udeheo17feif818sgm.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/9p5r02ll0bccjvw86zsqatgt/image_1cmv2i1fs13e9bi1sftrs919bg9.png)
+  ![3]( http://static.zybuluo.com/zhangwen100/bltmke3lcusrpiyiwblu5a4r/image_1cmv30vj68jrssb1c9m27term1j.png)
+  ![4]( http://static.zybuluo.com/zhangwen100/qrmkq0guq9b3tffcqra2unke/image_1cmv35mns1gdo1sei1jvk16uceac20.png)
+  ![5]( http://static.zybuluo.com/zhangwen100/93u1q7av2gbu0n1ay76992zs/image_1cmv39mjn186e1nu61fdv1vt1luf2d.png)
+  ![6]( http://static.zybuluo.com/zhangwen100/v4qrrv2dugiebwd31aojp2f9/image_1cmv3h2369kt12m51jtilon1ro52q.png)
+  ![7]( http://static.zybuluo.com/zhangwen100/pt0h1jhxr6tghfl0uz2i3u9y/image_1cmv3u1as1pbqv9jgrqv6trfj3k.png)
+  ![8]( http://static.zybuluo.com/zhangwen100/26a41h63j7xxd4fejg4baxpv/image_1cmv4s5hm1co815181ijg2qg1t0h41.png)
+  ![9]( http://static.zybuluo.com/zhangwen100/w1w3c0qw5xy2hy4ulid17zu0/image_1cmv52otn11c3g1v1uecte21qgk4e.png)
+  ![10]( http://static.zybuluo.com/zhangwen100/o7nmie0lcnhly58n709ddzhj/image_1cmv5rcf6g27obk1rvkd0ko8a4r.png)

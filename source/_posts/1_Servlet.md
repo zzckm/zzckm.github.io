@@ -2,6 +2,7 @@
 title: 'Servlet'
 date: 2019-04-25 23:05:40
 tags: [Servlet]
+categories: JavaWeb
 ---
 # Servlet
 
@@ -48,6 +49,6 @@ tags: [Servlet]
     服务器正常关闭时执行，执行destroy()方法，销毁Servlet对象。该方法是在Tomcat正常关闭的时候才会执行。一般情况下，不会往里面写内容。
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/ir3ehsendsm0wn57fbwnhmep/image_1ceks61uo15vk9jql57mm6f2u9.png
-  [2]: http://static.zybuluo.com/zhangwen100/2rpqmrlmn4c8ewax4lnoo3kc/image_1cel04jpj12qe19ap124g10ebr6c39.png
-  [3]: http://static.zybuluo.com/zhangwen100/7dbmv085zlhyykq5aj2momdd/image_1celb64amfb7178u1hu71cp8q4j66.png
+  ![1]( http://static.zybuluo.com/zhangwen100/ir3ehsendsm0wn57fbwnhmep/image_1ceks61uo15vk9jql57mm6f2u9.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/2rpqmrlmn4c8ewax4lnoo3kc/image_1cel04jpj12qe19ap124g10ebr6c39.png)
+  ![3]( http://static.zybuluo.com/zhangwen100/7dbmv085zlhyykq5aj2momdd/image_1celb64amfb7178u1hu71cp8q4j66.png)

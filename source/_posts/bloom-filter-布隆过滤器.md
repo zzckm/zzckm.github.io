@@ -2,6 +2,7 @@
 title: bloom filter-布隆过滤器
 date: 2019-04-22 22:26:43
 tags: [算法,过滤器]
+categories: 算法
 ---
 
 # Bloom filter 布隆过滤器 

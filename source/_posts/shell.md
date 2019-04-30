@@ -2,6 +2,7 @@
 title: shell-编程
 date: 2019-03-31 14:27:11
 tags: [Shell]
+categories: Shell编程
 ---
 #Shell入门学习
 ## shell简介

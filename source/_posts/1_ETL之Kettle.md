@@ -2,6 +2,7 @@
 title: 'ETL之Kettle'
 date: 2019-04-25 23:00:44
 tags: [ETL,Kettle]
+categories: ETL工具Kettle
 ---
 # ETL之Kettle
 

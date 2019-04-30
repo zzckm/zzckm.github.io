@@ -2,6 +2,7 @@
 title: 'Http协议&Servlet入门'
 date: 2019-04-25 23:00:53
 tags: [Http,Servlet]
+categories: JavaWeb
 ---
 #Http协议&Servlet入门
 
@@ -365,9 +366,9 @@ tags: [Http,Servlet]
 			获取配置的信息， params
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/ol7y8x7tskmhqxdi1ptflxlv/img01.png
-  [2]: http://static.zybuluo.com/zhangwen100/xg66gb6hu0vme7bhbe239pze/img02.png
-  [3]: http://static.zybuluo.com/zhangwen100/c97lvd1sc5w1i3gkpdrw0uch/img03.png
-  [4]: http://static.zybuluo.com/zhangwen100/lu5athn86vrbt4a7x4so47du/img04.png
-  [5]: http://static.zybuluo.com/zhangwen100/oydbok9cl358rt5cakuq4frg/img05.png
-  [6]: http://static.zybuluo.com/zhangwen100/8t9u5ws35fh2stcihi0t5yvg/img06.png
+  ![1](http://static.zybuluo.com/zhangwen100/ol7y8x7tskmhqxdi1ptflxlv/img01.png)
+  ![2](http://static.zybuluo.com/zhangwen100/xg66gb6hu0vme7bhbe239pze/img02.png)
+  ![3](http://static.zybuluo.com/zhangwen100/c97lvd1sc5w1i3gkpdrw0uch/img03.png)
+  ![4](http://static.zybuluo.com/zhangwen100/lu5athn86vrbt4a7x4so47du/img04.png)
+  ![5](http://static.zybuluo.com/zhangwen100/oydbok9cl358rt5cakuq4frg/img05.png)
+  ![6](http://static.zybuluo.com/zhangwen100/8t9u5ws35fh2stcihi0t5yvg/img06.png)

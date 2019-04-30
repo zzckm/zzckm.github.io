@@ -2,6 +2,7 @@
 title: 'Hadoop-sqoop'
 date: 2019-04-25 23:00:49
 tags: [Hadoop,sqoop]
+categories: sqoop
 ---
 # Hadoop-sqoop
 
@@ -216,7 +217,7 @@ student
 ## 参数详解
 
 公共参数：数据库连接
-: |参数|描述|
+|参数|描述|
 |---|---|
 |--connect|连接数据库的URL|
 |--connection-manager|使用管理类|
@@ -230,7 +231,7 @@ student
 |--verbose|工作时打印更多信息
 
 公共参数：import
-: |参数|描述|
+|参数|描述|
  |---|---|
 |--fields-terminated-by |设定每个字段以什么样的符号结果，默认为逗号|
 |--lines-terminated-by |每一行以什么样的字符结束，默认为\n|
@@ -250,13 +251,13 @@ student
 |--escaped-by|对字段中的双引号加转义符|
 
 公用参数：export
-: |参数|描述|
+|参数|描述|
 |---|---|
 |--input-fields-terminated-by|导出数据中字段分隔符|
 |--input-lines-terminated-by|导出数据中行分隔符|
 
 公用参数：hive
-: |参数|描述|
+|参数|描述|
 |---|---|
 |--hive-import|将数据从传统数据库中导入到Hive表中|
 |--hive-overwrite|覆盖已存在的数据|
@@ -309,4 +310,4 @@ permission javax.management.MBeanTrustPermission "register";
   
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/9bxz5imqqpqfea8m9j225i4a/image_1ckugsidd4j61pmm1vrg1q0e5lo9.png
+  ![1](http://static.zybuluo.com/zhangwen100/9bxz5imqqpqfea8m9j225i4a/image_1ckugsidd4j61pmm1vrg1q0e5lo9.png)

@@ -2,6 +2,7 @@
 title: 'Servlet总结'
 date: 2019-04-25 23:06:40
 tags: [Servlet]
+categories: JavaWeb
 ---
 # Servlet总结
 一. 创建Java Web项目
@@ -91,4 +92,4 @@ tags: [Servlet]
 
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/7xq3yjmr951ddwjhrsm579m4/image_1cg0g07rjos6teo54vtlu1vqf9.png
+  ![1]( http://static.zybuluo.com/zhangwen100/7xq3yjmr951ddwjhrsm579m4/image_1cg0g07rjos6teo54vtlu1vqf9.png)

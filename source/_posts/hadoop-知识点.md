@@ -1,7 +1,8 @@
 ---
-title: hadoop 知识点
+title: hadoop 部分知识点
 date: 2019-04-22 14:04:55
 tags: [hadoop]
+categories: hadoop
 ---
 hadoop 分为三种
 商业版  CDH cloudera hadoop--Impala相当于hive

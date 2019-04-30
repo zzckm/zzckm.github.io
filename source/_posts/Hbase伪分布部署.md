@@ -1,7 +1,8 @@
 ---
-title: Hbase-伪分布
+title: Hbase-伪分布部署
 date: 2019-03-27 10:32:34
 tags: [Hbase,Hadoop]
+categories: hadoop
 ---
 # Hbase 伪分布部署
 伪分布模式需要用到hadoop文件系统 ，所以配置会比单机模式麻烦很多

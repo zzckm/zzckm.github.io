@@ -2,6 +2,7 @@
 title: 'Cookie与Session'
 date: 2019-04-25 23:00:43
 tags: [Javase]
+categories: Java
 ---
 # Cookie与Session
 
@@ -178,8 +179,9 @@ setMaxInactiveInterval(int interval)
  
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/hr8rfwtbbklois5v8h3xkufu/image_1cb61m8u313dp1ipq172mbqb1vpsp.png
-  [2]: http://static.zybuluo.com/zhangwen100/bpdh2ecpnjpn74d3bmq8889p/%E6%97%A0%E6%A0%87%E9%A2%98.png
-  [3]: http://static.zybuluo.com/zhangwen100/b08y5lr89hx35ebmn1ds97uk/%E6%97%A0%E6%A0%87%E9%A2%98.png
-  [4]: http://static.zybuluo.com/zhangwen100/cqsbdpcq7zfq56i0gww8sig8/image_1cfn8nm3e13e1d8ubf47kl1rl59.png
-  [5]: http://static.zybuluo.com/zhangwen100/0zpjhk8oe9ve6df7ru9yees5/image_1cb63umlp1rap1arv1sib4umj4t2b.png
+  
+  ![1](http://static.zybuluo.com/zhangwen100/hr8rfwtbbklois5v8h3xkufu/image_1cb61m8u313dp1ipq172mbqb1vpsp.png)
+  ![2](http://static.zybuluo.com/zhangwen100/bpdh2ecpnjpn74d3bmq8889p/%E6%97%A0%E6%A0%87%E9%A2%98.png)
+  ![3](http://static.zybuluo.com/zhangwen100/b08y5lr89hx35ebmn1ds97uk/%E6%97%A0%E6%A0%87%E9%A2%98.png)
+  ![4](http://static.zybuluo.com/zhangwen100/cqsbdpcq7zfq56i0gww8sig8/image_1cfn8nm3e13e1d8ubf47kl1rl59.png)
+  ![5](http://static.zybuluo.com/zhangwen100/0zpjhk8oe9ve6df7ru9yees5/image_1cb63umlp1rap1arv1sib4umj4t2b.png)

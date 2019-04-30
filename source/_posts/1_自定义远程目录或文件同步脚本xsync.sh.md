@@ -2,6 +2,7 @@
 title: '自定义远程目录或文件同步脚本xsync.sh'
 date: 2019-04-15 13:00:40
 tags: [Java]
+categories: Shell编程
 ---
 # 自定义远程目录或文件同步脚本xsync.sh
 

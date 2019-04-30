@@ -2,6 +2,7 @@
 title: 'Redis'
 date: 2019-04-25 23:01:40
 tags: [Redis]
+categories: Redis
 ---
 # Redis
 
@@ -134,5 +135,5 @@ set
 
  - Redis set对外提供的功能与list类似是一个列表的功能，特殊之处在于set是可以自动排重的，当你需要存储一个列表数据，又不希望出现重复数据时，set是一个很好的选择，并且set提供了判断某个成员是否在一个set集合内的重要接口，这个也是list所不能提供的。
  - Redis的Set是string类型的无序集合。它底层其实是一个value为null的hash表,所以添加，删除，查找的复杂度都是O(1)。
-  [1]: http://www.redis.cn/download.html
-  [2]: http://static.zybuluo.com/zhangwen100/eqy1rd8l7v3qdrzbpsxc1l7d/image_1cnp7in987t21rl41ccopr4f22p.png
+  ![1]( http://www.redis.cn/download.html
+  ![2]( http://static.zybuluo.com/zhangwen100/eqy1rd8l7v3qdrzbpsxc1l7d/image_1cnp7in987t21rl41ccopr4f22p.png)

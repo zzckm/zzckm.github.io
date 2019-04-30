@@ -2,6 +2,7 @@
 title: 'Mybatis'
 date: 2019-04-25 23:00:57
 tags: [Mybatis]
+categories: Java框架
 ---
 # Mybatis
 
@@ -371,5 +372,5 @@ https://blog.csdn.net/tianxiezuomaikong/article/details/68942638
 
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/24tm10o8p5r6wz7ocl0mr41e/image_1ch13bp7i1mgl1ie11uaqfkq139jp.png
-  [2]: http://static.zybuluo.com/zhangwen100/zbhtuc42awjdm0aucjvz2nse/image_1ch1b5mv8rqkbgp1gqu1ubvqlv2d.png
+  ![1]( http://static.zybuluo.com/zhangwen100/24tm10o8p5r6wz7ocl0mr41e/image_1ch13bp7i1mgl1ie11uaqfkq139jp.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/zbhtuc42awjdm0aucjvz2nse/image_1ch1b5mv8rqkbgp1gqu1ubvqlv2d.png)

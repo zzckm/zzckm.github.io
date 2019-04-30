@@ -2,6 +2,7 @@
 title: Kafka
 date: 2019-04-23 22:33:29
 tags: [kafka]
+categories: kafka
 ---
 # kAFKA 
 

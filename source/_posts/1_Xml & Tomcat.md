@@ -2,6 +2,7 @@
 title: 'Xml & Tomcat'
 date: 2019-04-24 23:00:40
 tags: [Xml,Tomcat]
+categories: JavaWeb
 ---
 
 #Xml & Tomcat
@@ -953,6 +954,6 @@ work(目前不用管)
 			获取配置的信息， params
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/amaocx39cegctq6frkyz92ct/document.png
-  [2]: http://static.zybuluo.com/zhangwen100/6dh3okiqhp29ki5v8jjkc4hi/parse_type.png
-  [3]: http://static.zybuluo.com/zhangwen100/6vcp845xkpau1n5fpohiepxn/image_1cegiq80lq0717e62ti1nf31cpe11.png
+  ![1]( http://static.zybuluo.com/zhangwen100/amaocx39cegctq6frkyz92ct/document.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/6dh3okiqhp29ki5v8jjkc4hi/parse_type.png)
+ ![3]( http://static.zybuluo.com/zhangwen100/6vcp845xkpau1n5fpohiepxn/image_1cegiq80lq0717e62ti1nf31cpe11.png)

@@ -2,6 +2,7 @@
 title: CDH安装文档-Cloudera Manager
 date: 2019-04-25 23:00:42
 tags: [CDH]
+categories: 大数据应用
 ---
 # CDH安装文档
 
@@ -33,7 +34,7 @@ Cloudera Manager 的架构如上图所示（cs结构），主要由如下几部�
 
 集群节点分配
 : 
-    |主机名|主机IP|主机内存|硬盘存储|
+  |主机名|主机IP|主机内存|硬盘存储|
 |---|---|---|---|
 |node01|192.168.100.101|7G|70G|
 |node02|192.168.100.102|4G|50G|
@@ -43,7 +44,7 @@ Cloudera Manager 的架构如上图所示（cs结构），主要由如下几部�
 
 软件版本
 :   
-    |软件名称|版本号|
+  |软件名称|版本号|
 |---|---|
 |Java|1.8.0_162|
 |MySQL|5.7.24|
@@ -52,7 +53,7 @@ Cloudera Manager 的架构如上图所示（cs结构），主要由如下几部�
 
 各软件安装路径
 :  
-     |软件名|路径地址|
+  |软件名|路径地址|
 |---|---|
 |CM|/opt/apps/cm-5.15.1|
 |Java|/opt/apps/Java|
@@ -586,31 +587,31 @@ Hint: Some lines were ellipsized, use -l to show in full.
 [root@node01 init.d]# yum -y install rpcbind
 ```
 
-  [1]: http://static.zybuluo.com/zhangwen100/ogbw8dju2fvc1o2tb2vjndkd/image_1cr7ui3hq12jp1qtmcic19c1sa39.png
-  [2]: https://download.oracle.com/otn/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz?AuthParam=1540826002_cc60927e5e66e3999064c255b8e675da
-  [3]: https://www.cloudera.com/documentation/enterprise/release-notes/topics/rn_consolidated_pcm.html#pcm_jdk
-  [4]: https://dev.mysql.com/downloads/file/?id=481064
-  [5]: http://archive.cloudera.com/cdh5/parcels/latest/manifest.json
-  [6]: http://archive.cloudera.com/cdh5/parcels/5.15.1/
-  [7]: http://archive.cloudera.com/cdh5/parcels/5.15.1/
-  [8]: http://archive.cloudera.com/cm5/cm/5/
-  [9]: http://static.zybuluo.com/zhangwen100/caom6uixock1i7hrvog9h6ob/image_1cr86pb1v1sls5tg1lml1mjn1ql9m.png
-  [10]: http://static.zybuluo.com/zhangwen100/ktds3ociczb6v1hmedex4da8/image_1cr86sad41aje1lcn11hj1llc1ca013.png
-  [11]: http://static.zybuluo.com/zhangwen100/8j4dqs87h9a9bz2pkcydu3su/image_1cr8704k3q8skga69n1thj2a71g.png
-  [12]: http://static.zybuluo.com/zhangwen100/658tslyfpe0v2wksj47qadpi/image_1cr871dst164r6iq65713rfi781t.png
-  [13]: http://static.zybuluo.com/zhangwen100/e2sul6wwhd79v7o7fw5ft013/image_1cr875jm9da7pvo1kd515fd1efg2a.png
-  [14]: http://static.zybuluo.com/zhangwen100/rvlacm9glpp91hrdrqfu0h6z/image_1cr877kuc1rv54qi1upro8n13be2n.png
-  [15]: http://static.zybuluo.com/zhangwen100/gym33jt5gpx2c4r8oqsjf410/image_1cr87bf9h1hiq4gt1r883jb1d9f34.png
-  [16]: http://static.zybuluo.com/zhangwen100/0jyrcaioj1iz6kmbsg72zxui/image_1cr87ja8e1u98t3seek1s9311b03h.png
-  [17]: http://static.zybuluo.com/zhangwen100/fblifuir1024kxbffioodtwd/image_1cr87loa2t011ik1ts41ngp1jq33u.png
-  [18]: http://static.zybuluo.com/zhangwen100/z3qpqekpsn67rb891qftu7o1/image_1cr87vrvi1l9vhtl1jmv1scbioh4b.png
-  [19]: http://static.zybuluo.com/zhangwen100/tjmaer7yd84iabkfq6yfpu0d/image_1cr882f9jd3r1bs31498vrpvd4o.png
-  [20]: http://static.zybuluo.com/zhangwen100/8r1yq6nfu8zn0wndp7j2xgdn/image_1cr887909t6q1rfggtjiivhv055.png
-  [21]: http://static.zybuluo.com/zhangwen100/uezb8ezaqkwrkcyxd8vhryae/image_1cr888o2t10sdm601hlg1njn17ho5i.png
-  [22]: http://static.zybuluo.com/zhangwen100/4mx4ssqf0mk9nonlettnlqac/image_1cr88g66aomtgone8llrqi4e5v.png
-  [23]: http://static.zybuluo.com/zhangwen100/cnfcq9v0ymv9tqxfac5qtmw7/image_1cr88k1fc4gdvi6qob8rn1p4k6s.png
-  [24]: http://static.zybuluo.com/zhangwen100/xb388330wilubzeomsc8o9bt/image_1cr88lvu8e891vjovde1mm5ht779.png
-  [25]: http://static.zybuluo.com/zhangwen100/ttsmoygr7t2tpce73k9p0plq/image_1cr4i1pr2189r166rn3ucn1k0q1p.png
-  [26]: http://static.zybuluo.com/zhangwen100/92isrcqeic9dvwp2ms0tfkbi/image_1cr4i2ij41mfqv4qa4iv841mn026.png
-  [27]: http://static.zybuluo.com/zhangwen100/72nhqt1u4ag6y71tcji49juk/image_1cr4i3odi1ndsh1qiehvms1a3j.png
-  [28]: http://static.zybuluo.com/zhangwen100/82qfkwnhyrp8ti0e9i8p5rtq/image_1cr4i48vm1ih1p6s1hlhirh1jd540.png
+  ![1](http://static.zybuluo.com/zhangwen100/ogbw8dju2fvc1o2tb2vjndkd/image_1cr7ui3hq12jp1qtmcic19c1sa39.png)
+  [2](https://download.oracle.com/otn/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz?AuthParam=1540826002_cc60927e5e66e3999064c255b8e675da
+  [3](https://www.cloudera.com/documentation/enterprise/release-notes/topics/rn_consolidated_pcm.html#pcm_jdk
+  [4](https://dev.mysql.com/downloads/file/?id=481064
+  [5](http://archive.cloudera.com/cdh5/parcels/latest/manifest.json
+  [6](http://archive.cloudera.com/cdh5/parcels/5.15.1/
+  [7](http://archive.cloudera.com/cdh5/parcels/5.15.1/
+  [8](http://archive.cloudera.com/cm5/cm/5/
+  ![9]( http://static.zybuluo.com/zhangwen100/caom6uixock1i7hrvog9h6ob/image_1cr86pb1v1sls5tg1lml1mjn1ql9m.png)
+  ![10]( http://static.zybuluo.com/zhangwen100/ktds3ociczb6v1hmedex4da8/image_1cr86sad41aje1lcn11hj1llc1ca013.png)
+  ![11](http://static.zybuluo.com/zhangwen100/8j4dqs87h9a9bz2pkcydu3su/image_1cr8704k3q8skga69n1thj2a71g.png)
+  ![12]( http://static.zybuluo.com/zhangwen100/658tslyfpe0v2wksj47qadpi/image_1cr871dst164r6iq65713rfi781t.png)
+  ![13]( http://static.zybuluo.com/zhangwen100/e2sul6wwhd79v7o7fw5ft013/image_1cr875jm9da7pvo1kd515fd1efg2a.png)
+  ![14](http://static.zybuluo.com/zhangwen100/rvlacm9glpp91hrdrqfu0h6z/image_1cr877kuc1rv54qi1upro8n13be2n.png)
+  ![15]( http://static.zybuluo.com/zhangwen100/gym33jt5gpx2c4r8oqsjf410/image_1cr87bf9h1hiq4gt1r883jb1d9f34.png)
+  ![16](http://static.zybuluo.com/zhangwen100/0jyrcaioj1iz6kmbsg72zxui/image_1cr87ja8e1u98t3seek1s9311b03h.png)
+  ![17]( http://static.zybuluo.com/zhangwen100/fblifuir1024kxbffioodtwd/image_1cr87loa2t011ik1ts41ngp1jq33u.png)
+  ![18]( http://static.zybuluo.com/zhangwen100/z3qpqekpsn67rb891qftu7o1/image_1cr87vrvi1l9vhtl1jmv1scbioh4b.png)
+  ![19]( http://static.zybuluo.com/zhangwen100/tjmaer7yd84iabkfq6yfpu0d/image_1cr882f9jd3r1bs31498vrpvd4o.png)
+  ![20]( http://static.zybuluo.com/zhangwen100/8r1yq6nfu8zn0wndp7j2xgdn/image_1cr887909t6q1rfggtjiivhv055.png)
+  ![21]( http://static.zybuluo.com/zhangwen100/uezb8ezaqkwrkcyxd8vhryae/image_1cr888o2t10sdm601hlg1njn17ho5i.png)
+  ![22]( http://static.zybuluo.com/zhangwen100/4mx4ssqf0mk9nonlettnlqac/image_1cr88g66aomtgone8llrqi4e5v.png)
+  ![23](http://static.zybuluo.com/zhangwen100/cnfcq9v0ymv9tqxfac5qtmw7/image_1cr88k1fc4gdvi6qob8rn1p4k6s.png)
+  ![24]( http://static.zybuluo.com/zhangwen100/xb388330wilubzeomsc8o9bt/image_1cr88lvu8e891vjovde1mm5ht779.png)
+  ![25]( http://static.zybuluo.com/zhangwen100/ttsmoygr7t2tpce73k9p0plq/image_1cr4i1pr2189r166rn3ucn1k0q1p.png)
+  ![26]( http://static.zybuluo.com/zhangwen100/92isrcqeic9dvwp2ms0tfkbi/image_1cr4i2ij41mfqv4qa4iv841mn026.png)
+  ![27]( http://static.zybuluo.com/zhangwen100/72nhqt1u4ag6y71tcji49juk/image_1cr4i3odi1ndsh1qiehvms1a3j.png)
+  ![28]( http://static.zybuluo.com/zhangwen100/82qfkwnhyrp8ti0e9i8p5rtq/image_1cr4i48vm1ih1p6s1hlhirh1jd540.png)

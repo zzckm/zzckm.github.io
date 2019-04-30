@@ -2,6 +2,7 @@
 title: 'Servlet的作用域和内置对象'
 date: 2019-04-25 23:07:40
 tags: [Servlet]
+categories: JavaWeb
 ---
 # Servlet的作用域和内置对象
 

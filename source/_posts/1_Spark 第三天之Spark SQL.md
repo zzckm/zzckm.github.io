@@ -2,6 +2,7 @@
 title: 'Spark第三天之SparkSQL'
 date: 2019-04-25 23:14:40
 tags: [Spark,SparkSQL]
+categories: Spark
 ---
 # Spark 第三天之Spark SQL
 
@@ -646,18 +647,18 @@ SparkSpanner使用Planning Strategies，对优化后的逻辑计划进行转换�
 - 统计每年最畅销货品（哪个货品销售额amount在当年最高，哪个就是最畅销货品）
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/wz16d2sf49lv214honl95n1m/image_1cmio2ig3j22l44vdi31a1m509.png
-  [2]: http://static.zybuluo.com/zhangwen100/f0ob8qrn64bk0eh6b69o40do/image_1cmioarhitcofuckg21mj819dc1m.png
-  [3]: http://static.zybuluo.com/zhangwen100/s6w2ht1grmme7fxz0twt2k9m/image_1cmiobr9f16pf1s3s1bj6n3b9vl23.png
-  [4]: http://static.zybuluo.com/zhangwen100/j6m690urvdi9ixikhet13v7p/image_1cmiocej31n931sm4qrsmgi1fad2g.png
-  [5]: http://static.zybuluo.com/zhangwen100/7lkpy3h7gs64s1ahuy262rx1/image_1cmioct9e1c7519la14141tah1v722t.png
-  [6]: http://static.zybuluo.com/zhangwen100/ugyb2nwgb5s13wnqt89z4n68/image_1cmiokv241engdid15k31kt72so9.png
-  [7]: http://static.zybuluo.com/zhangwen100/6ppsc1z0yet35uma6hlwuz89/image_1cmioruf962jkms3t7uke10ahm.png
-  [8]: http://static.zybuluo.com/zhangwen100/nkux489j4jvaj5fkgyf8vj6x/image_1cmip0l5k1ph1d5de5u11qo13eq13.png
-  [9]: http://static.zybuluo.com/zhangwen100/uoiul4v1iubq2ab6lutths66/image_1cmipmbtrurtraot1m5tnmkr1g.png
-  [10]: http://static.zybuluo.com/zhangwen100/gos4pjreefaejnehj7ylvoql/image_1cmmpgfn07vudg5177i1sa51uq09.png
-  [11]: http://spark.apache.org/docs/2.2.2/sql-programming-guide.html#data-sources
-  [12]: http://spark.apache.org/docs/2.2.2/sql-programming-guide.html#save-modes
-  [13]: http://static.zybuluo.com/zhangwen100/euemtz5n6ouss6pxhz9en9w6/image_1cml86ltg16l2eio14m963b1q2rm.png
-  [14]: http://static.zybuluo.com/zhangwen100/qo976u7wbxk8xgvmd8fcmgmo/image_1cml8bq7t3go1moefiirs01uh41g.png
-  [15]: http://static.zybuluo.com/zhangwen100/sc0hnsjqtpbs940fnx9t7b2k/image_1cml6v59u8p31c501bj97h31d859.png
+  ![1]( http://static.zybuluo.com/zhangwen100/wz16d2sf49lv214honl95n1m/image_1cmio2ig3j22l44vdi31a1m509.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/f0ob8qrn64bk0eh6b69o40do/image_1cmioarhitcofuckg21mj819dc1m.png)
+  ![3]( http://static.zybuluo.com/zhangwen100/s6w2ht1grmme7fxz0twt2k9m/image_1cmiobr9f16pf1s3s1bj6n3b9vl23.png)
+  ![4]( http://static.zybuluo.com/zhangwen100/j6m690urvdi9ixikhet13v7p/image_1cmiocej31n931sm4qrsmgi1fad2g.png)
+  ![5]( http://static.zybuluo.com/zhangwen100/7lkpy3h7gs64s1ahuy262rx1/image_1cmioct9e1c7519la14141tah1v722t.png)
+  ![6]( http://static.zybuluo.com/zhangwen100/ugyb2nwgb5s13wnqt89z4n68/image_1cmiokv241engdid15k31kt72so9.png)
+  ![7]( http://static.zybuluo.com/zhangwen100/6ppsc1z0yet35uma6hlwuz89/image_1cmioruf962jkms3t7uke10ahm.png)
+  ![8]( http://static.zybuluo.com/zhangwen100/nkux489j4jvaj5fkgyf8vj6x/image_1cmip0l5k1ph1d5de5u11qo13eq13.png)
+  ![9]( http://static.zybuluo.com/zhangwen100/uoiul4v1iubq2ab6lutths66/image_1cmipmbtrurtraot1m5tnmkr1g.png)
+  ![10]( http://static.zybuluo.com/zhangwen100/gos4pjreefaejnehj7ylvoql/image_1cmmpgfn07vudg5177i1sa51uq09.png)
+  ![11]( http://spark.apache.org/docs/2.2.2/sql-programming-guide.html#data-sources
+  ![12]( http://spark.apache.org/docs/2.2.2/sql-programming-guide.html#save-modes
+  ![13]( http://static.zybuluo.com/zhangwen100/euemtz5n6ouss6pxhz9en9w6/image_1cml86ltg16l2eio14m963b1q2rm.png)
+  ![14]( http://static.zybuluo.com/zhangwen100/qo976u7wbxk8xgvmd8fcmgmo/image_1cml8bq7t3go1moefiirs01uh41g.png)
+  ![15]( http://static.zybuluo.com/zhangwen100/sc0hnsjqtpbs940fnx9t7b2k/image_1cml6v59u8p31c501bj97h31d859.png)

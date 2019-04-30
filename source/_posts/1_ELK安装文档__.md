@@ -2,6 +2,7 @@
 title: ELK安装文档
 date: 2019-04-25 23:00:40
 tags: [ELK]
+categories: ELK日志分析平台
 ---
 
 **ELK安装文档**
@@ -649,10 +650,10 @@ sincedb_write_interval => 15
 ```
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/psxk09q4hdm57j07beib6h3p/image_1btt80jm0qspmmrk121ksqp559.png
-  [2]: http://static.zybuluo.com/zhangwen100/f6ich2owz7dnzerr0t0t6mep/image_1btt9a90v8qaqfo1a5i130htnm.png
-  [3]: http://static.zybuluo.com/zhangwen100/rhssfvrdloocdimd8tcvt4ln/image_1btta457a3d01e371c3fn3c1dav13.png
-  [4]: http://static.zybuluo.com/zhangwen100/jbknyal00b9licrsl01ekc5h/image_1btta50r5vikqra135r1dv7lfp20.png
-  [5]: http://static.zybuluo.com/zhangwen100/4a1srf8cinw3a5mqdn964gyw/image_1bttcndg518kq1enu8tg3v14f32d.png
-  [6]: http://static.zybuluo.com/zhangwen100/92eyje4tnjw7wa51bruesb9n/image_1bttcvo60152g36i5oa19ei1u7v2q.png
-  [7]: http://static.zybuluo.com/zhangwen100/cfwumzoreip8u0snqqu0ajcc/image_1c12nrt1g12vc1na5nki1isrfoc16.png
+  ![1](http://static.zybuluo.com/zhangwen100/psxk09q4hdm57j07beib6h3p/image_1btt80jm0qspmmrk121ksqp559.png)
+  ![2](http://static.zybuluo.com/zhangwen100/f6ich2owz7dnzerr0t0t6mep/image_1btt9a90v8qaqfo1a5i130htnm.png)
+  ![3](http://static.zybuluo.com/zhangwen100/rhssfvrdloocdimd8tcvt4ln/image_1btta457a3d01e371c3fn3c1dav13.png)
+ ![4](http://static.zybuluo.com/zhangwen100/jbknyal00b9licrsl01ekc5h/image_1btta50r5vikqra135r1dv7lfp20.png)
+  ![5](http://static.zybuluo.com/zhangwen100/4a1srf8cinw3a5mqdn964gyw/image_1bttcndg518kq1enu8tg3v14f32d.png)
+  ![6](http://static.zybuluo.com/zhangwen100/92eyje4tnjw7wa51bruesb9n/image_1bttcvo60152g36i5oa19ei1u7v2q.png)
+  ![7](http://static.zybuluo.com/zhangwen100/cfwumzoreip8u0snqqu0ajcc/image_1c12nrt1g12vc1na5nki1isrfoc16.png)

@@ -2,6 +2,7 @@
 title: 'Linux第三天-Shell编程'
 date: 2019-04-25 23:00:55
 tags: [Linux,Shell编程]
+categories: Linux学习
 ---
 # Linux第三天-Shell编程
 
@@ -694,15 +695,15 @@ df -h | grep sda1 | cut -f 5
 
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/l0g3ya4o9zdkb8unpgsimmwd/image_1cj6aap5313rs62n1ba91e3u1qefm.png
-  [2]: http://static.zybuluo.com/zhangwen100/kq5os9k7twb2j6i66c9x7zg9/image_1cj6ghfa98pi1ka1a1uet4b69.png
-  [3]: http://static.zybuluo.com/zhangwen100/vfzhku7ixjnddh3gp8s50ua8/image_1cj6giaut1e6g15sv1kp9oe1hrjm.png
-  [4]: http://static.zybuluo.com/zhangwen100/zmldxhc5rtw0dcd1xmekwjny/image_1cj6h0kl81hrfr691qpr16dk1ijs13.png
-  [5]: http://static.zybuluo.com/zhangwen100/2kxp8e2jte0oqlcuwbptq86y/image_1cj6hjpkptlv1bopueml4eik91g.png
-  [6]: http://static.zybuluo.com/zhangwen100/gmj3lhbl7gobahe63qwxfurg/image_1cj6i78t31ir31knt3laoo1q2o1t.png
-  [7]: http://static.zybuluo.com/zhangwen100/v3864cbl23ompazqmkjtpj7q/image_1cj6i8toqv571deqa35are1i302q.png
-  [8]: http://static.zybuluo.com/zhangwen100/r74tjdxwsj73q5aio2fynxt8/image_1cj6jrggo15d21tg510tu1kqi18v837.png
-  [9]: http://static.zybuluo.com/zhangwen100/glam2ocmkz46lrdh3k0vsj83/image_1cj6krps21ut7d0n1s8t1n9n183444.png
-  [10]: http://static.zybuluo.com/zhangwen100/ra6m3vnrigb6bt3ardlueaza/image_1cj6lc8n51e6n1bne1dscli81tbe4h.png
-  [11]: http://static.zybuluo.com/zhangwen100/qt8gb5piwvm0zq2d4cp1sv6m/image_1cj6lrkaoaabip04os1slig1b4u.png
-  [12]: http://static.zybuluo.com/zhangwen100/cv16dtphrvx2rh5dl07pwakl/image_1cj6m3vvv17q814ev6ghhuu174f5b.png
+  ![1](http://static.zybuluo.com/zhangwen100/l0g3ya4o9zdkb8unpgsimmwd/image_1cj6aap5313rs62n1ba91e3u1qefm.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/kq5os9k7twb2j6i66c9x7zg9/image_1cj6ghfa98pi1ka1a1uet4b69.png)
+  ![3]( http://static.zybuluo.com/zhangwen100/vfzhku7ixjnddh3gp8s50ua8/image_1cj6giaut1e6g15sv1kp9oe1hrjm.png)
+  ![4]( http://static.zybuluo.com/zhangwen100/zmldxhc5rtw0dcd1xmekwjny/image_1cj6h0kl81hrfr691qpr16dk1ijs13.png)
+  ![5]( http://static.zybuluo.com/zhangwen100/2kxp8e2jte0oqlcuwbptq86y/image_1cj6hjpkptlv1bopueml4eik91g.png)
+  ![6]( http://static.zybuluo.com/zhangwen100/gmj3lhbl7gobahe63qwxfurg/image_1cj6i78t31ir31knt3laoo1q2o1t.png)
+  ![7]( http://static.zybuluo.com/zhangwen100/v3864cbl23ompazqmkjtpj7q/image_1cj6i8toqv571deqa35are1i302q.png)
+  ![8]( http://static.zybuluo.com/zhangwen100/r74tjdxwsj73q5aio2fynxt8/image_1cj6jrggo15d21tg510tu1kqi18v837.png)
+  ![9]( http://static.zybuluo.com/zhangwen100/glam2ocmkz46lrdh3k0vsj83/image_1cj6krps21ut7d0n1s8t1n9n183444.png)
+  ![10]( http://static.zybuluo.com/zhangwen100/ra6m3vnrigb6bt3ardlueaza/image_1cj6lc8n51e6n1bne1dscli81tbe4h.png)
+  ![11]( http://static.zybuluo.com/zhangwen100/qt8gb5piwvm0zq2d4cp1sv6m/image_1cj6lrkaoaabip04os1slig1b4u.png)
+  ![12]( http://static.zybuluo.com/zhangwen100/cv16dtphrvx2rh5dl07pwakl/image_1cj6m3vvv17q814ev6ghhuu174f5b.png)

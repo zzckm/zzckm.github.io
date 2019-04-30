@@ -2,6 +2,7 @@
 title: 'Scala基础'
 date: 2019-04-25 23:03:40
 tags: [Scala]
+categories: Scala
 ---
 # Scala基础
 
@@ -295,6 +296,6 @@ def 函数名(参数名1:参数类型1，参数名2:参数类型2):返回值类�
 
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/2tabo6wr0eapgbzufc1ofrh5/image_1cm0mnjs3fvp1l2e1pca1nh11ve19.png
-  [2]: http://static.zybuluo.com/zhangwen100/oi7yhu9v3rmyc1lhxvqcoils/image_1cm0msml54s817neot313e3lpjm.png
-  [3]: http://static.zybuluo.com/zhangwen100/fmr60xjk8f99i0dsofgslq8w/image_1cm0p1biefv43em11s7s1tkvd1g.png
+  ![1]( http://static.zybuluo.com/zhangwen100/2tabo6wr0eapgbzufc1ofrh5/image_1cm0mnjs3fvp1l2e1pca1nh11ve19.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/oi7yhu9v3rmyc1lhxvqcoils/image_1cm0msml54s817neot313e3lpjm.png)
+  ![3]( http://static.zybuluo.com/zhangwen100/fmr60xjk8f99i0dsofgslq8w/image_1cm0p1biefv43em11s7s1tkvd1g.png)

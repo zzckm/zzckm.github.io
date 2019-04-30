@@ -2,6 +2,7 @@
 title: 'Spark之MLlib'
 date: 2019-04-25 23:10:40
 tags: [Spark,MLlib]
+categories: Spark
 ---
 # Spark 之 MLlib
 
@@ -277,9 +278,9 @@ MLlib是Spark的机器学习（Machine Learning）库，旨在简化机器学习
 
 ### 
 
-  [1]: http://static.zybuluo.com/zhangwen100/3bg3kt2pcdtrdrqshuy0dqe2/image_1cn1s012qel8e8i1i2cbm9hrp9.png
-  [2]: http://static.zybuluo.com/zhangwen100/bdauvrxoz00yii9p07gmexqy/image_1cn1t695fk4715t1jat1stgl4d16.png
-  [3]: http://static.zybuluo.com/zhangwen100/sp0vj1f5klxadfbgjinszptt/image_1cn1tej521deo18qrh901pou1n2l1j.png
-  [4]: http://static.zybuluo.com/zhangwen100/sp0vj1f5klxadfbgjinszptt/image_1cn1tej521deo18qrh901pou1n2l1j.png
-  [5]: http://static.zybuluo.com/zhangwen100/tmh623e0zr5qy4xe0mnabago/image_1cn1u7lun153163k10cb70p33220.png
-  [6]: http://static.zybuluo.com/zhangwen100/yb7ityrtl393d6qun2wbcs94/image_1cn219m8o16aau1q1tc5h57rad47.png
+  ![1]( http://static.zybuluo.com/zhangwen100/3bg3kt2pcdtrdrqshuy0dqe2/image_1cn1s012qel8e8i1i2cbm9hrp9.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/bdauvrxoz00yii9p07gmexqy/image_1cn1t695fk4715t1jat1stgl4d16.png)
+  ![3]( http://static.zybuluo.com/zhangwen100/sp0vj1f5klxadfbgjinszptt/image_1cn1tej521deo18qrh901pou1n2l1j.png)
+  ![4]( http://static.zybuluo.com/zhangwen100/sp0vj1f5klxadfbgjinszptt/image_1cn1tej521deo18qrh901pou1n2l1j.png)
+  ![5]( http://static.zybuluo.com/zhangwen100/tmh623e0zr5qy4xe0mnabago/image_1cn1u7lun153163k10cb70p33220.png)
+  ![6]( http://static.zybuluo.com/zhangwen100/yb7ityrtl393d6qun2wbcs94/image_1cn219m8o16aau1q1tc5h57rad47.png)

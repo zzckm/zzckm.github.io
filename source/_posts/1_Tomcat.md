@@ -2,6 +2,7 @@
 title: 'Tomcat'
 date: 2019-04-25 23:22:40
 tags: [Tomcat]
+categories: JavaWeb
 ---
 # Tomcat
 
@@ -244,14 +245,14 @@ MIME的英文全称是"Multipurpose Internet Mail Extensions" 多用途互联网
     目前HTTP的请求方式只有两种:GET/POST:
     doPost/doGet
 
-  [1]: https://www.hao123.com/index.html
-  [2]: http://tomcat.apache.org/whichversion.html
-  [3]: http://static.zybuluo.com/zhangwen100/fifystschif29ryzyenxwhsf/image_1c9oqm1g58f01oalo25ud4dnkm.png
-  [4]: http://static.zybuluo.com/zhangwen100/6xfhp9pb7ivjgft8xd6sszfw/image_1c9o5kcbem5v1n9qie311ok1nagm.png
-  [5]: http://static.zybuluo.com/zhangwen100/ws28rks2is59phte1mib1z5x/image_1c9o5qum7c1al011cgrhp316jn1g.png
-  [6]: http://static.zybuluo.com/zhangwen100/x4b0jfq7xx5ijplv9v89q2bs/image_1c9o603331sbbhlsld01p53bg62n.png
-  [7]: http://static.zybuluo.com/zhangwen100/sevhe9914oeb4i6bedrz6rqp/image_1c9o9be6d1i21nakmhu1ts719a25b.png
-  [8]: http://static.zybuluo.com/zhangwen100/iw0p0hf03tuvxa648v6kuexz/image_1c9o9a9511od4eem1ojl18kt2u24u.png
-  [9]: http://static.zybuluo.com/zhangwen100/40rfiqay0cr4mi7p42l7dq48/image_1c9q96t8hko31teplk21uru1oit16.png
-  [10]: http://static.zybuluo.com/zhangwen100/6xyo1yi4iq0ax2n1uhiyq3ov/image_1c9qr2ts7l7o16vr1fppcel1n111m.png
-  [11]: http://static.zybuluo.com/zhangwen100/fwvy1hnftsamg2vupzb3xh3f/image_1c9qsj1g9hal8p414b1vr4n552t.png
+  ![1]( https://www.hao123.com/index.html
+  ![2]( http://tomcat.apache.org/whichversion.html
+  ![3]( http://static.zybuluo.com/zhangwen100/fifystschif29ryzyenxwhsf/image_1c9oqm1g58f01oalo25ud4dnkm.png)
+  ![4]( http://static.zybuluo.com/zhangwen100/6xfhp9pb7ivjgft8xd6sszfw/image_1c9o5kcbem5v1n9qie311ok1nagm.png)
+ ![5]( http://static.zybuluo.com/zhangwen100/ws28rks2is59phte1mib1z5x/image_1c9o5qum7c1al011cgrhp316jn1g.png)
+  ![6]( http://static.zybuluo.com/zhangwen100/x4b0jfq7xx5ijplv9v89q2bs/image_1c9o603331sbbhlsld01p53bg62n.png)
+  ![7]( http://static.zybuluo.com/zhangwen100/sevhe9914oeb4i6bedrz6rqp/image_1c9o9be6d1i21nakmhu1ts719a25b.png)
+  ![8]( http://static.zybuluo.com/zhangwen100/iw0p0hf03tuvxa648v6kuexz/image_1c9o9a9511od4eem1ojl18kt2u24u.png)
+  ![9]( http://static.zybuluo.com/zhangwen100/40rfiqay0cr4mi7p42l7dq48/image_1c9q96t8hko31teplk21uru1oit16.png)
+  ![10]( http://static.zybuluo.com/zhangwen100/6xyo1yi4iq0ax2n1uhiyq3ov/image_1c9qr2ts7l7o16vr1fppcel1n111m.png)
+  ![11]( http://static.zybuluo.com/zhangwen100/fwvy1hnftsamg2vupzb3xh3f/image_1c9qsj1g9hal8p414b1vr4n552t.png)

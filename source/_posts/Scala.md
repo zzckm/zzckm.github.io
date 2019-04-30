@@ -1,8 +1,9 @@
 ---
-title: Scala
+title: Scala讲师笔记
 date: 2019-04-01 17:05:37
 tags: [scala]
-password: 123
+categories: scala
+
 ---
 # scala 简介 
 1. 为什么要学习scala 

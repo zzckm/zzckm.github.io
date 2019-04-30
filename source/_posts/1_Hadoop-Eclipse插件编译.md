@@ -2,6 +2,7 @@
 title: 'Hadoop-Eclipse插件编译'
 date: 2019-04-25 23:00:45
 tags: [Hadoop,Eclipse]
+categories: Hadoop
 ---
 # Hadoop-Eclipse插件编译
 

@@ -2,6 +2,7 @@
 title: BitMap算法
 date: 2019-04-22 23:10:01
 tags: [算法,BitMap]
+categories: 算法
 ---
 # BitMap算法
 1）可进行数据的快速查找，判重，删除，一般来说数据范围是int的10倍以下。

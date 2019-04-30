@@ -2,6 +2,7 @@
 title: 'Linux第二天'
 date: 2019-04-25 23:00:56
 tags: [Linux]
+categories: Linux学习
 ---
 # Linux第二天
 
@@ -419,5 +420,5 @@ free
 chmod 777 文件名或目录名
 chmod 666 文件名或目录名
 
-  [1]: http://static.zybuluo.com/zhangwen100/gef0oiw0qan1zcq1xbrqbwho/image_1cj5605pd1pk8122bkd617mi1p09.png
-  [2]: http://static.zybuluo.com/zhangwen100/v23a7syr4gzo5ti8qm1b085q/image_1cj5qjudmvu81qfuq5p1let1dhjm.png
+  ![1]( http://static.zybuluo.com/zhangwen100/gef0oiw0qan1zcq1xbrqbwho/image_1cj5605pd1pk8122bkd617mi1p09.png)
+  ![2]( http://static.zybuluo.com/zhangwen100/v23a7syr4gzo5ti8qm1b085q/image_1cj5qjudmvu81qfuq5p1let1dhjm.png)

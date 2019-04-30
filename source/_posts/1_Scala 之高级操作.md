@@ -2,6 +2,7 @@
 title: 'Scala 之高级操作'
 date: 2019-04-25 23:02:40
 tags: [Scala]
+categories: Scala
 ---
 # Scala 之高级操作
 
@@ -69,4 +70,4 @@ Actor方法执行顺序
 
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/390lzr8bgxy1u0qp13ri03o0/image_1cm5qspl5ag1ast1auirrifi19.png
+  ![1]( http://static.zybuluo.com/zhangwen100/390lzr8bgxy1u0qp13ri03o0/image_1cm5qspl5ag1ast1auirrifi19.png)

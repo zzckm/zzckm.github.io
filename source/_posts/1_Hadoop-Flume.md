@@ -2,6 +2,7 @@
 title: 'Hadoop-Flume'
 date: 2019-04-25 23:00:46
 tags: [Hadoop,Flume]
+categories: Flume
 ---
 # Hadoop-Flume
 
@@ -349,6 +350,6 @@ HiveIgnoreKeyTextOutputFormat cannot be cast to org.apache.hadoop.hive.ql.io.Aci
 ```
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/soel06xlbmap07z7ftga88h7/image_1cl070n9v11gkg9h13fh1tbs1k619.png
-  [2]: http://flume.apache.org/download.html
-  [3]: http://static.zybuluo.com/zhangwen100/ohsejxdnechnlhmrxembsg4b/image_1crpb15pe4vt1ks76fe1e731k8p9.png
+  ![1](http://static.zybuluo.com/zhangwen100/soel06xlbmap07z7ftga88h7/image_1cl070n9v11gkg9h13fh1tbs1k619.png)
+  [下载地址]http://flume.apache.org/download.html
+  ![3](http://static.zybuluo.com/zhangwen100/ohsejxdnechnlhmrxembsg4b/image_1crpb15pe4vt1ks76fe1e731k8p9.png)

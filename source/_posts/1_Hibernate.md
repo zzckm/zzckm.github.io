@@ -2,6 +2,7 @@
 title: 'Hibernate'
 date: 2019-04-25 23:00:52
 tags: [Hibernate]
+categories: Java框架
 ---
 # Hibernate
 
@@ -62,4 +63,4 @@ ORM 采用元数据来描述对象-关系映射细节：
 等
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/ftdve2et4qg4keafl15tjz3g/image_1cihfknec16052jcb1r9ho1i1q1p.png
+  ![1](http://static.zybuluo.com/zhangwen100/ftdve2et4qg4keafl15tjz3g/image_1cihfknec16052jcb1r9ho1i1q1p.png)

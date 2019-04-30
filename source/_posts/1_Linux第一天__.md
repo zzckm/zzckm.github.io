@@ -2,6 +2,8 @@
 title: Linux第一天
 date: 2019-04-25 23:00:41
 tags: [Linux]
+categories: Linux学习
+
 ---
 # **Linux第一天**
 

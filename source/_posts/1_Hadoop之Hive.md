@@ -2,6 +2,7 @@
 title: 'Hadoop-Hive'
 date: 2019-04-25 23:00:50
 tags: [Hadoop,Hive]
+categories: Hadoop
 ---
 # Hadoop之Hive
 
@@ -84,7 +85,7 @@ hive (default)> ! ls /opt;
 ## Hive中的数据类型
 
 基本数据类型
-: 
+
  |Hive数据类型|长度|Java中对应的类型|example|
  |---|---|---|---|
  |tinyint|1字节|byte|20|
@@ -102,8 +103,8 @@ hive (default)> ! ls /opt;
 
 集合类型
 : 
-    |数据类型|描述|
-    |---|---|
+|数据类型|描述|
+|---|---|
  |struct|比如某一列的数据类型是struct{first string,sc string,th int},.sc来拿到第2个元素|
  |map|一组键值对集合，['键名']|
  |array|数组，['11','222','33'],[1],表示拿到第二个元素|
@@ -1385,8 +1386,8 @@ order by，sort by，distribute by，cluster by的区别
 通过HiveServer或者HiveServer2，客户端可以在不启动CLI的情况下对Hive中的数据进行操作，两者都允许远程客户端使用多种编程语言如Java、Python向Hive提交请求，取回结果。HiveServer或者HiveServer2都是基于Thrift的，但HiveSever有时被称为Thrift server，而HiveServer2却不会。
 既然已经存在HiveServer为什么还需要HiveServer2呢？这是因为HiveServer不能处理多于一个客户端的并发请求，这是由于HiveServer使用的Thrift接口所导致的限制，不能通过修改HiveServer的代码修正。因此在Hive-0.11.0版本中重写了HiveServer代码得到了HiveServer2，进而解决了该问题。HiveServer2支持多客户端的并发和认证，为开放API客户端如JDBC、ODBC提供了更好的支持。
 
-  [1]: http://static.zybuluo.com/zhangwen100/hp92s3pb90mns2eb5901cihk/image_1ckf1iom41vkp1h0dm0f9j2oil9.png
-  [2]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-CreateTableCreate/Drop/TruncateTable
-  [3]: http://static.zybuluo.com/zhangwen100/yb3l7zbticbnzqgllqk05tw5/image_1cknb37dhsk0m3v1o0hj0kpht1m.png
-  [4]: http://static.zybuluo.com/zhangwen100/at8r1ddh561yex7vxoeu6q65/image_1ckpt5kq5133k17101v331tfacj919.png
-  [5]: http://static.zybuluo.com/zhangwen100/z15dgdd86a475uo9p7u9xcix/image_1ckptj64a1qic1h8bcstkdcbgr1m.png
+  ![1](http://static.zybuluo.com/zhangwen100/hp92s3pb90mns2eb5901cihk/image_1ckf1iom41vkp1h0dm0f9j2oil9.png)
+  ![2](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-CreateTableCreate/Drop/TruncateTable)
+  ![3](http://static.zybuluo.com/zhangwen100/yb3l7zbticbnzqgllqk05tw5/image_1cknb37dhsk0m3v1o0hj0kpht1m.png)
+  ![4](http://static.zybuluo.com/zhangwen100/at8r1ddh561yex7vxoeu6q65/image_1ckpt5kq5133k17101v331tfacj919.png)
+  ![5](http://static.zybuluo.com/zhangwen100/z15dgdd86a475uo9p7u9xcix/image_1ckptj64a1qic1h8bcstkdcbgr1m.png)

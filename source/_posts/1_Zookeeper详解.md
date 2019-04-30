@@ -2,6 +2,7 @@
 title: 'Zookeeper详解'
 date: 2019-04-25 21:00:40
 tags: [Zookeeper]
+categories: Zookeeper
 ---
 # Zookeeper
 

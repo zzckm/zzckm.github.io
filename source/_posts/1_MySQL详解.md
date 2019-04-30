@@ -2,6 +2,7 @@
 title: 'MySQL详解'
 date: 2019-04-25 23:00:59
 tags: [MySQL,Java]
+categories: MySQL
 ---
 # MySQL详解
 
@@ -45,7 +46,7 @@ tags: [MySQL,Java]
 4): 图形数据库：Neo4J,InfoGrid,Infinite Graph
 
 1.3.5 常见的关系数据库
-:   |数据库系统|所属公司|
+|数据库系统|所属公司|
 |---|--|
   |Oracle|Oracle|
   |DB2|IBM
@@ -128,4 +129,4 @@ CREATE DATABASE database_name;
 DROP DATABASE database_name;
 
 
-  [1]: http://static.zybuluo.com/zhangwen100/xx29m6z1gzc9x8b8zjhmngmi/image_1cb98b2lkccu1dvv1lpn1v5dofp41.png
+  ![1]( http://static.zybuluo.com/zhangwen100/xx29m6z1gzc9x8b8zjhmngmi/image_1cb98b2lkccu1dvv1lpn1v5dofp41.png)

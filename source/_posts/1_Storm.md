@@ -2,6 +2,7 @@
 title: 'Storm'
 date: 2019-04-25 23:21:40
 tags: [Storm]
+categories: Storm
 ---
 # Storm
 
@@ -364,7 +365,7 @@ Storm里面有7种类型的stream grouping
 - Local or shuffle grouping：如果目标bolt有一个或者多个task在同一个工作进程中，tuple将会被随机发生给这些tasks。否则，和普通的Shuffle Grouping行为一致。
 
 
-
+```html
 <figure>
 <svg version="1.1" id="anim1" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 552 350" style="enable-background:new 0 0 552 350;" xml:space="preserve">
 <style type="text/css">
@@ -469,4 +470,4 @@ C-251.5-127.6-250.6-128.5-249.5-128.5L-249.5-128.5z" data-ignore="none"></path>
 </g>
 </svg>
 </figure>
-
+```
