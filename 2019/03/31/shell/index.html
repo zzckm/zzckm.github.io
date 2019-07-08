@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入查看该篇文章的密码') !== ''){
+                alert('密码错误，请咨询博主');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "39f09b08"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Shell,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#Shell入门学习 shell简介 shell是一个命令行解释器，它为用户提供一个向linux内核发送请求以便运行程序的界面系统程序，用户可以用Shell来启动、挂起、停止、甚至别写一些程序。 因为是跑在linux的shell中，所以叫shell脚本。说白了，shell脚本就是一些命令的集合。举个例子，我想实现这样的操作：1）进入到/tmp/目录；2）列出当前目录中所有的文件名；3）把所有当前的">
+<meta name="keywords" content="Shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell-编程">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/shell/index.html">
+<meta property="og:site_name" content="To树-HOME">
+<meta property="og:description" content="#Shell入门学习 shell简介 shell是一个命令行解释器，它为用户提供一个向linux内核发送请求以便运行程序的界面系统程序，用户可以用Shell来启动、挂起、停止、甚至别写一些程序。 因为是跑在linux的shell中，所以叫shell脚本。说白了，shell脚本就是一些命令的集合。举个例子，我想实现这样的操作：1）进入到/tmp/目录；2）列出当前目录中所有的文件名；3）把所有当前的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca0650c00641.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca0653d87d7c.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca065f88d551.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca0665cc3c9e.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca069ab5c764.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca06d48720fb.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca07563636e5.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca07665e73d7.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca077e130f1b.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca078b2dd2e9.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca07a9be12ab.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca08f0a8365e.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca09397db14b.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca0915879add.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/31/5ca09996d43b1.png">
+<meta property="og:updated_time" content="2019-05-26T08:58:42.576Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell-编程">
+<meta name="twitter:description" content="#Shell入门学习 shell简介 shell是一个命令行解释器，它为用户提供一个向linux内核发送请求以便运行程序的界面系统程序，用户可以用Shell来启动、挂起、停止、甚至别写一些程序。 因为是跑在linux的shell中，所以叫shell脚本。说白了，shell脚本就是一些命令的集合。举个例子，我想实现这样的操作：1）进入到/tmp/目录；2）列出当前目录中所有的文件名；3）把所有当前的">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/31/5ca0650c00641.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/31/shell/">
+
+
+
+
+
+  <title>shell-编程 | To树-HOME</title>
+  
+
+
+
+
+
+
+
+
+
+<!-- katex样式 -->
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+  <a href="https://github.com/zzckm" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">To树-HOME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">只可意会</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ckm_zz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/ggg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="To树-HOME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">shell-编程</h1>
+        
+
+        <div class="post-meta">
+        <!-- TOP -->
+        
+
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-26T16:58:42+08:00">
+                2019-05-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Shell编程/" itemprop="url" rel="index">
+                    <span itemprop="name">Shell编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#Shell入门学习</p>
+<h2 id="shell简介"><a href="#shell简介" class="headerlink" title="shell简介"></a>shell简介</h2><ol>
+<li>shell是一个命令行解释器，它为用户提供一个向linux内核发送请求以便运行程序的界面系统程序，用户可以用Shell来启动、挂起、停止、甚至别写一些程序。</li>
+<li>因为是跑在linux的shell中，所以叫shell脚本。说白了，shell脚本就是一些命令的集合。举个例子，我想实现这样的操作：1）进入到/tmp/目录；2）列出当前目录中所有的文件名；3）把所有当前的文件拷贝到/root/目录下；4）删除当前目录下所有的文件。简单的4步在shell窗口中需要你敲4次命令，按4次回车。这样是不是很麻烦？当然这4步操作非常简单，如果是更加复杂的命令设置需要几十次操作呢？那样的话一次一次敲键盘会很麻烦。所以不妨把所有的操作都记录到一个文档中，然后去调用文档中的命令，这样一步操作就可以完成。其实这个文档呢就是shell脚本了，只是这个shell脚本有它特殊的格式。<br>Shell脚本能帮助我们很方便的去管理服务器，因为我们可以指定一个任务计划定时去执行某一个shell脚本实现我们想要需求。</li>
+</ol>
+<p>  <strong>简单的说，shell脚本就是一些命令的集合</strong></p>
+<h2 id="入门编程"><a href="#入门编程" class="headerlink" title="入门编程"></a>入门编程</h2><p>   下面进入正题，先从简单的开始来学习<br>   第一步、我们需要创建一个脚本，就和创建一个文件一样，<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim filename</span><br></pre></td></tr></table></figure></p>
+<p>   一般脚本文件名我们以.sh结尾，就相当于甲鱼的屁股。</p>
+<p>   然后当我们写好脚本最后，就可以直接执行可以赋予权限<br>   一般使用两种执行方法<br>   1.第一种先给写好的脚本附加权限即可直接执行（注意这里面是 + x）。<br><img src="https://i.loli.net/2019/03/31/5ca0650c00641.png" alt><br>   2.在脚本前面加 bash 或者 sh 也可以执行无需赋权限<br>   <img src="https://i.loli.net/2019/03/31/5ca0653d87d7c.png" alt><br>   3.一般我们在初次接触或者试写脚本的时候都会加一个 (- x) 这样不仅可以看到脚本执行的结果，还可以看到脚本脚本对应的命令是什么<br>   <img src="https://i.loli.net/2019/03/31/5ca065f88d551.png" alt><br>   4.date命令一般用于表现时间，<br><img src="https://i.loli.net/2019/03/31/5ca0665cc3c9e.png" alt><br>    可以在后面加“+%Y%m%d %H%M%S” 不仅如此还可以在日期前面加日期 +%w  在此就不一一演示了<br>    <img src="https://i.loli.net/2019/03/31/5ca069ab5c764.png" alt></p>
+<h2 id="shell脚本中的变量"><a href="#shell脚本中的变量" class="headerlink" title="shell脚本中的变量"></a>shell脚本中的变量</h2><h3 id="变量：是shell传递数据的一种方式，用来代表每个取值的符号名。使用变量是为了解决脚本臃肿问题，且使脚本变得更加灵活。"><a href="#变量：是shell传递数据的一种方式，用来代表每个取值的符号名。使用变量是为了解决脚本臃肿问题，且使脚本变得更加灵活。" class="headerlink" title="变量：是shell传递数据的一种方式，用来代表每个取值的符号名。使用变量是为了解决脚本臃肿问题，且使脚本变得更加灵活。"></a>变量：是shell传递数据的一种方式，用来代表每个取值的符号名。使用变量是为了解决脚本臃肿问题，且使脚本变得更加灵活。</h3><h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><ol>
+<li>变量名可以由<strong>字母，数字和下划</strong>线组成，但是<strong>不能以数字</strong>开头，环境变量名建议大写，便于区分。</li>
+<li>在bash中，变量的默认类型都是字符串型的，如果要进行数值运行，则必须制定变量类型为<strong>数值型</strong>。</li>
+<li>变量用等号连接值，等号左右<strong>两侧不能有空格</strong>。</li>
+<li>变量的值如果有空格吗，需要使用单引号或者双引号包括。</li>
+</ol>
+<h3 id="变量基本用法"><a href="#变量基本用法" class="headerlink" title="变量基本用法"></a>变量基本用法</h3><ol>
+<li><p>使用反引号运行里面的命令，并把记过返回给Isvalue变量。从而可以通过Isvalue变量，来执行命令反引号里面的命令<br><img src="https://i.loli.net/2019/03/31/5ca06d48720fb.png" alt></p>
+</li>
+<li><p>同样的道理 反引号里面放的是命令， 当变量等于其他值，当把这个变量的值传给其他变量，这个所谓的其他变量一样拥有本身变量的值，而且变量是，可以进行拼接使用的，这个就不做演示了。</p>
+</li>
+<li><p>符号标识符</p>
+<ul>
+<li>命令连接符号  ；  可以一行打多条命令 用；分号连接</li>
+<li>&amp;&amp; 逻辑与 <strong>条件满足</strong>，才执行后面的语句 </li>
+<li>|| 逻辑或，<strong>条件不满足</strong>，才执行后面的语句<br><code>test “$name” == ”yangmi” &amp;&amp; echo “&amp;&amp;后，命令正确执行我” || echo “||后，命令失败执行我咯”</code><br>vim</li>
+</ul>
+</li>
+<li><p>单引号和双引号的区别：</p>
+<ul>
+<li>单引号是直接显示里面的所有内容，不做任何处理</li>
+<li>双引号是将引号里面的特殊字符进行处理执行后在显示出来。</li>
+<li>当双引号的加了\就等同于单引号的效果，不会做任何处理 “\ ”=’’</li>
+</ul>
+</li>
+<li><p><code>$</code> 符号的用法(使用<code>$</code>符号就是需要在执行脚本时 在后面追加变量如（sh hello.sh 1 2）)</p>
+<ul>
+<li><code>$</code>n 按第n个获取自己变量，从权限类型之后 包括脚本名称都可以获取， 按空格区分个数,但超过10且包括10的参数就需要使用大括号包含，如{<code>$</code>{10} 注：<code>$</code>0一般表示为脚本名</li>
+<li><code>$</code>*代表该命令行中所有的命令，是把所有参数作为一个整体进行输出“<code>$</code>1 <code>$</code>2 <code>$</code>3 <code>$</code>4”</li>
+<li><code>$</code>@ 同样也是代表命令行的所有参数，但它是把所有参数逐个进行输出”<code>$</code>1” “<code>$</code>2” “<code>$</code>3” “<code>$</code>4”</li>
+<li><code>$</code>#可以记录有多少参数</li>
+<li><code>$</code>? 执行上一个命令的返回值 执行成功，返回0，执行失败，返回非0（具体数字由命令决定） 一般用于命令之后加 ;<code>$?</code>这样可以直接一行命令知晓命令是否正确运行</li>
+<li><code>$$</code> 当前进程的进程号（PID），即当前脚本执行时生成的进程号 </li>
+<li><code>$</code>! 后台运行的最后一个进程的进程号（PID），最近一个被放入后台执行的进程</li>
+</ul>
+<p><strong><code>$</code>符号总结起来，作为变量名的话是一个标识，做一个表达式的前缀而言就是要处理$符号后面的表达式或者语句</strong><br>  <img src="https://i.loli.net/2019/03/31/5ca07563636e5.png" alt></p>
+</li>
+<li><p>shift指令：参数左移，每执行一次，参数序列顺次左移一个位置，<code>$</code># 的值减1，用于分别处理每个参数，移出去的参数不再可用</p>
+</li>
+<li><p>输入参数，计算求和<br><img src="https://i.loli.net/2019/03/31/5ca07665e73d7.png" alt></p>
+</li>
+<li><p>read 命令 可以直接一行read x 就可以做到让用户输入的效果，虽然x没有加<code>$</code>符号，但是那只是在获取变量值的情况下，在运算或者赋值给别人的时候，就需要加上<code>$</code>符号了,   可以写 read x<br><img src="https://i.loli.net/2019/03/31/5ca077e130f1b.png" alt></p>
+<p>read p 类似于echo的作用,也可以将上一句的输出和这一句的输入连在一起写，这样就不需要换行输入了<br><img src="https://i.loli.net/2019/03/31/5ca078b2dd2e9.png" alt></p>
+</li>
+</ol>
+<p><strong>read [选项] 值 :<br>read -p(提示语句) -n(字符个数) -t(等待时间，单位为秒) –s(隐藏输入)</strong></p>
+<ol start="8">
+<li><p>其实变量和java很类似，你可以一开始就申明好变量，也可以在使用的时候直接<code>$+</code>变量名<br><img src="https://i.loli.net/2019/03/31/5ca07a9be12ab.png" alt></p>
+</li>
+<li><p>$()与${}的区别<br> $( )的用途和反引号 ``一样，用来表示优先执行的命令<br> ${ } 就是取变量了<br> $((运算内容)) 适用于数值运算</p>
+</li>
+</ol>
+<h3 id="Shell脚本中的判断逻辑"><a href="#Shell脚本中的判断逻辑" class="headerlink" title="Shell脚本中的判断逻辑"></a>Shell脚本中的判断逻辑</h3><h4 id="if判断"><a href="#if判断" class="headerlink" title="if判断"></a>if判断</h4><p><code>if 判断语句; then
+command
+fi</code><br>shell 脚本中if还经常判断关于档案属性，比如判断是普通文件还是目录，判断文件是否有读写执行权限等。常用的也就几个选项：<br>-e ：判断文件或目录是否存在<br>-d ：判断是不是目录，并是否存在<br>-f ：判断是否是普通文件，并存在<br>-r ：判断文档是否有读权限<br>-w ：判断是否有写权限<br>-x ：判断是否可执行<br>使用if判断时，具体格式为：<code>if [ -e filename ] ; then</code></p>
+<p><img src="https://i.loli.net/2019/03/31/5ca08f0a8365e.png" alt></p>
+<h4 id="case-命令"><a href="#case-命令" class="headerlink" title="case 命令"></a>case 命令</h4><p>case命令是一个多分支的if/else命令，case变量的值用来匹配value1,value2,value3等等。匹配到后则执行跟在后面的命令直到遇到双分号为止(;;)case命令以esac作为终止符。<br>注：</p>
+<ul>
+<li>）内的关键词就是脚本后面跟的$1 如果两者相等才会进入’echo’</li>
+<li><code>*</code>  代表除了以上其他的情况</li>
+<li>;;每一个case之前都要加;; 不能忘！<br><img src="https://i.loli.net/2019/03/31/5ca09397db14b.png" alt></li>
+</ul>
+<h4 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h4><p>除了我们下图看到：<br>一种方式：最原始的for循环方式<br>另一种方式：类似于增加for循环，<br><img src="https://i.loli.net/2019/03/31/5ca0915879add.png" alt></p>
+<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><p><img src="https://i.loli.net/2019/03/31/5ca09996d43b1.png" alt></p>
+<h4 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h4><p>function 自定义函数名{</p>
+<p>}</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Shell/" rel="tag"><i class="fa fa-tag"></i> Shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/28/zookeeper/" rel="next" title="zookeeper部分笔记">
+                <i class="fa fa-chevron-left"></i> zookeeper部分笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/01/Scala/" rel="prev" title="Scala讲师笔记">
+                Scala讲师笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzQ4MC8yMDAyMA"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/ggg.jpg" alt="Ckm_zz">
+            
+              <p class="site-author-name" itemprop="name">Ckm_zz</p>
+              <p class="site-description motion-element" itemprop="description">—— not too bad luck</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zzckm" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.totree.cn" target="_blank" title="To树商城">
+                      
+                        <i class="fa fa-fw fa-skype"></i></a>
+                  </span>
+                
+            </div>
+          
+<!-- 音乐播放器 -->
+ 
+           <div>
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="210" height="110" src="//music.163.com/outchain/player?type=2&id=3932159&auto=1&height=66"></iframe>
+           </div>
+ 
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell简介"><span class="nav-number">1.</span> <span class="nav-text">shell简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入门编程"><span class="nav-number">2.</span> <span class="nav-text">入门编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell脚本中的变量"><span class="nav-number">3.</span> <span class="nav-text">shell脚本中的变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量：是shell传递数据的一种方式，用来代表每个取值的符号名。使用变量是为了解决脚本臃肿问题，且使脚本变得更加灵活。"><span class="nav-number">3.1.</span> <span class="nav-text">变量：是shell传递数据的一种方式，用来代表每个取值的符号名。使用变量是为了解决脚本臃肿问题，且使脚本变得更加灵活。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名规范"><span class="nav-number">3.2.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量基本用法"><span class="nav-number">3.3.</span> <span class="nav-text">变量基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell脚本中的判断逻辑"><span class="nav-number">3.4.</span> <span class="nav-text">Shell脚本中的判断逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if判断"><span class="nav-number">3.4.1.</span> <span class="nav-text">if判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case-命令"><span class="nav-number">3.4.2.</span> <span class="nav-text">case 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-循环"><span class="nav-number">3.4.3.</span> <span class="nav-text">for 循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while循环"><span class="nav-number">3.4.4.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义函数"><span class="nav-number">3.4.5.</span> <span class="nav-text">自定义函数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by ZZckm</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+<!-- 鼠标点击爆炸烟花效果 -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":120,"height":270},"mobile":{"show":true},"log":false});</script></body>
+</html>

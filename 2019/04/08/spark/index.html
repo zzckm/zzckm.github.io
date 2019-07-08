@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入查看该篇文章的密码') !== ''){
+                alert('密码错误，请咨询博主');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "39f09b08"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="scala,spark,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spark可使用Java、Scala、Python、R和Sql 快速编写应用程序 rdd(Resilient Distributed Datasets)弹性分布式数据集  弹性：表示数据是可恢复的 可容错  利用的是血缘（依赖）关系 分布式：数据来源于分布式集群（如 hdfs，hbase,kafka） 数据集: 数据组织成一个集合(List)  spark 运行模式： local本地模式 loca">
+<meta name="keywords" content="scala,spark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spark-入门笔记">
+<meta property="og:url" content="http://yoursite.com/2019/04/08/spark/index.html">
+<meta property="og:site_name" content="To树-HOME">
+<meta property="og:description" content="Spark可使用Java、Scala、Python、R和Sql 快速编写应用程序 rdd(Resilient Distributed Datasets)弹性分布式数据集  弹性：表示数据是可恢复的 可容错  利用的是血缘（依赖）关系 分布式：数据来源于分布式集群（如 hdfs，hbase,kafka） 数据集: 数据组织成一个集合(List)  spark 运行模式： local本地模式 loca">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/04/09/5cac1714ddff7.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/09/5cac0c4d1570e.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/09/5cac127497880.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/09/5cac4df389de7.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/09/5cac4e392d7af.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/09/5cac65c43c62d.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/10/5cad4e0442073.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/10/5cad9172d5fc4.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/10/5cada1f1279f3.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/12/5cb0486575139.png">
+<meta property="og:updated_time" content="2019-05-26T08:58:42.577Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spark-入门笔记">
+<meta name="twitter:description" content="Spark可使用Java、Scala、Python、R和Sql 快速编写应用程序 rdd(Resilient Distributed Datasets)弹性分布式数据集  弹性：表示数据是可恢复的 可容错  利用的是血缘（依赖）关系 分布式：数据来源于分布式集群（如 hdfs，hbase,kafka） 数据集: 数据组织成一个集合(List)  spark 运行模式： local本地模式 loca">
+<meta name="twitter:image" content="https://i.loli.net/2019/04/09/5cac1714ddff7.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/08/spark/">
+
+
+
+
+
+  <title>spark-入门笔记 | To树-HOME</title>
+  
+
+
+
+
+
+
+
+
+
+<!-- katex样式 -->
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+  <a href="https://github.com/zzckm" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">To树-HOME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">只可意会</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/spark/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ckm_zz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/ggg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="To树-HOME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spark-入门笔记</h1>
+        
+
+        <div class="post-meta">
+        <!-- TOP -->
+        
+
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-26T16:58:42+08:00">
+                2019-05-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spark/" itemprop="url" rel="index">
+                    <span itemprop="name">spark</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.4k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h1><p>可使用Java、Scala、Python、R和Sql 快速编写应用程序</p>
+<h2 id="rdd"><a href="#rdd" class="headerlink" title="rdd"></a>rdd</h2><p>(Resilient Distributed Datasets)弹性分布式数据集</p>
+<ul>
+<li>弹性：表示数据是可恢复的 可容错<br>  利用的是血缘（依赖）关系</li>
+<li>分布式：数据来源于分布式集群（如 hdfs，hbase,kafka）</li>
+<li>数据集: 数据组织成一个集合(List)</li>
+</ul>
+<h2 id="spark-运行模式："><a href="#spark-运行模式：" class="headerlink" title="spark 运行模式："></a>spark 运行模式：</h2><ol>
+<li>local本地模式 local[n] n表示使用n个线程，如果使用local[*]表示根据cpu核数确定，一般用于测试</li>
+<li>standalone  spark集群模式，需要搭建spark集群  例如：spark://192.168.200.129:7777…</li>
+<li>yarn模式 不需要搭建spark集群，直接将spark应用提交到yarn运行。类似于mapreduce</li>
+<li>mesos k8s。。。。。</li>
+</ol>
+<h2 id="rdd操作"><a href="#rdd操作" class="headerlink" title="rdd操作"></a>rdd操作</h2><h3 id="sc-sparkcontext"><a href="#sc-sparkcontext" class="headerlink" title="sc=sparkcontext"></a>sc=sparkcontext</h3><ol>
+<li><strong>加载数据转换成rdd</strong> —spark操作的对象是rdd，因此需要把相关集合对象转换成rdd</li>
+</ol>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> data = <span class="type">Array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="keyword">val</span> distData = sc.parallelize(data)</span><br><span class="line"><span class="comment">// 4是分区数量</span></span><br><span class="line"><span class="keyword">val</span> distData = sc.parallelize(data，<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>默认获取的数据会被分布式的存储在多个分区中，除非在sc下的方法中增加分区数量如：（，1）</li>
+<li>rdd数据源的两种，<br>a. paralize<br>b. 外部数据源<br> textFile：spark记载rdd是lazy懒加载，也就是计算发生的时候才去加载，可以传入通配符，读取目录下所有的文件机或者压缩文件，默认情况下，一块就是一个分区，可以让分区大于快熟，不能让分区少于快数</li>
+</ol>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scala &gt; al rdd5=sc.textFile(<span class="string">"hdfs://192.168.200.129:9000/hbase/MasterProcWALs/state-00000000000000000009.log"</span>)</span><br><span class="line"><span class="comment">//获取使用分区个数</span></span><br><span class="line">scala &gt; rdd5.partitions.size</span><br><span class="line"><span class="comment">//将使用保存在该路径下</span></span><br><span class="line">scala &gt; rdd5.saveAsTextFile(<span class="string">"/log.txt"</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>tranformations</strong>:由rdd生成新的rdd 如 <strong>map filter  groupby reducebykey</strong><br><strong>actions</strong> :由rdd生成，返回一个结果<strong>reduce saveasTextFile  foreach  count</strong></p>
+<p>注：对于转换次数比较多的rdd可以使用cache（persist方法，将rdd缓存到内存中，以空间换时间，减少计算时间）。</p>
+<h3 id="job-任务运行的部分"><a href="#job-任务运行的部分" class="headerlink" title="job-任务运行的部分"></a>job-任务运行的部分</h3><p>当rdd运行到action方法时（<strong>reduce、 SaveAsTextFile、foreach count</strong>），会触发job的运行。<br>由sparkcontext向spark集群提交job</p>
+<h3 id="stage："><a href="#stage：" class="headerlink" title="stage："></a>stage：</h3><ul>
+<li>spark将job划分成1到多个stage</li>
+<li>stage与stage之间通过shuffle划分<br>注：如果在job过程中出现shuffle 就会划分成新的stage</li>
+<li><strong>发生shuffle的情况</strong>有：<strong>group by ,reduce by key , join ,distinct</strong>….</li>
+</ul>
+<p><strong>stage里是不会发生shuffle,但在stage与stage可能会发生shuffle操作<br>suffle操作相当于有网络通信</strong></p>
+<p><strong>stage内部计算是并行的 不会发生网络通信<br>stage之间计算时串行的 会发生网络通信</strong></p>
+<p><strong>注</strong>： shuffle执行，就会多一个stage   action执行就是一个job  job一定比stage少， stage一定等于或多于job 一个job可以包含一个或者多个stage</p>
+<h3 id="task"><a href="#task" class="headerlink" title="task"></a>task</h3><p>一个分区上的一次计算称为task<br>多个task组成stage</p>
+<h3 id="driver"><a href="#driver" class="headerlink" title="driver"></a>driver</h3><p>driver 运行sparkcontext的应用，用于做任务job的提交</p>
+<h3 id="executor"><a href="#executor" class="headerlink" title="executor"></a>executor</h3><p>executor：运行任务，对数据进行具体的计算</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包：函数访问了外部的变量</p>
+<p>driver里的代码是没有进行对数据做处理的代码是driver,executor 如果调用了driver的变量就会出错 形成闭包的状态</p>
+<blockquote>
+<p>{ <strong>driver</strong><br>   val conf=new SparkConf()<br>    //设置app的名字<br>      .setAppName(“demo”)<br>    //设置spark运行模式 这里以local为例<br>      .setMaster(“local[2]”)<br>  val sc=new SparkContext(conf)<br>}
+{ <strong>executor</strong><br>     val rdd=sc.parallelize(Range(1,10000),4)<br>    Thread.sleep(10000)<br>}</p>
+</blockquote>
+<h2 id="spark-Java-Api"><a href="#spark-Java-Api" class="headerlink" title="spark Java Api"></a>spark Java Api</h2><p>新建一个maven或者Java项目，然后新建一个文件scala 于原本的资源包同目录，然后设置该scala文件为资源包，且右击项目→_→ AddFramework support→_→ 在左侧菜单栏选择scala →_→选择应用 这样就可以使用scala的class以及object了</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.day01</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.&#123;<span class="type">SparkConf</span>, <span class="type">SparkContext</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @Author: 张峥</span></span><br><span class="line"><span class="comment">  * @Date: 2019/4/8 17:39</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">sparkCoreDemo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> conf=<span class="keyword">new</span> <span class="type">SparkConf</span>()</span><br><span class="line">    <span class="comment">//设置app的名字</span></span><br><span class="line">      .setAppName(<span class="string">"demo"</span>)</span><br><span class="line">    <span class="comment">//设置spark运行模式 这里以local为例</span></span><br><span class="line">      .setMaster(<span class="string">"local[2]"</span>)</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    spark 运行模式：</span></span><br><span class="line"><span class="comment">    1，local本地模式 local[n] n表示使用n个线程，如果使用local[*]表示根据cpu核数确定，一般用于测试</span></span><br><span class="line"><span class="comment">    2，standalone  spark集群模式，需要搭建spark集群</span></span><br><span class="line"><span class="comment">    3，yarn模式 不需要搭建spark集群，直接将spark应用提交到yarn运行。类似于mapreduce</span></span><br><span class="line"><span class="comment">    4.mesos k8s。。。。。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">val</span> sc=<span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</span><br><span class="line">    <span class="keyword">val</span> rdd=sc.parallelize(<span class="type">Range</span>(<span class="number">1</span>,<span class="number">10000</span>),<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">    <span class="type">Thread</span>.sleep(<span class="number">10000</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Api"><a href="#Api" class="headerlink" title="Api"></a>Api</h3><h4 id="transformations"><a href="#transformations" class="headerlink" title="transformations"></a>transformations</h4><ul>
+<li>map</li>
+<li>reduceByKey </li>
+<li>groupByKey<br><img src="https://i.loli.net/2019/04/09/5cac1714ddff7.png" alt></li>
+<li>Api高性能算子-<strong>mapPartition</strong><br>某些情况下需要频繁的创建和销毁资源，高性能算子可以在只在分区上创建或销毁。不用在每个<br>元素上创建或销毁。提升了性能。<br><img src="https://i.loli.net/2019/04/09/5cac0c4d1570e.png" alt></li>
+<li>mapPartitionWithindex 再给你个索引下标</li>
+<li>sample 抽样</li>
+<li>union 并集</li>
+<li>intersection 交集</li>
+<li><strong>aggregateByKey 聚合 分为三段：</strong></li>
+</ul>
+<ol>
+<li>给定初始值，</li>
+<li>进行分块聚合运算,</li>
+<li>块与块之间的聚合运算<br><img src="https://i.loli.net/2019/04/09/5cac127497880.png" alt></li>
+</ol>
+<ul>
+<li>sortByKey 按key排序</li>
+<li>join</li>
+<li>cogroup 分组</li>
+<li>cartesian 笛卡尔积</li>
+<li>coalesce  合并  减少rdd分区的数量  过滤大型数据集后，可以更有效的运行操作</li>
+<li>repatition  重新分区 随机重新分区，增加或者减少分区数量，进行平衡  <strong>用于数据倾斜</strong><br> 默认是has分区 但使用has分区-相同的key一定分到一个分区</li>
+</ul>
+<h4 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h4><p>1111</p>
+<h3 id="Spark-应用"><a href="#Spark-应用" class="headerlink" title="Spark 应用"></a>Spark 应用</h3><p>spark 应用提交与部署</p>
+<p>spark应用部署到yarn有两种模式<br>cluster:driver运行在集群的某一台主机上<br>client:driver运行在客户端</p>
+<p>首先 在idea中编译好自己的jar包之后<br>pom.xml中 加入</p>
+<p><strong>scala代码</strong><br>注意需要注释掉spark的运行模式，因为后面会直接使用在yarn上<br>且在最后要写好 输出到什么地方 </p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day02</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.&#123;<span class="type">SparkConf</span>, <span class="type">SparkContext</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @Author: 张峥</span></span><br><span class="line"><span class="comment">  * @Date: 2019/4/9 10:35</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">SparkWordCount</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> conf=<span class="keyword">new</span> <span class="type">SparkConf</span>()</span><br><span class="line">      <span class="comment">//设置app的名字</span></span><br><span class="line">      .setAppName(<span class="string">"demo"</span>)</span><br><span class="line">      <span class="comment">//设置spark运行模式 这里以local为例</span></span><br><span class="line">     <span class="comment">// .setMaster("local[4]")</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">reduceByKey 只作用于 keyValue格式下的</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">    <span class="keyword">val</span> sc=<span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</span><br><span class="line">    <span class="keyword">val</span> rdd=sc.parallelize(<span class="type">List</span>(<span class="string">"hello"</span>,<span class="string">"hello"</span>,<span class="string">"world"</span>,<span class="string">"github"</span>))</span><br><span class="line">    rdd.map(x=&gt;(x,<span class="number">1</span>)).reduceByKey(_+_).take(<span class="number">3</span>).foreach(println)</span><br><span class="line">    rdd.map(x=&gt;(x,<span class="number">1</span>)).countByKey().foreach(println)</span><br><span class="line">    rdd.map(x=&gt;(x,<span class="number">1</span>)).groupByKey().map(kv=&gt;(kv._1,kv._2.sum)).foreach(println)</span><br><span class="line">    <span class="comment">//rdd.groupBy(x=&gt;x).map(kv=&gt;(kv._1,kv._2.size)).foreach(println)</span></span><br><span class="line">    <span class="comment">// 结果打包到该路径下</span></span><br><span class="line">    rdd.groupBy(x=&gt;x).map(kv=&gt;(kv._1,kv._2.size)).saveAsTextFile(<span class="string">"hdfs://192.168.200.129:9000/SparkWordCount"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打包前需要在pom.xml中加入下列代码以防scala代码不编译</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>net.alchim31.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>scala-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>  然后再maven里clean后 点M字符的命令行，<br>  <img src="https://i.loli.net/2019/04/09/5cac4df389de7.png" alt><br>  再选中需要导入的<strong>模块项目</strong> 打入以下命令-<br>  <code>clean scala:compile compile package -DskipTests=true</code><br>  <img src="https://i.loli.net/2019/04/09/5cac4e392d7af.png" alt><br>  首次加载需要下载很多东西，稍等一会，然后完成后就可以打包了</p>
+<p>  打包完成之后放入linux /tmp/spark目录下</p>
+<p>  然后进入spark  bin目录下<br>  <code>spark-submit --class day02.SparkWordCount    --master yarn     --deploy-mode cluster    /tmp/spark/sparkDemo101-1.0-SNAPSHOT.jar</code><br>  注：如果运行报错没有权限的话，在当前目录下输入<br>  <code>chmod +x -R ./*</code><br>  运行最后出现以下，则为正确<br>  <img src="https://i.loli.net/2019/04/09/5cac65c43c62d.png" alt><br>  然后可进入ip:8088 查看状态</p>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><h4 id="广播变量"><a href="#广播变量" class="headerlink" title="广播变量:"></a>广播变量:</h4><p>可以再exector中使用，可以分发给各个分布式节点使用,但不能修改<br><strong>作用</strong>：一般用于大小表的join,小标广播能够节省网络传输，避免shuffle map join<br>实用于广播维度表给事实表使用<br><img src="https://i.loli.net/2019/04/10/5cad4e0442073.png" alt></p>
+<h4 id="累加器"><a href="#累加器" class="headerlink" title="累加器"></a>累加器</h4><p>作用于driver， exector只有向driver发送累加请求，由driver进行累加</p>
+<h3 id="窄依赖-宽依赖"><a href="#窄依赖-宽依赖" class="headerlink" title="窄依赖 宽依赖"></a>窄依赖 宽依赖</h3><p>窄依赖：子rdd的一个分区，只依赖与父rdd的一个分区<br>宽依赖：子rdd的一个分区 依赖于父rdd的多个分区</p>
+<p>区分的关键在于shuffle<br>不发生shuffle是窄依赖，发生shuffle是宽依赖</p>
+<h3 id="rpc-远程方法调用"><a href="#rpc-远程方法调用" class="headerlink" title="rpc 远程方法调用"></a>rpc 远程方法调用</h3><p><strong>传输通道</strong><br>socket网络通信<br><strong>客户端</strong><br>动态代理<br><strong>服务端</strong><br>反射</p>
+<h4 id="客户端-client-java"><a href="#客户端-client-java" class="headerlink" title="客户端  client.java"></a>客户端  client.java</h4><p>这是一个远程累加器的服务端客户端的案例 注意看客户端的前段注释理解！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.day03.rpc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 输出流和输入流是一个通道，每个端都有自己的输入输出，两者方向不同各为其主</span></span><br><span class="line"><span class="comment"> * 而让通道以及request和response可以结合使用的方法时socket 网络通信</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 客户端通过动态代理 获取向服务端发送请求和接收数据信息的功能</span></span><br><span class="line"><span class="comment"> * 运行过程：</span></span><br><span class="line"><span class="comment"> * 1，建立连接之后将方法名和参数放在request请求之中，开启输出流，然后写进客户端向服务端方向的输出流里</span></span><br><span class="line"><span class="comment"> * 2，服务端开启输入流，接收客户端的request请求，获取其中的方法名和参数，然后通过反射机制调用方法且生成返回值</span></span><br><span class="line"><span class="comment"> * 3，将方法生成的返回值放入response中，再开启服务端的输出流，并将结果返回值 写进服务端指向客户端的输出流，</span></span><br><span class="line"><span class="comment"> * 4，客户端得到服务端的回应，开启客户端的输入流接收response的返回值 输出即可</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 形象理解</span></span><br><span class="line"><span class="comment"> * A区为服务端 B区为客户端  快递就是request ，回应消息 response</span></span><br><span class="line"><span class="comment"> * A区和B区之间的公路就是通道</span></span><br><span class="line"><span class="comment"> * A的输入流就是通过公路B区到A区的  输出流就是通过公路A区到B区的</span></span><br><span class="line"><span class="comment"> * 快递员通过将快递从B送到A，A收到了就打电话回应消息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//通过动态代理 向服务端发送请求</span></span><br><span class="line"></span><br><span class="line">        Acc proxy = (Acc) Proxy.newProxyInstance(Request.class.getClassLoader(), <span class="keyword">new</span> Class[]&#123;Acc.class&#125;, <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                Request request = <span class="keyword">new</span> Request();</span><br><span class="line">                request.setMethod(method.getName());</span><br><span class="line">                request.setPara(args);</span><br><span class="line">                <span class="comment">//建立与服务端的链接</span></span><br><span class="line">                Socket socket = <span class="keyword">new</span> Socket(<span class="string">"192.168.1.129"</span>, <span class="number">999</span>);</span><br><span class="line">                OutputStream outputStream = socket.getOutputStream();</span><br><span class="line">                ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(outputStream);</span><br><span class="line">                <span class="comment">//将请求以及你需要的方法名以及参数放入request中，写入到输出流里“暂存”</span></span><br><span class="line">                oos.writeObject(request);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                <span class="comment">//得到服务端的相应</span></span><br><span class="line">                InputStream inputStream = socket.getInputStream();</span><br><span class="line">                <span class="comment">//对象流 反序列化</span></span><br><span class="line">                ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(inputStream);</span><br><span class="line">                Response response = (Response) ois.readObject();</span><br><span class="line">                <span class="comment">//通过服务端的执行后的结果，</span></span><br><span class="line">                <span class="keyword">return</span> response.getResult();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> result = proxy.add(<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(result);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*AccImpl acc = new AccImpl();</span></span><br><span class="line"><span class="comment">        int add = acc.add(10);*/</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="服务端-server-java"><a href="#服务端-server-java" class="headerlink" title="服务端 server.java"></a>服务端 server.java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.day03.rpc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Server</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception, ClassNotFoundException </span>&#123;</span><br><span class="line">        <span class="comment">//需要使用的方法</span></span><br><span class="line">        AccImpl acc = <span class="keyword">new</span> AccImpl();</span><br><span class="line">        <span class="comment">//建立通信连接</span></span><br><span class="line">        ServerSocket serverSocket = <span class="keyword">new</span> ServerSocket(<span class="number">999</span>);</span><br><span class="line">        <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">            <span class="comment">//接收客户端的连接</span></span><br><span class="line">            Socket client = serverSocket.accept();</span><br><span class="line">            <span class="comment">//开启输入流，为了接收客户端请求</span></span><br><span class="line">            InputStream inputStream = client.getInputStream();</span><br><span class="line">            ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(inputStream);</span><br><span class="line">            <span class="comment">//接受来自客户端的请求  请求包括 方法名和参数</span></span><br><span class="line">            Request request = (Request) ois.readObject();</span><br><span class="line">            <span class="comment">//AccImpl acc = new AccImpl();//需要使用的方法,如果将acc的实例化放到循环外就是会形成累加</span></span><br><span class="line">            <span class="comment">//需要通过反射机制 ,来调用方法,使用方法返回返回值给result</span></span><br><span class="line">            Object result = AccImpl.class.getMethod(request.getMethod(), <span class="keyword">int</span>.class).invoke(acc, request.getPara());</span><br><span class="line">            <span class="comment">//System.out.println("server result:"+request);</span></span><br><span class="line">            <span class="comment">//输出访问客户端的ip以及方法返回的结果</span></span><br><span class="line">            System.out.println(<span class="string">"client"</span>+client.getInetAddress().getHostAddress()+<span class="string">" ，result："</span>+(<span class="keyword">int</span>)result);</span><br><span class="line">            <span class="comment">//将结果发送回去</span></span><br><span class="line">            <span class="comment">//将结果保存在response中，然后通过输出流将结果保存在response中</span></span><br><span class="line">            Response response = <span class="keyword">new</span> Response();</span><br><span class="line">            response.setResult(result);</span><br><span class="line">            <span class="comment">//开启输出流，写入含有result的response对象</span></span><br><span class="line">            OutputStream outputStream = client.getOutputStream();</span><br><span class="line">            ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(outputStream);</span><br><span class="line">            oos.writeObject(response);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法的接口-Acc"><a href="#方法的接口-Acc" class="headerlink" title="方法的接口 Acc"></a>方法的接口 Acc</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.day03.rpc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Acc</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> num)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法-AccImp-java"><a href="#方法-AccImp-java" class="headerlink" title="方法 AccImp.java"></a>方法 AccImp.java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.day03.rpc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccImpl</span> <span class="keyword">implements</span> <span class="title">Acc</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> acc;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        acc+=num;</span><br><span class="line">        <span class="keyword">return</span> acc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/*  public static void main(String[] args) throws Exception, IllegalAccessException, InstantiationException, NoSuchMethodException &#123;</span></span><br><span class="line"><span class="comment">        Acc object = (Acc) Class.forName("com.day03.rpc.AccImpl").newInstance();</span></span><br><span class="line"><span class="comment">        //知道方法名 调用方法  通过反射</span></span><br><span class="line"><span class="comment">        Method method = Class.forName("com.day03.rpc.AccImpl").getDeclaredMethod("add", int.class);</span></span><br><span class="line"><span class="comment">        int result = (int) method.invoke(object, 10);</span></span><br><span class="line"><span class="comment">        System.out.println(result);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="request和response"><a href="#request和response" class="headerlink" title="request和response"></a>request和response</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.day03.rpc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="comment">//需要反序列化接口实现</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Request在这里只是用来保存客户端向服务端发送的数据信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Request</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String method;</span><br><span class="line">    <span class="keyword">private</span> Object[] para;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> method;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMethod</span><span class="params">(String method)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.method = method;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Object[] getPara() &#123;</span><br><span class="line">        <span class="keyword">return</span> para;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPara</span><span class="params">(Object[] para)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.para = para;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//-----------------------------------------------------------------//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.day03.rpc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="comment">//需要反序列化接口实现</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Respnse在这里只是用来保存服务端向客户端发送的数据信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Response</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object result;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getResult</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setResult</span><span class="params">(Object result)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.result = result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Spark-SQL"><a href="#Spark-SQL" class="headerlink" title="Spark SQL"></a>Spark SQL</h3><h4 id="sql-命令行"><a href="#sql-命令行" class="headerlink" title="sql 命令行"></a>sql 命令行</h4><p>DataFrames<br>在spark bin目录下打开，命令行窗口 输入.\spark-shell –master local[2]<br>进入scala命令行</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scala &gt; <span class="keyword">val</span> df = spark.read.json(<span class="string">"../examples/src/main/resources/people.json"</span>)</span><br><span class="line">scala &gt; df.show</span><br><span class="line">scala &gt; df.createOrReplaceTempView(<span class="string">"people"</span>)</span><br><span class="line"><span class="comment">//sparksql（）这句话获得的是一个DataFrames 需要show才能以结构化显示</span></span><br><span class="line">scala &gt; spark.sql(<span class="string">"select * from people where age&gt;20"</span>).show</span><br></pre></td></tr></table></figure>
+
+<h4 id="sql-案例代码"><a href="#sql-案例代码" class="headerlink" title="sql 案例代码"></a>sql 案例代码</h4><p>注：本地连接虚拟机的mysql出现拒绝连接的问题 此时给其授权 </p>
+<blockquote>
+<p>grant all privileges on <em>.</em> to root@’%’ identified by “gxyzxf”；<br>flush privileges;</p>
+</blockquote>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.day03</span><br><span class="line"><span class="keyword">import</span> java.util.<span class="type">Properties</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.sql.<span class="type">SparkSession</span></span><br><span class="line"><span class="keyword">import</span> org.joda.time.<span class="type">DateMidnight</span>.<span class="type">Property</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @Author: 张峥</span></span><br><span class="line"><span class="comment">  * @Date: 2019/4/10 14:26</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">SparkSql</span> </span>&#123;</span><br><span class="line">  <span class="comment">//定义case class</span></span><br><span class="line">  <span class="keyword">case</span> <span class="class"><span class="keyword">class</span>  <span class="title">Record</span>(<span class="params">name:<span class="type">String</span>,age:<span class="type">Int</span></span>)</span></span><br><span class="line"><span class="class">  <span class="title">case</span> <span class="title">class</span>  <span class="title">Word</span>(<span class="params">word:<span class="type">String</span></span>)</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">  <span class="title">def</span> <span class="title">main</span>(<span class="params">args: <span class="type">Array</span>[<span class="type">String</span>]</span>)</span>: <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> spark = <span class="type">SparkSession</span></span><br><span class="line">      .builder()</span><br><span class="line">      .appName(<span class="string">"Spark SQL basic example"</span>)</span><br><span class="line">      .master(<span class="string">"local[*]"</span>)</span><br><span class="line">      <span class="comment">//.config("spark.some.config.option", "some-value")</span></span><br><span class="line">      .getOrCreate()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// For implicit conversions like converting RDDs to DataFrames</span></span><br><span class="line">    <span class="keyword">import</span> spark.implicits._</span><br><span class="line">    <span class="keyword">val</span> df= spark.read.json(<span class="string">"D:\\zz\\Tools\\spark-2.3.0-bin-hadoop2.7\\spark-2.3.0-bin-hadoop2.7\\examples\\src\\main\\resources\\people.json"</span>)</span><br><span class="line">    <span class="comment">//df.show()</span></span><br><span class="line">    <span class="comment">//读取jdbc数据</span></span><br><span class="line">    <span class="keyword">val</span> prop=<span class="keyword">new</span> <span class="type">Properties</span>()</span><br><span class="line">    prop.setProperty(<span class="string">"user"</span>,<span class="string">"root"</span>)</span><br><span class="line">    prop.setProperty(<span class="string">"password"</span>,<span class="string">"123456"</span>)</span><br><span class="line">    prop.setProperty(<span class="string">"driver"</span>,<span class="string">"com.mysql.jdbc.Driver"</span>)</span><br><span class="line">    spark.read.jdbc(<span class="string">"jdbc:mysql://master1:3306/test"</span>,<span class="string">"test"</span>,prop).show()</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在实际操作中，很多数据一开始，没有模式，如日志，文本文件</span></span><br><span class="line">    <span class="comment">//可以先将数据变换成rdd  然后再将rdd转化成dataframe</span></span><br><span class="line">    <span class="comment">//dataframe就是给一个rdd加一个模式 使其结构化</span></span><br><span class="line">    <span class="keyword">val</span> rdd=spark.sparkContext.parallelize(<span class="type">List</span>(<span class="string">"tom,18"</span>,<span class="string">"jerry,2"</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment">//case class  Record(name:String,age:Int)</span></span><br><span class="line">    <span class="keyword">val</span> df2=rdd.map(s=&gt;&#123;</span><br><span class="line">      <span class="keyword">val</span> parts=s.split(<span class="string">","</span>)</span><br><span class="line">      <span class="type">Record</span>(parts(<span class="number">0</span>),parts(<span class="number">1</span>).toInt)</span><br><span class="line">    &#125;).toDF()</span><br><span class="line">    df2.show()</span><br><span class="line">    <span class="comment">//用sparksql实现wordcount</span></span><br><span class="line">    <span class="comment">//case class  Word(word:String)</span></span><br><span class="line">    <span class="keyword">val</span> df3=spark.sparkContext.parallelize(<span class="type">List</span>(<span class="string">"a"</span>,<span class="string">"a"</span>,<span class="string">"a"</span>,<span class="string">"b"</span>))</span><br><span class="line">    df3.map(s=&gt;<span class="type">Word</span>(s)).toDF().createOrReplaceTempView(<span class="string">"wc"</span>)</span><br><span class="line">    spark.sql(<span class="string">"select word,count(word) cw from wc group by word order by cw desc"</span>).show()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果<br><img src="https://i.loli.net/2019/04/10/5cad9172d5fc4.png" alt><br><img src="https://i.loli.net/2019/04/10/5cada1f1279f3.png" alt></p>
+<h3 id="rdd-数据类型"><a href="#rdd-数据类型" class="headerlink" title="rdd-数据类型"></a>rdd-数据类型</h3><h4 id="dataframe"><a href="#dataframe" class="headerlink" title="dataframe"></a>dataframe</h4><p>就是给一个rdd加一个模式 使其结构化<br>sparksession<br>sparkcontext<br>例如 sparksession.sparkcontext</p>
+<h4 id="dataset"><a href="#dataset" class="headerlink" title="dataset"></a>dataset</h4><p>当使用api操作数据的时候，建议使用dataset<br>当通过sql操作的时候，两种都行</p>
+<h4 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day04</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.day03.<span class="type">SparkSql</span>.<span class="type">Record</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * @Author: 张峥</span></span><br><span class="line"><span class="comment">  * @Date: 2019/4/11 9:22</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">SparkDataSetDemo</span> </span>&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="class"><span class="keyword">class</span>  <span class="title">Record</span>(<span class="params">name:<span class="type">String</span>,age:<span class="type">Int</span></span>)</span></span><br><span class="line"><span class="class">  <span class="title">def</span> <span class="title">main</span>(<span class="params">args: <span class="type">Array</span>[<span class="type">String</span>]</span>)</span>: <span class="type">Unit</span> = &#123;</span><br><span class="line">   <span class="keyword">import</span>  org.apache.spark.sql.<span class="type">SparkSession</span></span><br><span class="line">    <span class="keyword">val</span> spark=<span class="type">SparkSession</span></span><br><span class="line">      .builder()</span><br><span class="line">      .appName(<span class="string">"Spark SQL basic example"</span>)</span><br><span class="line">      .master(<span class="string">"local[*]"</span>)</span><br><span class="line">      <span class="comment">//.config("spark.some.config.option", "some-value")</span></span><br><span class="line">      .getOrCreate()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> rdd=spark.sparkContext.parallelize(<span class="type">List</span>(<span class="string">"tom,18"</span>,<span class="string">"jerry,2"</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment">//隐式转换</span></span><br><span class="line">    <span class="keyword">import</span> spark.implicits._</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> ds=rdd.map(s=&gt;&#123;</span><br><span class="line">      <span class="keyword">val</span> parts=s.split(<span class="string">","</span>)</span><br><span class="line">      <span class="type">Record</span>(parts(<span class="number">0</span>),parts(<span class="number">1</span>).toInt)</span><br><span class="line">    &#125;).toDS()</span><br><span class="line">    <span class="keyword">val</span> df=rdd.map(s=&gt;&#123;</span><br><span class="line">      <span class="keyword">val</span> parts=s.split(<span class="string">","</span>)</span><br><span class="line">      <span class="type">Record</span>(parts(<span class="number">0</span>),parts(<span class="number">1</span>).toInt)</span><br><span class="line">    &#125;).toDF()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//怎么变成rdd</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//建议使用 ：dataset：rdd[Object] dataset 可以通过面向对象的方式来操作数据</span></span><br><span class="line">    ds.filter(record=&gt;record.age&gt;<span class="number">3</span>).show()</span><br><span class="line">    <span class="comment">//dataframe=dataset[row]  dataframe通过的是sql方式进行操作数据</span></span><br><span class="line">    df.filter(row=&gt;row.getAs[<span class="type">Int</span>](<span class="string">"age"</span>)&gt;<span class="number">18</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//dataSet 和 dataFrame 可以相互转换 建议使用dataset</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//无论使用dataset 还是dataFrame 变成表操作都一样</span></span><br><span class="line">    ds.createOrReplaceTempView(<span class="string">"t1"</span>)</span><br><span class="line">    df.createOrReplaceTempView(<span class="string">"t2"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//自定义sql函数</span></span><br><span class="line">    <span class="keyword">val</span> toUpper=(word:<span class="type">String</span>)=&gt;word.substring(<span class="number">0</span>,<span class="number">1</span>).toUpperCase()+word.substring(<span class="number">1</span>)</span><br><span class="line">    <span class="comment">//注册函数</span></span><br><span class="line">    spark.sqlContext.udf.register(<span class="string">"toUpper"</span>,toUpper)</span><br><span class="line">    <span class="comment">//自定义函数用于sql中</span></span><br><span class="line">    spark.sql(<span class="string">"select toUpper(name),age from t1 where age&gt;1"</span>).show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//ds.show()</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p><strong>针对以上代码进行小结</strong><br><strong>rdd</strong><br>数据文件直接new SparkContext().textFile(“//“)  将文件读取进来 成为rdd<br>或者自定义集合数组成为rdd new SparkContext().parallelize(List(“”))<br>在rdd弹性分布式结果集中可以使用api进行调用</p>
+<p><strong>dataFrame dataSet</strong><br>两种数据类型</p>
+<ol>
+<li>将结构化文件通过SparkSession.read.api(“//“) 注：api里得有相应的格式</li>
+<li>非结构化的文件只能先通过textfile 成为rdd ,然后导包 import spark.implicits._隐式转换的形式，再rdd().toDF 或者rdd().toDS 将rdd转换成dataFrame或者dataSet</li>
+<li>建立的集合也是同2需要从rdd进行转换</li>
+</ol>
+<p>sparkcontext rdd<br>sparksession  dataframe dataset<br>sparkstreaming  dstream</p>
+<p>dataFrame 针对于sql方式操作的<br>dataSet 通过面向对象进行的操作的</p>
+<h2 id="大数据处理的两种"><a href="#大数据处理的两种" class="headerlink" title="大数据处理的两种:"></a>大数据处理的两种:</h2><h3 id="实时-流处理（real-time）"><a href="#实时-流处理（real-time）" class="headerlink" title="实时/流处理（real-time）:"></a>实时/流处理（real-time）:</h3><p>数据的产生于数据的计算完成相隔时间很短，大约在秒级<br><strong>sparkstreaming</strong> /storm</p>
+<h4 id="SparkStreaming"><a href="#SparkStreaming" class="headerlink" title="SparkStreaming"></a>SparkStreaming</h4><p>一般SparkStreaming 配合kafka使用 一方面原因是因为利用kafka的缓存通道，</p>
+<p>sparkstreaming 有状态计算<br>状态：一个动态的属性 如累计</p>
+<h5 id="checkpoint"><a href="#checkpoint" class="headerlink" title="checkpoint"></a>checkpoint</h5><p><img src="https://i.loli.net/2019/04/12/5cb0486575139.png" alt></p>
+<h5 id="UpdateStateByKey-状态计算"><a href="#UpdateStateByKey-状态计算" class="headerlink" title="UpdateStateByKey 状态计算"></a>UpdateStateByKey 状态计算</h5><p><strong>注</strong>：如果报错java.lang.NoSuchMethodError: net.jpountz.lz4.LZ4BlockInputStream<br><strong>原因</strong>：应用在执行时对数据解码（反序列化）时，使用了默认的lz4解压缩算法，在spark-core中依赖的lz4版本是1.4，而kafka-client中依赖的lz4版本是1.3版本，在生成解压器时，版本不兼容异常。<br>解决方法：</p>
+<ol>
+<li>conf = SparkConf().set(“spark.io.compression.codec”, “snappy”)</li>
+<li>pom.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.spark<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spark-streaming-kafka-0-10_2.11<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lz4<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>net.jpountz.lz4<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="窗口计算"><a href="#窗口计算" class="headerlink" title="窗口计算"></a>窗口计算</h4><p>计算最近一段时间的数据运算</p>
+<h3 id="离线处理（off-line）"><a href="#离线处理（off-line）" class="headerlink" title="离线处理（off-line）:"></a>离线处理（off-line）:</h3><p>存储后处理 时间间隔长  mapreduce hive spark sparksql …..</p>
+<p>Parquet?</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/scala/" rel="tag"><i class="fa fa-tag"></i> scala</a>
+          
+            <a href="/tags/spark/" rel="tag"><i class="fa fa-tag"></i> spark</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/05/1_过滤器和监听器/" rel="next" title="过滤器和监听器">
+                <i class="fa fa-chevron-left"></i> 过滤器和监听器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/15/1_自定义远程目录或文件同步脚本xsync.sh/" rel="prev" title="自定义远程目录或文件同步脚本xsync.sh">
+                自定义远程目录或文件同步脚本xsync.sh <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzQ4MC8yMDAyMA"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/ggg.jpg" alt="Ckm_zz">
+            
+              <p class="site-author-name" itemprop="name">Ckm_zz</p>
+              <p class="site-description motion-element" itemprop="description">—— not too bad luck</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zzckm" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.totree.cn" target="_blank" title="To树商城">
+                      
+                        <i class="fa fa-fw fa-skype"></i></a>
+                  </span>
+                
+            </div>
+          
+<!-- 音乐播放器 -->
+ 
+           <div>
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="210" height="110" src="//music.163.com/outchain/player?type=2&id=3932159&auto=1&height=66"></iframe>
+           </div>
+ 
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spark"><span class="nav-number">1.</span> <span class="nav-text">Spark</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rdd"><span class="nav-number">1.1.</span> <span class="nav-text">rdd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark-运行模式："><span class="nav-number">1.2.</span> <span class="nav-text">spark 运行模式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rdd操作"><span class="nav-number">1.3.</span> <span class="nav-text">rdd操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sc-sparkcontext"><span class="nav-number">1.3.1.</span> <span class="nav-text">sc=sparkcontext</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#job-任务运行的部分"><span class="nav-number">1.3.2.</span> <span class="nav-text">job-任务运行的部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stage："><span class="nav-number">1.3.3.</span> <span class="nav-text">stage：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task"><span class="nav-number">1.3.4.</span> <span class="nav-text">task</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#driver"><span class="nav-number">1.3.5.</span> <span class="nav-text">driver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#executor"><span class="nav-number">1.3.6.</span> <span class="nav-text">executor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.4.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark-Java-Api"><span class="nav-number">1.5.</span> <span class="nav-text">spark Java Api</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Api"><span class="nav-number">1.5.1.</span> <span class="nav-text">Api</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#transformations"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">transformations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#actions"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">actions</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark-应用"><span class="nav-number">1.5.2.</span> <span class="nav-text">Spark 应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局变量"><span class="nav-number">1.5.3.</span> <span class="nav-text">全局变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#广播变量"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">广播变量:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#累加器"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">累加器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窄依赖-宽依赖"><span class="nav-number">1.5.4.</span> <span class="nav-text">窄依赖 宽依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rpc-远程方法调用"><span class="nav-number">1.5.5.</span> <span class="nav-text">rpc 远程方法调用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端-client-java"><span class="nav-number">1.5.5.1.</span> <span class="nav-text">客户端  client.java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务端-server-java"><span class="nav-number">1.5.5.2.</span> <span class="nav-text">服务端 server.java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法的接口-Acc"><span class="nav-number">1.5.5.3.</span> <span class="nav-text">方法的接口 Acc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法-AccImp-java"><span class="nav-number">1.5.5.4.</span> <span class="nav-text">方法 AccImp.java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#request和response"><span class="nav-number">1.5.5.5.</span> <span class="nav-text">request和response</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark-SQL"><span class="nav-number">1.5.6.</span> <span class="nav-text">Spark SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sql-命令行"><span class="nav-number">1.5.6.1.</span> <span class="nav-text">sql 命令行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sql-案例代码"><span class="nav-number">1.5.6.2.</span> <span class="nav-text">sql 案例代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdd-数据类型"><span class="nav-number">1.5.7.</span> <span class="nav-text">rdd-数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dataframe"><span class="nav-number">1.5.7.1.</span> <span class="nav-text">dataframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dataset"><span class="nav-number">1.5.7.2.</span> <span class="nav-text">dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义函数"><span class="nav-number">1.5.7.3.</span> <span class="nav-text">自定义函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">1.5.8.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大数据处理的两种"><span class="nav-number">1.6.</span> <span class="nav-text">大数据处理的两种:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实时-流处理（real-time）"><span class="nav-number">1.6.1.</span> <span class="nav-text">实时/流处理（real-time）:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SparkStreaming"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">SparkStreaming</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#checkpoint"><span class="nav-number">1.6.1.1.1.</span> <span class="nav-text">checkpoint</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UpdateStateByKey-状态计算"><span class="nav-number">1.6.1.1.2.</span> <span class="nav-text">UpdateStateByKey 状态计算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#窗口计算"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">窗口计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离线处理（off-line）"><span class="nav-number">1.6.2.</span> <span class="nav-text">离线处理（off-line）:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by ZZckm</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+<!-- 鼠标点击爆炸烟花效果 -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":120,"height":270},"mobile":{"show":true},"log":false});</script></body>
+</html>

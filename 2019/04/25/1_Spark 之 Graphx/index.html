@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入查看该篇文章的密码') !== ''){
+                alert('密码错误，请咨询博主');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "39f09b08"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Spark,Graphx,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spark 之 Graphx1. Graphx 概述1.1 什么是 Graphx![image_1cmv2t6351udeheo17feif818sgm.png-77.5kB][1] Spark GraphX是一个并行图计算框架，它是基于Spark平台提供对图计算和图挖掘简洁易用的而丰富的接口，极大的方便了对饼形图处理的需求。那么什么是图，都计算些什么？众所周知社交网络中人与人之间有很多关系链，例">
+<meta name="keywords" content="Spark,Graphx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark 之 Graphx">
+<meta property="og:url" content="http://yoursite.com/2019/04/25/1_Spark 之 Graphx/index.html">
+<meta property="og:site_name" content="To树-HOME">
+<meta property="og:description" content="Spark 之 Graphx1. Graphx 概述1.1 什么是 Graphx![image_1cmv2t6351udeheo17feif818sgm.png-77.5kB][1] Spark GraphX是一个并行图计算框架，它是基于Spark平台提供对图计算和图挖掘简洁易用的而丰富的接口，极大的方便了对饼形图处理的需求。那么什么是图，都计算些什么？众所周知社交网络中人与人之间有很多关系链，例">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/kh18p52pv06zmt1k0ogqiky7/image_1cmv2t6351udeheo17feif818sgm.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/9p5r02ll0bccjvw86zsqatgt/image_1cmv2i1fs13e9bi1sftrs919bg9.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/bltmke3lcusrpiyiwblu5a4r/image_1cmv30vj68jrssb1c9m27term1j.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/qrmkq0guq9b3tffcqra2unke/image_1cmv35mns1gdo1sei1jvk16uceac20.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/93u1q7av2gbu0n1ay76992zs/image_1cmv39mjn186e1nu61fdv1vt1luf2d.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/v4qrrv2dugiebwd31aojp2f9/image_1cmv3h2369kt12m51jtilon1ro52q.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/pt0h1jhxr6tghfl0uz2i3u9y/image_1cmv3u1as1pbqv9jgrqv6trfj3k.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/26a41h63j7xxd4fejg4baxpv/image_1cmv4s5hm1co815181ijg2qg1t0h41.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/w1w3c0qw5xy2hy4ulid17zu0/image_1cmv52otn11c3g1v1uecte21qgk4e.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/o7nmie0lcnhly58n709ddzhj/image_1cmv5rcf6g27obk1rvkd0ko8a4r.png">
+<meta property="og:updated_time" content="2019-05-26T08:58:42.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spark 之 Graphx">
+<meta name="twitter:description" content="Spark 之 Graphx1. Graphx 概述1.1 什么是 Graphx![image_1cmv2t6351udeheo17feif818sgm.png-77.5kB][1] Spark GraphX是一个并行图计算框架，它是基于Spark平台提供对图计算和图挖掘简洁易用的而丰富的接口，极大的方便了对饼形图处理的需求。那么什么是图，都计算些什么？众所周知社交网络中人与人之间有很多关系链，例">
+<meta name="twitter:image" content="http://static.zybuluo.com/zhangwen100/kh18p52pv06zmt1k0ogqiky7/image_1cmv2t6351udeheo17feif818sgm.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/25/1_Spark 之 Graphx/">
+
+
+
+
+
+  <title>Spark 之 Graphx | To树-HOME</title>
+  
+
+
+
+
+
+
+
+
+
+<!-- katex样式 -->
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+  <a href="https://github.com/zzckm" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">To树-HOME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">只可意会</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/25/1_Spark 之 Graphx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ckm_zz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/ggg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="To树-HOME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spark 之 Graphx</h1>
+        
+
+        <div class="post-meta">
+        <!-- TOP -->
+        
+
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-26T16:58:42+08:00">
+                2019-05-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spark/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.3k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Spark-之-Graphx"><a href="#Spark-之-Graphx" class="headerlink" title="Spark 之 Graphx"></a>Spark 之 Graphx</h1><h2 id="1-Graphx-概述"><a href="#1-Graphx-概述" class="headerlink" title="1. Graphx 概述"></a>1. Graphx 概述</h2><h3 id="1-1-什么是-Graphx"><a href="#1-1-什么是-Graphx" class="headerlink" title="1.1 什么是 Graphx"></a>1.1 什么是 Graphx</h3><p>![image_1cmv2t6351udeheo17feif818sgm.png-77.5kB][1]</p>
+<p>Spark GraphX是一个并行图计算框架，它是基于Spark平台提供对图计算和图挖掘简洁易用的而丰富的接口，极大的方便了对饼形图处理的需求。那么什么是图，都计算些什么？众所周知社交网络中人与人之间有很多关系链，例如Twitter、Facebook、微博和微信等，数据中出现网状结构关系都需要图计算。</p>
+<p>GraphX是一个新的Spark API，它用于图和并行图(graph-parallel)的计算。GraphX通过引入弹性分布式属性图（Resilient Distributed Property Graph）： 顶点和边均有属性的有向多重图，来扩展Spark RDD。为了支持图计算，GraphX开发了一组基本的功能操作以及一个优化过的Pregel API。另外，GraphX也包含了一个快速增长的图算法和图builders的集合，用以简化图分析任务。</p>
+<p>从社交网络到语言建模，不断增长的数据规模以及图形数据的重要性已经推动了许多新的分布式图系统的发展。 通过限制计算类型以及引入新的技术来切分和分配图，这些系统可以高效地执行复杂的图形算法，比一般的分布式数据计算（data-parallel，如spark、MapReduce）快很多。</p>
+<p>![image_1cmv2i1fs13e9bi1sftrs919bg9.png-149kB][2]</p>
+<h3 id="1-2-Graphx-的特点"><a href="#1-2-Graphx-的特点" class="headerlink" title="1.2 Graphx 的特点"></a>1.2 Graphx 的特点</h3><dl><dt>灵活性高</dt><dd>![image_1cmv30vj68jrssb1c9m27term1j.png-95.1kB][3]<br>图可以和集合进行无缝对接<br>GraphX统一了单个系统中的ETL、探索性分析和迭代图计算。您可以查看与图形和集合相同的数据，有效地使用RDD 转换和图的连接操作，以及使用 Pregel API 编写自定义迭代图算法</dd></dl><dl><dt>速度快</dt><dd>![image_1cmv35mns1gdo1sei1jvk16uceac20.png-86kB][4]<br>可以与最快的专业图形处理系统相媲美。<br>GraphX与最快的图形系统竞争性能，同时保留Spark的灵活性，容错性和易用性。</dd></dl><dl><dt>算法多</dt><dd>![image_1cmv39mjn186e1nu61fdv1vt1luf2d.png-66.5kB][5]<br>从不断增加的图算法库中进行选择。<br>除了高度灵活的API之外，GraphX还提供了各种图形算法，其中许多都是由我们的用户提供的。网页排名，连接组件，标签传播，SVD ++，强大的连接组件以及三角计数等</dd></dl><h3 id="1-3-学什么"><a href="#1-3-学什么" class="headerlink" title="1.3 学什么"></a>1.3 学什么</h3><p>本章主要学习图如何构建，如何计算图，如何应用</p>
+<h3 id="1-4-关键抽象"><a href="#1-4-关键抽象" class="headerlink" title="1.4 关键抽象"></a>1.4 关键抽象</h3><p>![image_1cmv3h2369kt12m51jtilon1ro52q.png-36.5kB][6]</p>
+<p><strong>RDPG：</strong> Resilient Distributed Property Graph（弹性分布式属性图）</p>
+<p>GraphX的核心抽象是弹性分布式属性图，它是一个有向多重图，带有连接到每个顶点和边的用户定义的对象。 有向多重图中多个并行的边共享相同的源和目的顶点。支持并行边的能力简化了建模场景，相同的顶点可能存在多种关系(例如co-worker和friend)。 每个顶点用一个唯一的64位长的标识符（VertexID）作为key。GraphX并没有对顶点标识强加任何排序。同样，边拥有相应的源和目的顶点标识符。<br>![image_1cmv3u1as1pbqv9jgrqv6trfj3k.png-91kB][7]</p>
+<p>相关概念<br>: </p>
+<ul>
+<li><p>顶点<br>RDD[(VertexId, VD)]  表示顶点。  </p>
+<ul>
+<li>VertexId 就是Long类型，表示顶点的ID【主键】。 </li>
+<li>VD表示类型参数，可以是任意类型, 表示的是该顶点的属性。</li>
+</ul>
+<p>VertexRDD[VD] 继承了RDD[(VertexId, VD)]， 他是顶点的另外一种表示方式，在内部的计算上提供了很多的优化还有一些更高级的API。</p>
+</li>
+<li><p>边
+RDD[Edge[VD]]  表示边，  Edge中有三个东西： </p>
+<ul>
+<li><p>srcId表示 源顶点的ID，</p>
+</li>
+<li><p>dstId表示的是目标顶点的ID，</p>
+</li>
+<li><p>attr表示表的属性，属性的类型是VD类型，VD是一个类型参数，可以是任意类型。</p>
+<p>EdgeRDD[ED] 继承了 RDD[Edge[ED]] ,他是边的另外一种表示方式，在内部的计算上提供您改了很多的优化还有一些更高级的API。<br>![image_1cmv4s5hm1co815181ijg2qg1t0h41.png-216.7kB][8]</p>
+</li>
+</ul>
+</li>
+<li><p>三元组<br>EdgeTriplet[VD, ED] extends Edge[ED]   他表示一个三元组， 比边多了两个顶点的属性。包含以下内容srcId、srcAttr、  attr、   dstid、dstAttr<br>![image_1cmv52otn11c3g1v1uecte21qgk4e.png-30.5kB][9]</p>
+</li>
+<li><p>图
+Graph[VD: ClassTag, ED: ClassTag]  VD 是顶点的属性、  ED是边的属性</p>
+</li>
+</ul>
+<h2 id="2-简单案例"><a href="#2-简单案例" class="headerlink" title="2. 简单案例"></a>2. 简单案例</h2><h3 id="2-1-创建一个图"><a href="#2-1-创建一个图" class="headerlink" title="2.1 创建一个图"></a>2.1 创建一个图</h3><dl><dt>目标</dt><dd>![image_1cmv5rcf6g27obk1rvkd0ko8a4r.png-216.7kB][10]<br>将上述图中的顶点和边输入到一个图中</dd></dl><dl><dt>添加依赖</dt><dd><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.spark<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spark-graphx_2.11<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spark.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></dd></dl><dl><dt>代码详情</dt><dd><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhiyou100.spark</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.graphx.&#123;<span class="type">Edge</span>, <span class="type">Graph</span>, <span class="type">VertexId</span>&#125;</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.rdd.<span class="type">RDD</span></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.&#123;<span class="type">SparkConf</span>, <span class="type">SparkContext</span>, graphx&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">GraphxHelloWorld</span> <span class="keyword">extends</span> <span class="title">App</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//配置对象</span></span><br><span class="line">  <span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setAppName(<span class="string">"graphx"</span>).setMaster(<span class="string">"local[3]"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//创建sc对象</span></span><br><span class="line">  <span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//创建顶点数据集</span></span><br><span class="line">  <span class="keyword">val</span> vertexRDD:<span class="type">RDD</span>[(<span class="type">VertexId</span>,(<span class="type">String</span>,<span class="type">String</span>))] = sc.makeRDD(<span class="type">Array</span>(</span><br><span class="line">    (<span class="number">3</span>L,(<span class="string">"zhangsan"</span>,<span class="string">"student"</span>)),</span><br><span class="line">    (<span class="number">7</span>L,(<span class="string">"wangchen"</span>,<span class="string">"博士后"</span>)),</span><br><span class="line">    (<span class="number">5</span>L,(<span class="string">"zhangyu"</span>,<span class="string">"教授"</span>)),</span><br><span class="line">    (<span class="number">2</span>L,(<span class="string">"wangguo"</span>,<span class="string">"教授"</span>))</span><br><span class="line">  ))</span><br><span class="line">  <span class="comment">//创建边的数据</span></span><br><span class="line">  <span class="keyword">val</span> edgesRDD:<span class="type">RDD</span>[<span class="type">Edge</span>[<span class="type">String</span>]] = sc.makeRDD(<span class="type">Array</span>(</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">3</span>L,<span class="number">7</span>L,<span class="string">"合作者"</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">5</span>L,<span class="number">3</span>L,<span class="string">"指导"</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">2</span>L,<span class="number">5</span>L,<span class="string">"同事"</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">5</span>L,<span class="number">7</span>L,<span class="string">"同事"</span>)</span><br><span class="line">  ))</span><br><span class="line"></span><br><span class="line">  <span class="comment">//构建一个图</span></span><br><span class="line">  <span class="keyword">val</span> graphx = <span class="type">Graph</span>(vertexRDD,edgesRDD)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//RDD展示</span></span><br><span class="line">  <span class="keyword">val</span> result = graphx.triplets.collect()</span><br><span class="line"></span><br><span class="line">  result.foreach( triplet =&gt;</span><br><span class="line">    println(<span class="string">s"srcId=<span class="subst">$&#123;triplet.srcId&#125;</span> srcAttr=<span class="subst">$&#123;triplet.srcAttr&#125;</span>--edge=<span class="subst">$&#123;triplet.attr&#125;</span>--dstId=<span class="subst">$&#123;triplet.dstId&#125;</span> dstAttr=<span class="subst">$&#123;triplet.dstAttr&#125;</span> "</span>)</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  sc.stop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></dd></dl><h2 id="3-创建"><a href="#3-创建" class="headerlink" title="3. 创建"></a>3. 创建</h2><h3 id="3-1-def-apply-VD-ClassTag-ED-ClassTag"><a href="#3-1-def-apply-VD-ClassTag-ED-ClassTag" class="headerlink" title="3.1 def apply[VD: ClassTag, ED: ClassTag]"></a>3.1 def apply[VD: ClassTag, ED: ClassTag]</h3><h3 id="3-2-根据边构建图"><a href="#3-2-根据边构建图" class="headerlink" title="3.2 根据边构建图"></a>3.2 根据边构建图</h3><p>根据边直接创建， 所有顶点的属性都一样为 defaultValue</p>
+<p>def fromEdges[VD: ClassTag, ED: ClassTag]</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-根据边的两个顶点数据构建"><a href="#3-3-根据边的两个顶点数据构建" class="headerlink" title="3.3 根据边的两个顶点数据构建"></a>3.3 根据边的两个顶点数据构建</h3><p>根据裸边来进行创建，顶点的属性是 defaultValue ，边的属性为1</p>
+<p>def fromEdgeTuples[VD: ClassTag]</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-计算模式"><a href="#4-计算模式" class="headerlink" title="4. 计算模式"></a>4. 计算模式</h2><h3 id="4-1-基本信息"><a href="#4-1-基本信息" class="headerlink" title="4.1 基本信息"></a>4.1 基本信息</h3><dl><dt>获取边的数量</dt><dd>val numEdges: Long</dd></dl><dl><dt>获取顶点的数量</dt><dd>val numVertices: Long</dd></dl><dl><dt>获取所有顶点的入度</dt><dd>val inDegrees: VertexRDD[Int]</dd></dl><dl><dt>获取所有顶点的出度</dt><dd>val outDegrees: VertexRDD[Int]</dd></dl><dl><dt>获取所有顶点入度与出度之和</dt><dd>val degrees: VertexRDD[Int]</dd></dl><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.numEdges</span></span><br><span class="line">res0: Long = 4                                                                  </span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.numVertices</span></span><br><span class="line">res1: Long = 4                                                                  </span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.inDegrees</span></span><br><span class="line">res2: org.apache.spark.graphx.VertexRDD[Int] = VertexRDDImpl[19] at RDD at VertexRDD.scala:57</span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.inDegrees.collect</span></span><br><span class="line">res3: Array[(org.apache.spark.graphx.VertexId, Int)] = Array((3,1), (7,2), (5,1))</span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.outDegrees.collect</span></span><br><span class="line">res4: Array[(org.apache.spark.graphx.VertexId, Int)] = Array((3,1), (5,2), (2,1))</span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.degrees.collect</span></span><br><span class="line">res5: Array[(org.apache.spark.graphx.VertexId, Int)] = Array((3,2), (7,2), (5,3), (2,1))</span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.edges.collect</span></span><br><span class="line">res6: Array[org.apache.spark.graphx.Edge[String]] = Array(Edge(3,7,合作者), Edge(5,3,指导), Edge(2,5,同事), Edge(5,7,同事))</span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.vertices.collect</span></span><br><span class="line">res7: Array[(org.apache.spark.graphx.VertexId, (String, String))] = Array((3,(zhangsan,student)), (7,(wangchen,博士后)), (5,(zhangyu,教授)), (2,(wangguo,教授)))</span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.triplets.collect</span></span><br><span class="line">res8: Array[org.apache.spark.graphx.EdgeTriplet[(String, String),String]] = Array(((3,(zhangsan,student)),(7,(wangchen,博士后)),合作者), ((5,(zhangyu,教授)),(3,(zhangsan,student)),指导), ((2,(wangguo,教授)),(5,(zhangyu,教授)),同事), ((5,(zhangyu,教授)),(7,(wangchen,博士后)),同事))</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-转换操作"><a href="#4-2-转换操作" class="headerlink" title="4.2 转换操作"></a>4.2 转换操作</h3><p>GraphX中的转换操作主要有mapVertices,mapEdges和mapTriplets三个，它们在Graph文件中定义，在GraphImpl文件中实现。下面分别介绍这三个方法。</p>
+<h4 id="4-2-1-mapVertices"><a href="#4-2-1-mapVertices" class="headerlink" title="4.2.1 mapVertices"></a>4.2.1 mapVertices</h4><p>mapVertices用来更新顶点属性。从图的构建那章我们知道，顶点属性保存在边分区中，所以我们需要改变的是边分区中的属性。对图中的每一个顶点进行map操作，顶点的ID不能改变，可以将顶点的属性改变成另外一种类型。</p>
+<h4 id="4-2-2-mapEdges"><a href="#4-2-2-mapEdges" class="headerlink" title="4.2.2     mapEdges"></a>4.2.2     mapEdges</h4><p>def mapEdges[ED2: ClassTag](map: Edge[ED] =&gt; ED2): Graph[VD, ED2]  </p>
+<p>对图中的每一个边进行map操作， 边的方向不能改变，可以将边的属性改变为另外一种类型</p>
+<h4 id="4-2-3-mapTriplets"><a href="#4-2-3-mapTriplets" class="headerlink" title="4.2.3     mapTriplets"></a>4.2.3     mapTriplets</h4><p>函数定义 函数名 [传入的泛型] （参数：函数（被调用者每一个元素为EdgeTriplet，也就是说这里面的函数的参数就是这种的类型的，拿到这个参数后做什么事都无所谓，但是要保证这个函数返回为ED2））<br>def mapTriplets[ED2: ClassTag](map: EdgeTriplet[VD, ED] =&gt; ED2): Graph[VD, ED2] </p>
+<p>对于图中的每一个三元组进行map操作， 只能修改边的属性。</p>
+<h3 id="4-3-结构操作"><a href="#4-3-结构操作" class="headerlink" title="4.3 结构操作"></a>4.3 结构操作</h3><h4 id="4-3-1-reverse"><a href="#4-3-1-reverse" class="headerlink" title="4.3.1 reverse"></a>4.3.1 reverse</h4><p>reverse操作返回一个新的图，这个图的边的方向都是反转的。例如，这个操作可以用来计算反转的PageRank。因为反转操作没有修改顶点或者边的属性或者改变边的数量，所以我们可以 在不移动或者复制数据的情况下有效地实现它。<br>def reverse: Graph[VD, ED]</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.mapVertices((id,attr)=&gt;attr._1+<span class="string">":"</span>+attr._2).triplets.collect.foreach(triplet =&gt; println(s<span class="string">"srcId=<span class="variable">$&#123;triplet.srcId&#125;</span> srcAttr=<span class="variable">$&#123;triplet.srcAttr&#125;</span>--edge=<span class="variable">$&#123;triplet.attr&#125;</span>--dstId=<span class="variable">$&#123;triplet.dstId&#125;</span> dstAttr=<span class="variable">$&#123;triplet.dstAttr&#125;</span> "</span>))</span></span><br><span class="line">srcId=3 srcAttr=zhangsan:student--edge=合作者--dstId=7 dstAttr=wangchen:博士后 </span><br><span class="line">srcId=5 srcAttr=zhangyu:教授--edge=指导--dstId=3 dstAttr=zhangsan:student </span><br><span class="line">srcId=2 srcAttr=wangguo:教授--edge=同事--dstId=5 dstAttr=zhangyu:教授 </span><br><span class="line">srcId=5 srcAttr=zhangyu:教授--edge=同事--dstId=7 dstAttr=wangchen:博士后 </span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.mapVertices((id,attr)=&gt;attr._1+<span class="string">":"</span>+attr._2).reverse.triplets.collect.foreach(triplet =&gt; println(s<span class="string">"srcId=<span class="variable">$&#123;triplet.srcId&#125;</span> srcAttr=<span class="variable">$&#123;triplet.srcAttr&#125;</span>--edge=<span class="variable">$&#123;triplet.attr&#125;</span>--dstId=<span class="variable">$&#123;triplet.dstId&#125;</span> dstAttr=<span class="variable">$&#123;triplet.dstAttr&#125;</span> "</span>))</span></span><br><span class="line">srcId=7 srcAttr=wangchen:博士后--edge=合作者--dstId=3 dstAttr=zhangsan:student </span><br><span class="line">srcId=3 srcAttr=zhangsan:student--edge=指导--dstId=5 dstAttr=zhangyu:教授 </span><br><span class="line">srcId=5 srcAttr=zhangyu:教授--edge=同事--dstId=2 dstAttr=wangguo:教授 </span><br><span class="line">srcId=7 srcAttr=wangchen:博士后--edge=同事--dstId=5 dstAttr=zhangyu:教授</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-2-subgraph"><a href="#4-3-2-subgraph" class="headerlink" title="4.3.2 subgraph"></a>4.3.2 subgraph</h4><p>subgraph操作利用顶点和边的判断式（predicates），返回的图仅仅包含满足顶点判断式的顶点、满足边判断式的边以及满足顶点判断式的triple。subgraph操作可以用于很多场景，如获取 感兴趣的顶点和边组成的图或者获取清除断开连接后的图。<br>def subgraph( epred: EdgeTriplet[VD, ED] =&gt; Boolean = (x =&gt; true), vpred: (VertexId, VD) =&gt; Boolean = ((v, d) =&gt; true)) : Graph[VD, ED] </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.subgraph(x=&gt;<span class="keyword">if</span>(x.attr==<span class="string">"同事"</span>) <span class="literal">true</span> <span class="keyword">else</span> <span class="literal">false</span>,(a,b)=&gt;<span class="literal">true</span>).triplets.collect.foreach(tripl =&gt; println(s<span class="string">"srcId=<span class="variable">$&#123;triplet.srcId&#125;</span> srcAttr=<span class="variable">$&#123;triplet.srcAttr&#125;</span>--edge=<span class="variable">$&#123;triplet.attr&#125;</span>--dstId=<span class="variable">$&#123;triplet.dstId&#125;</span> dstAttr=<span class="variable">$&#123;triplet.dstAttr&#125;</span> "</span>))</span></span><br><span class="line">srcId=2 srcAttr=(wangguo,教授)--edge=同事--dstId=5 dstAttr=(zhangyu,教授) </span><br><span class="line">srcId=5 srcAttr=(zhangyu,教授)--edge=同事--dstId=7 dstAttr=(wangchen,博士后) </span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.vertices.collect</span></span><br><span class="line">res19: Array[(org.apache.spark.graphx.VertexId, (String, String))] = Array((3,(zhangsan,student)), (7,(wangchen,博士后)), (5,(zhangyu,教授)), (2,(wangguo,教授)))</span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.subgraph(x=&gt;<span class="keyword">if</span>(x.attr==<span class="string">"同事"</span>) <span class="literal">true</span> <span class="keyword">else</span> <span class="literal">false</span>,(a,b)=&gt;<span class="literal">true</span>).vertices.collect</span></span><br><span class="line">res20: Array[(org.apache.spark.graphx.VertexId, (String, String))] = Array((3,(zhangsan,student)), (7,(wangchen,博士后)), (5,(zhangyu,教授)), (2,(wangguo,教授)))</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-3-mask"><a href="#4-3-3-mask" class="headerlink" title="4.3.3 mask"></a>4.3.3 mask</h4><p>mask操作构造一个子图，类似于交集，这个子图包含输入图中包含的顶点和边。它的实现很简单，顶点和边均做inner join操作即可。这个操作可以和subgraph操作相结合，基于另外一个相关图的特征去约束一个图。只使用ID进行对比，不对比属性。<br>def mask[VD2: ClassTag, ED2: ClassTag](other:Graph[VD2, ED2]): Graph[VD, ED] </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.mask(graphx1).triplets.collect.foreach(triplet =&gt; println(s<span class="string">"srcId=<span class="variable">$&#123;triplet.srcId&#125;</span> srcAttr=<span class="variable">$&#123;triplet.srcAttr&#125;</span>--edge=<span class="variable">$&#123;triplet.attr&#125;</span>--dstId=<span class="variable">$&#123;triplet.dstId&#125;</span> dstAttr=<span class="variable">$&#123;triplet.dstAttr&#125;</span> "</span>))</span></span><br><span class="line">srcId=3 srcAttr=(zhangsan,student)--edge=合作者--dstId=7 dstAttr=(wangchen,博士后) </span><br><span class="line">srcId=5 srcAttr=(zhangyu,教授)--edge=指导--dstId=3 dstAttr=(zhangsan,student) </span><br><span class="line">srcId=5 srcAttr=(zhangyu,教授)--edge=同事--dstId=7 dstAttr=(wangchen,博士后)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-4-groupEdges"><a href="#4-3-4-groupEdges" class="headerlink" title="4.3.4 groupEdges"></a>4.3.4 groupEdges</h4><p>groupEdges操作合并多重图中的并行边(如顶点对之间重复的边)，并传入一个函数来合并两个边的属性。在大量的应用程序中，并行的边可以合并（它们的权重合并）为一条边从而降低图的大小。（两个边需要在一个分区内部才行）。合并两条边，通过函数合并边的属性。 <strong>【注意】</strong>两条边要在一个分区中<br>def groupEdges(merge: (ED, ED) =&gt; ED): Graph[VD, ED]</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx2.groupEdges((e1,e2)=&gt;e1+e2).triplets.collect.foreach(triplet =&gt; println(s<span class="string">"srcId=<span class="variable">$&#123;triplet.srcId&#125;</span> srcAttr=<span class="variable">$&#123;triplet.srcAttr&#125;</span>--edge=<span class="variable">$&#123;triplet.attr&#125;</span>--dstId=<span class="variable">$&#123;triplet.dstId&#125;</span> dstAttr=<span class="variable">$&#123;triplet.dstAttr&#125;</span> "</span>))</span></span><br><span class="line">srcId=3 srcAttr=(zhangsan,student)--edge=合作者--dstId=7 dstAttr=(wangchen,博士后) </span><br><span class="line">srcId=2 srcAttr=(wangguo,教授)--edge=同事--dstId=5 dstAttr=(zhangyu,教授) </span><br><span class="line">srcId=5 srcAttr=(zhangyu,教授)--edge=指导--dstId=3 dstAttr=(zhangsan,student) </span><br><span class="line">srcId=5 srcAttr=(zhangyu,教授)--edge=同事表兄弟--dstId=7 dstAttr=(wangchen,博士后) </span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx2.triplets.collect.foreach(triplet =&gt; println(s<span class="string">"srcId=<span class="variable">$&#123;triplet.srcId&#125;</span> srcAttr=<span class="variable">$&#123;triplet.srcAttr&#125;</span>--edge=<span class="variable">$&#123;triplet.attr&#125;</span>--dstId=<span class="variable">$&#123;triplet.dstId&#125;</span> dstAttr=<span class="variable">$&#123;triplet.dstAttr&#125;</span> "</span>))</span></span><br><span class="line">srcId=3 srcAttr=(zhangsan,student)--edge=合作者--dstId=7 dstAttr=(wangchen,博士后) </span><br><span class="line">srcId=2 srcAttr=(wangguo,教授)--edge=同事--dstId=5 dstAttr=(zhangyu,教授) </span><br><span class="line">srcId=5 srcAttr=(zhangyu,教授)--edge=指导--dstId=3 dstAttr=(zhangsan,student) </span><br><span class="line">srcId=5 srcAttr=(zhangyu,教授)--edge=同事--dstId=7 dstAttr=(wangchen,博士后) </span><br><span class="line">srcId=5 srcAttr=(zhangyu,教授)--edge=表兄弟--dstId=7 dstAttr=(wangchen,博士后)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-聚合"><a href="#4-4-聚合" class="headerlink" title="4.4 聚合"></a>4.4 聚合</h3><h4 id="4-4-1-collectNeighbors"><a href="#4-4-1-collectNeighbors" class="headerlink" title="4.4.1 collectNeighbors"></a>4.4.1 collectNeighbors</h4><p>该方法的作用是收集每个顶点的邻居顶点的顶点id和顶点属性。需要指定方向<br>EdgeDirection.out：出的方向<br>EdgeDirection.in:入的方向<br>EdgeDirection.Either：入边或出边<br>EdgeDirection.Both：入边且出边</p>
+<p>def collectNeighbors(edgeDirection: EdgeDirection): VertexRDD[Array[(VertexId, VD)]] 收集邻居节点的数据，根据指定的方向。返回的数据为RDD[(VertexId,  Array[(VertexId, VD)])]</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">scala&gt;</span><span class="bash"> graphx.collectNeighbors(EdgeDirection.Either).collect</span></span><br><span class="line">res29: Array[(org.apache.spark.graphx.VertexId, Array[(org.apache.spark.graphx.VertexId, (String, String))])] = Array((3,Array((5,(zhangyu,教授)), (7,(wangchen,博士后)))), (7,Array((5,(zhangyu,教授)), (3,(zhangsan,student)))), (5,Array((2,(wangguo,教授)), (7,(wangchen,博士后)), (3,(zhangsan,student)))), (2,Array((5,(zhangyu,教授)))))</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-2-collectNeighborIds"><a href="#4-4-2-collectNeighborIds" class="headerlink" title="4.4.2 collectNeighborIds"></a>4.4.2 collectNeighborIds</h4><p>该方法的作用是收集每个顶点的邻居顶点的顶点id。它的实现和collectNeighbors非常相同。需要指定方向</p>
+<p>def collectNeighborIds(edgeDirection: EdgeDirection): VertexRDD[Array[VertexId]]</p>
+<h4 id="4-4-3-aggregateMessages"><a href="#4-4-3-aggregateMessages" class="headerlink" title="4.4.3 aggregateMessages"></a>4.4.3 aggregateMessages</h4><p>def aggregateMessages[A: ClassTag]( sendMsg: EdgeContext[VD, ED, A] =&gt; Unit, mergeMsg: (A, A) =&gt; A, tripletFields: TripletFields = TripletFields.All) : VertexRDD[A] </p>
+<p>每一个边都会通过sendMsg 发送一个消息， </p>
+<p>每一个顶点都会通过mergeMsg 来处理所有他收到的消息。  </p>
+<p>TripletFields存在主要用于定制 EdgeContext 对象中的属性的值是否存在，为了减少数据通信量。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> vertexRDD3 = sc.makeRDD(<span class="type">Array</span>(</span><br><span class="line">    (<span class="number">1</span>L,(<span class="string">"zhang1"</span>,<span class="number">25</span>)),</span><br><span class="line">    (<span class="number">2</span>L,(<span class="string">"zhang2"</span>,<span class="number">18</span>)),</span><br><span class="line">    (<span class="number">3</span>L,(<span class="string">"zhang3"</span>,<span class="number">45</span>)),</span><br><span class="line">    (<span class="number">4</span>L,(<span class="string">"zhang4"</span>,<span class="number">20</span>)),</span><br><span class="line">    (<span class="number">5</span>L,(<span class="string">"zhang5"</span>,<span class="number">70</span>)),</span><br><span class="line">    (<span class="number">6</span>L,(<span class="string">"zhang6"</span>,<span class="number">79</span>)),</span><br><span class="line">    (<span class="number">7</span>L,(<span class="string">"zhang7"</span>,<span class="number">101</span>))</span><br><span class="line"></span><br><span class="line">  ))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">val</span> edgesRDD3=sc.makeRDD(<span class="type">Array</span>(</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">1</span>L,<span class="number">2</span>L,<span class="string">"1"</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">3</span>L,<span class="number">2</span>L,<span class="string">"1"</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">1</span>L,<span class="number">4</span>L,<span class="string">"1"</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">7</span>L,<span class="number">2</span>L,<span class="string">"1"</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">3</span>L,<span class="number">5</span>L,<span class="string">"1"</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">7</span>L,<span class="number">6</span>L,<span class="string">"1"</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">6</span>L,<span class="number">4</span>L,<span class="string">"1"</span>)</span><br><span class="line">  ))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">val</span> graph3 = <span class="type">Graph</span>(vertexRDD3,edgesRDD3)</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  aggregateMessages[A: ClassTag](</span></span><br><span class="line"><span class="comment">        sendMsg: EdgeContext[VD, ED, A] =&gt; Unit,</span></span><br><span class="line"><span class="comment">        mergeMsg: (A, A) =&gt; A,</span></span><br><span class="line"><span class="comment">     )</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  graph3.aggregateMessages[<span class="type">Int</span>](</span><br><span class="line">    <span class="comment">//发送消息:Map阶段</span></span><br><span class="line">    triplet=&gt;&#123;</span><br><span class="line">      <span class="comment">//将追求者的年龄发送给被追求者</span></span><br><span class="line">      triplet.sendToDst(triplet.srcAttr._2)</span><br><span class="line">      <span class="comment">//triplet.sendToSrc(triplet.dstAttr._2)</span></span><br><span class="line">    &#125;</span><br><span class="line">    ,<span class="comment">//Reduce</span></span><br><span class="line">    (a,b)=&gt;math.max(a,b)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-关联操作"><a href="#4-5-关联操作" class="headerlink" title="4.5 关联操作"></a>4.5 关联操作</h3><h4 id="4-5-1-joinVertices"><a href="#4-5-1-joinVertices" class="headerlink" title="4.5.1 joinVertices"></a>4.5.1 joinVertices</h4><p>def joinVertices[U: ClassTag](table: RDD[(VertexId, U)])(mapFunc: (VertexId, VD, U) =&gt; VD) : Graph[VD, ED]  </p>
+<p>将相同顶点ID的数据进行加权,将U这种类型的数据加入到 VD这种类型的数据上，但是不能修改VD的类型。</p>
+<h4 id="4-5-2-outerJoinVertices"><a href="#4-5-2-outerJoinVertices" class="headerlink" title="4.5.2 outerJoinVertices"></a>4.5.2 outerJoinVertices</h4><p>def outerJoinVertices[U: ClassTag, VD2: ClassTag](other: RDD[(VertexId, U)]) (mapFunc: (VertexId, VD, Option[U]) =&gt; VD2)(implicit eq: VD =:= VD2 = null) : Graph[VD2, ED]   </p>
+<p>和joinVertices类似。，只不过是如果没有相对应的节点，那么join的值默认为None。</p>
+<h2 id="4-6-Pregel"><a href="#4-6-Pregel" class="headerlink" title="4.6 Pregel"></a>4.6 Pregel</h2><h3 id="4-6-1-计算模型"><a href="#4-6-1-计算模型" class="headerlink" title="4.6.1 计算模型"></a>4.6.1 计算模型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def pregel[A: ClassTag]</span><br><span class="line">     (</span><br><span class="line">      initialMsg: A,//图初始化的时候，开始模型计算的时候，所有节点都会收到的一个默认的消息</span><br><span class="line">      maxIterations: Int = Int.MaxValue,//最大的迭代次数</span><br><span class="line">      activeDirection: EdgeDirection = EdgeDirection.Either)//发送消息的方向</span><br><span class="line">     (vprog: (VertexId, VD, A) =&gt; VD,//节点调用该消息将聚合后的数据和本节点进行属性的合并</span><br><span class="line">      sendMsg: EdgeTriplet[VD, ED] =&gt; Iterator[(VertexId, A)],//激活态的节点调用这个方法发送消息</span><br><span class="line">      mergeMsg: (A, A) =&gt; A)//如果一个节点收到多条消息，那么就会使用mergeMsg将消息合并为一条消息，如果只接收到一条消息，则不合并</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-2-最短路计算"><a href="#4-6-2-最短路计算" class="headerlink" title="4.6.2 最短路计算"></a>4.6.2 最短路计算</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhiyou100.spark</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.graphx.&#123;<span class="type">Edge</span>, <span class="type">EdgeDirection</span>, <span class="type">Graph</span>, <span class="type">VertexId</span>&#125;</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.rdd.<span class="type">RDD</span></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.&#123;<span class="type">SparkConf</span>, <span class="type">SparkContext</span>, graphx&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">GraphxHelloWorld</span> <span class="keyword">extends</span> <span class="title">App</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//配置对象</span></span><br><span class="line">  <span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setAppName(<span class="string">"graphx"</span>).setMaster(<span class="string">"local[3]"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//创建sc对象</span></span><br><span class="line">  <span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</span><br><span class="line">  <span class="comment">//最短路径算法:计算的是从V1到所有顶点的最短路径</span></span><br><span class="line">  <span class="keyword">val</span> vertexRDD4:<span class="type">RDD</span>[(<span class="type">VertexId</span>,<span class="type">Int</span>)] = sc.makeRDD(<span class="type">Array</span>(</span><br><span class="line">    (<span class="number">1</span>L,<span class="number">0</span>),</span><br><span class="line">    (<span class="number">2</span>L,<span class="type">Int</span>.<span class="type">MaxValue</span>),</span><br><span class="line">    (<span class="number">3</span>L,<span class="type">Int</span>.<span class="type">MaxValue</span>),</span><br><span class="line">    (<span class="number">4</span>L,<span class="type">Int</span>.<span class="type">MaxValue</span>),</span><br><span class="line">    (<span class="number">5</span>L,<span class="type">Int</span>.<span class="type">MaxValue</span>),</span><br><span class="line">    (<span class="number">6</span>L,<span class="type">Int</span>.<span class="type">MaxValue</span>),</span><br><span class="line">    (<span class="number">7</span>L,<span class="type">Int</span>.<span class="type">MaxValue</span>),</span><br><span class="line">    (<span class="number">8</span>L,<span class="type">Int</span>.<span class="type">MaxValue</span>),</span><br><span class="line">    (<span class="number">9</span>L,<span class="type">Int</span>.<span class="type">MaxValue</span>)</span><br><span class="line">  ))</span><br><span class="line">  <span class="keyword">val</span> edgesRDD4 = sc.makeRDD(<span class="type">Array</span>(</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">1</span>L,<span class="number">2</span>L,<span class="number">6</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">1</span>L,<span class="number">3</span>L,<span class="number">3</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">1</span>L,<span class="number">4</span>L,<span class="number">1</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">3</span>L,<span class="number">2</span>L,<span class="number">2</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">3</span>L,<span class="number">4</span>L,<span class="number">2</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">2</span>L,<span class="number">5</span>L,<span class="number">1</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">5</span>L,<span class="number">4</span>L,<span class="number">6</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">5</span>L,<span class="number">6</span>L,<span class="number">4</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">6</span>L,<span class="number">5</span>L,<span class="number">10</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">5</span>L,<span class="number">7</span>L,<span class="number">3</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">5</span>L,<span class="number">8</span>L,<span class="number">6</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">4</span>L,<span class="number">6</span>L,<span class="number">10</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">6</span>L,<span class="number">7</span>L,<span class="number">2</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">7</span>L,<span class="number">8</span>L,<span class="number">4</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">9</span>L,<span class="number">5</span>L,<span class="number">2</span>),</span><br><span class="line">    <span class="type">Edge</span>(<span class="number">9</span>L,<span class="number">8</span>L,<span class="number">3</span>)</span><br><span class="line">  ))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">val</span> graph4 = <span class="type">Graph</span>(vertexRDD4,edgesRDD4)</span><br><span class="line">  <span class="keyword">val</span> r = graph4.pregel[<span class="type">Int</span>](</span><br><span class="line">    <span class="comment">//初始化消息的数据</span></span><br><span class="line">    <span class="comment">/*graph4.mapVertices((id,v)=&gt;if(id == 1L) 0 else Int.MaxValue),*/</span></span><br><span class="line">    <span class="comment">//最大的迭代次数</span></span><br><span class="line">    <span class="type">Int</span>.<span class="type">MaxValue</span></span><br><span class="line">    <span class="comment">//激活态的消息发送的方向</span></span><br><span class="line">    <span class="comment">//EdgeDirection.Out</span></span><br><span class="line">    )(</span><br><span class="line">    <span class="comment">//节点调用该消息将聚合后的数据和本节点进行属性的合并:求最小值</span></span><br><span class="line">    (id,v,a) =&gt; math.min(v,a),</span><br><span class="line">    <span class="comment">//发送消息的方法</span></span><br><span class="line">    triplet=&gt;&#123;</span><br><span class="line">      <span class="comment">//如果三元组的边的权重+入口的值小于目的的值，那么就发送消息，反之不发送</span></span><br><span class="line">      <span class="keyword">if</span>(triplet.srcAttr!= <span class="type">Int</span>.<span class="type">MaxValue</span> &amp;&amp; triplet.srcAttr+triplet.attr&lt;triplet.dstAttr)&#123;</span><br><span class="line">        println(<span class="string">s"<span class="subst">$&#123;triplet.srcAttr&#125;</span>--<span class="subst">$&#123;triplet.attr&#125;</span>--<span class="subst">$&#123;triplet.dstAttr&#125;</span>"</span>)</span><br><span class="line">        <span class="type">Iterator</span>((triplet.dstId,triplet.srcAttr+triplet.attr))</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//不发送消息</span></span><br><span class="line">        <span class="type">Iterator</span>.empty</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//最后合并，取所有消息中的最小值</span></span><br><span class="line">    (a,b) =&gt;&#123;</span><br><span class="line">      println(<span class="string">s"merge:<span class="subst">$a</span>---<span class="subst">$b</span>"</span>)</span><br><span class="line">      math.min(a,b)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">val</span> r1 = r.triplets.collect()</span><br><span class="line"></span><br><span class="line">  r1.foreach( triplet =&gt;</span><br><span class="line">    println(<span class="string">s"srcId=<span class="subst">$&#123;triplet.srcId&#125;</span> srcAttr=<span class="subst">$&#123;triplet.srcAttr&#125;</span>--edge=<span class="subst">$&#123;triplet.attr&#125;</span>--dstId=<span class="subst">$&#123;triplet.dstId&#125;</span> dstAttr=<span class="subst">$&#123;triplet.dstAttr&#125;</span> "</span>)</span><br><span class="line">  )</span><br><span class="line">  println(r.vertices.collect.mkString(<span class="string">"\t"</span>))</span><br><span class="line"></span><br><span class="line">  sc.stop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-应用"><a href="#5-应用" class="headerlink" title="5. 应用"></a>5. 应用</h2><p>PageRank算法<br>(网页排名，Google左侧排名，佩奇排名)</p>
+<p>  <img src="http://static.zybuluo.com/zhangwen100/kh18p52pv06zmt1k0ogqiky7/image_1cmv2t6351udeheo17feif818sgm.png" alt="1"><br>  <img src="http://static.zybuluo.com/zhangwen100/9p5r02ll0bccjvw86zsqatgt/image_1cmv2i1fs13e9bi1sftrs919bg9.png" alt="2"><br>  <img src="http://static.zybuluo.com/zhangwen100/bltmke3lcusrpiyiwblu5a4r/image_1cmv30vj68jrssb1c9m27term1j.png" alt="3"><br>  <img src="http://static.zybuluo.com/zhangwen100/qrmkq0guq9b3tffcqra2unke/image_1cmv35mns1gdo1sei1jvk16uceac20.png" alt="4"><br>  <img src="http://static.zybuluo.com/zhangwen100/93u1q7av2gbu0n1ay76992zs/image_1cmv39mjn186e1nu61fdv1vt1luf2d.png" alt="5"><br>  <img src="http://static.zybuluo.com/zhangwen100/v4qrrv2dugiebwd31aojp2f9/image_1cmv3h2369kt12m51jtilon1ro52q.png" alt="6"><br>  <img src="http://static.zybuluo.com/zhangwen100/pt0h1jhxr6tghfl0uz2i3u9y/image_1cmv3u1as1pbqv9jgrqv6trfj3k.png" alt="7"><br>  <img src="http://static.zybuluo.com/zhangwen100/26a41h63j7xxd4fejg4baxpv/image_1cmv4s5hm1co815181ijg2qg1t0h41.png" alt="8"><br>  <img src="http://static.zybuluo.com/zhangwen100/w1w3c0qw5xy2hy4ulid17zu0/image_1cmv52otn11c3g1v1uecte21qgk4e.png" alt="9"><br>  <img src="http://static.zybuluo.com/zhangwen100/o7nmie0lcnhly58n709ddzhj/image_1cmv5rcf6g27obk1rvkd0ko8a4r.png" alt="10"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spark/" rel="tag"><i class="fa fa-tag"></i> Spark</a>
+          
+            <a href="/tags/Graphx/" rel="tag"><i class="fa fa-tag"></i> Graphx</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/1_Servlet的作用域和内置对象/" rel="next" title="Servlet的作用域和内置对象">
+                <i class="fa fa-chevron-left"></i> Servlet的作用域和内置对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/1_Spark 之 MLlib/" rel="prev" title="Spark之MLlib">
+                Spark之MLlib <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzQ4MC8yMDAyMA"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/ggg.jpg" alt="Ckm_zz">
+            
+              <p class="site-author-name" itemprop="name">Ckm_zz</p>
+              <p class="site-description motion-element" itemprop="description">—— not too bad luck</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zzckm" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.totree.cn" target="_blank" title="To树商城">
+                      
+                        <i class="fa fa-fw fa-skype"></i></a>
+                  </span>
+                
+            </div>
+          
+<!-- 音乐播放器 -->
+ 
+           <div>
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="210" height="110" src="//music.163.com/outchain/player?type=2&id=3932159&auto=1&height=66"></iframe>
+           </div>
+ 
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spark-之-Graphx"><span class="nav-number">1.</span> <span class="nav-text">Spark 之 Graphx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Graphx-概述"><span class="nav-number">1.1.</span> <span class="nav-text">1. Graphx 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是-Graphx"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 什么是 Graphx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Graphx-的特点"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Graphx 的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-学什么"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 学什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-关键抽象"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 关键抽象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-简单案例"><span class="nav-number">1.2.</span> <span class="nav-text">2. 简单案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-创建一个图"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 创建一个图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创建"><span class="nav-number">1.3.</span> <span class="nav-text">3. 创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-def-apply-VD-ClassTag-ED-ClassTag"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 def apply[VD: ClassTag, ED: ClassTag]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-根据边构建图"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 根据边构建图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-根据边的两个顶点数据构建"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 根据边的两个顶点数据构建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-计算模式"><span class="nav-number">1.4.</span> <span class="nav-text">4. 计算模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-基本信息"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 基本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-转换操作"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 转换操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-mapVertices"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">4.2.1 mapVertices</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-mapEdges"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">4.2.2     mapEdges</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-3-mapTriplets"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">4.2.3     mapTriplets</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-结构操作"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 结构操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-1-reverse"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">4.3.1 reverse</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-subgraph"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">4.3.2 subgraph</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-3-mask"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">4.3.3 mask</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-4-groupEdges"><span class="nav-number">1.4.3.4.</span> <span class="nav-text">4.3.4 groupEdges</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-聚合"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-1-collectNeighbors"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">4.4.1 collectNeighbors</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-2-collectNeighborIds"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">4.4.2 collectNeighborIds</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-3-aggregateMessages"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">4.4.3 aggregateMessages</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-关联操作"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5 关联操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-1-joinVertices"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">4.5.1 joinVertices</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-2-outerJoinVertices"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">4.5.2 outerJoinVertices</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-Pregel"><span class="nav-number">1.5.</span> <span class="nav-text">4.6 Pregel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-1-计算模型"><span class="nav-number">1.5.1.</span> <span class="nav-text">4.6.1 计算模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-2-最短路计算"><span class="nav-number">1.5.2.</span> <span class="nav-text">4.6.2 最短路计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-应用"><span class="nav-number">1.6.</span> <span class="nav-text">5. 应用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by ZZckm</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+<!-- 鼠标点击爆炸烟花效果 -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":120,"height":270},"mobile":{"show":true},"log":false});</script></body>
+</html>

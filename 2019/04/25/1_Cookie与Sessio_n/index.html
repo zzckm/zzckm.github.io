@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入查看该篇文章的密码') !== ''){
+                alert('密码错误，请咨询博主');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "39f09b08"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javase,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Cookie与Session1. Servlet后续详解1.1 一个Servlet可以有多个 &amp;lt;url-pattern&amp;gt;1.2 配置Servlet可以使用通配符（*）*：表示任意字符 A. /*：可以使用任意的字符访问当前的Servlet B. /xxx/*：xxx表示某一个模块，一般用于权限验证 C. *.action,*.do等等1.3 自定义的&amp;lt;servlet-name&amp;g">
+<meta name="keywords" content="Javase">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cookie与Session">
+<meta property="og:url" content="http://yoursite.com/2019/04/25/1_Cookie与Sessio_n/index.html">
+<meta property="og:site_name" content="To树-HOME">
+<meta property="og:description" content="Cookie与Session1. Servlet后续详解1.1 一个Servlet可以有多个 &amp;lt;url-pattern&amp;gt;1.2 配置Servlet可以使用通配符（*）*：表示任意字符 A. /*：可以使用任意的字符访问当前的Servlet B. /xxx/*：xxx表示某一个模块，一般用于权限验证 C. *.action,*.do等等1.3 自定义的&amp;lt;servlet-name&amp;g">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/hr8rfwtbbklois5v8h3xkufu/image_1cb61m8u313dp1ipq172mbqb1vpsp.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/bpdh2ecpnjpn74d3bmq8889p/%E6%97%A0%E6%A0%87%E9%A2%98.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/b08y5lr89hx35ebmn1ds97uk/%E6%97%A0%E6%A0%87%E9%A2%98.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/cqsbdpcq7zfq56i0gww8sig8/image_1cfn8nm3e13e1d8ubf47kl1rl59.png">
+<meta property="og:image" content="http://static.zybuluo.com/zhangwen100/0zpjhk8oe9ve6df7ru9yees5/image_1cb63umlp1rap1arv1sib4umj4t2b.png">
+<meta property="og:updated_time" content="2019-05-26T08:58:42.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cookie与Session">
+<meta name="twitter:description" content="Cookie与Session1. Servlet后续详解1.1 一个Servlet可以有多个 &amp;lt;url-pattern&amp;gt;1.2 配置Servlet可以使用通配符（*）*：表示任意字符 A. /*：可以使用任意的字符访问当前的Servlet B. /xxx/*：xxx表示某一个模块，一般用于权限验证 C. *.action,*.do等等1.3 自定义的&amp;lt;servlet-name&amp;g">
+<meta name="twitter:image" content="http://static.zybuluo.com/zhangwen100/hr8rfwtbbklois5v8h3xkufu/image_1cb61m8u313dp1ipq172mbqb1vpsp.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/25/1_Cookie与Sessio_n/">
+
+
+
+
+
+  <title>Cookie与Session | To树-HOME</title>
+  
+
+
+
+
+
+
+
+
+
+<!-- katex样式 -->
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+  <a href="https://github.com/zzckm" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">To树-HOME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">只可意会</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/25/1_Cookie与Sessio_n/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ckm_zz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/ggg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="To树-HOME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Cookie与Session</h1>
+        
+
+        <div class="post-meta">
+        <!-- TOP -->
+        
+
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-26T16:58:42+08:00">
+                2019-05-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Cookie与Session"><a href="#Cookie与Session" class="headerlink" title="Cookie与Session"></a>Cookie与Session</h1><h2 id="1-Servlet后续详解"><a href="#1-Servlet后续详解" class="headerlink" title="1. Servlet后续详解"></a>1. Servlet后续详解</h2><h3 id="1-1-一个Servlet可以有多个-lt-url-pattern-gt"><a href="#1-1-一个Servlet可以有多个-lt-url-pattern-gt" class="headerlink" title="1.1 一个Servlet可以有多个 &lt;url-pattern&gt;"></a>1.1 一个Servlet可以有多个 <code>&lt;url-pattern&gt;</code></h3><h3 id="1-2-配置Servlet可以使用通配符（-）"><a href="#1-2-配置Servlet可以使用通配符（-）" class="headerlink" title="1.2 配置Servlet可以使用通配符（*）"></a>1.2 配置Servlet可以使用通配符（*）</h3><pre><code>*：表示任意字符
+A. /*：可以使用任意的字符访问当前的Servlet
+B. /xxx/*：xxx表示某一个模块，一般用于权限验证
+C. *.action,*.do等等</code></pre><h3 id="1-3-自定义的-lt-servlet-name-gt"><a href="#1-3-自定义的-lt-servlet-name-gt" class="headerlink" title="1.3 自定义的&lt;servlet-name&gt;"></a>1.3 自定义的<code>&lt;servlet-name&gt;</code></h3><pre><code>注意这个内容不能为default</code></pre><h3 id="1-4-自定义启动Servlet启动时刻"><a href="#1-4-自定义启动Servlet启动时刻" class="headerlink" title="1.4 自定义启动Servlet启动时刻"></a>1.4 自定义启动Servlet启动时刻</h3><pre><code>在执行Servlet的初始化操作的时候，如果初始化的处理工作比较复杂，那么第一个请求的用户的体验会非常差，那么可以设置Servlet执行初始化的时刻为服务器启动的时候</code></pre><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>register<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.zhiyou100.um.servlet.RegisterServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">  	<span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">  		配置Servlet启动时刻和顺序</span></span><br><span class="line"><span class="comment">  		内容：数字，数字越小初始化越早</span></span><br><span class="line"><span class="comment">  	--&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>0<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-HTTP协议无状态问题"><a href="#2-HTTP协议无状态问题" class="headerlink" title="2. HTTP协议无状态问题"></a>2. HTTP协议无状态问题</h2><h3 id="2-1-什么是会话"><a href="#2-1-什么是会话" class="headerlink" title="2.1 什么是会话"></a>2.1 什么是会话</h3><pre><code>会话就是在打开浏览器后和服务器可以进行多次交流，即请求与响应
+注意：在一次会话中可以有多次请求和多次接受响应</code></pre><h3 id="2-2-无状态"><a href="#2-2-无状态" class="headerlink" title="2.2 无状态"></a>2.2 无状态</h3><pre><code>HTTP是无状态协议，也就是没有记忆力，每次请求之间无法共享数据。这就无法知道会话什么时候结束，什么时候开始，也无法确定发出请求的用户身份。
+出现的问题：请求之间无法实现数据的共享</code></pre><h3 id="2-3-会话跟踪技术"><a href="#2-3-会话跟踪技术" class="headerlink" title="2.3 会话跟踪技术"></a>2.3 会话跟踪技术</h3><pre><code>一个会话中共享数据就是会话跟踪技术。</code></pre><h3 id="2-4-无状态问题解决方案"><a href="#2-4-无状态问题解决方案" class="headerlink" title="2.4 无状态问题解决方案"></a>2.4 无状态问题解决方案</h3><pre><code>A. 使用参数拼接在请求的URL后面，实现数据的传递
+问题：可以解决数据共享的问题，但是这种方式会将参数暴露在地址栏中，不安全
+B. Cookie
+C. Session</code></pre><h2 id="3-Cookie"><a href="#3-Cookie" class="headerlink" title="3. Cookie"></a>3. Cookie</h2><h3 id="3-1-Cookie是什么？"><a href="#3-1-Cookie是什么？" class="headerlink" title="3.1 Cookie是什么？"></a>3.1 Cookie是什么？</h3><pre><code>Cookie：小甜点
+特点：客户端的技术，将共享数据保存在客户端（即浏览器）中
+在第一次请求的时候，将共享数据发送到浏览器中进行保存，以后每次请求都将之前保存的共享数据发送到到服务器。</code></pre><h3 id="3-2-Cookie的解释"><a href="#3-2-Cookie的解释" class="headerlink" title="3.2 Cookie的解释"></a>3.2 Cookie的解释</h3><p>![image_1cb61m8u313dp1ipq172mbqb1vpsp.png-29.9kB][1]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个Cookie，类似于办卡</span></span><br><span class="line">Cookie c = <span class="keyword">new</span> Cookie(<span class="string">"usernumber"</span>, u.getNumber());</span><br><span class="line"><span class="comment">//将Cookie返回给response，即将卡交给客户</span></span><br><span class="line">resp.addCookie(c);</span><br></pre></td></tr></table></figure>
+
+<div style="text-align:center">第一次请求</div>
+![无标题.png-109.2kB][2]
+<div style="text-align:center">非第一次请求</div>
+![无标题.png-104.4kB][3]
+### 3.3 Cookie的操作细节
+![image_1cfn8nm3e13e1d8ubf47kl1rl59.png-90.4kB][4]
+
+
+
+
+<h4 id="3-3-1-创建Cookie对象，设置共享数据"><a href="#3-3-1-创建Cookie对象，设置共享数据" class="headerlink" title="3.3.1 创建Cookie对象，设置共享数据"></a>3.3.1 创建Cookie对象，设置共享数据</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cookie c = <span class="keyword">new</span> Cookie(String name,String value);</span><br><span class="line"><span class="comment">//一个Cookie只能存储一个字符串类型的数据，不能存储其他类型的数据</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-2-将Cookie响应给刘篮球"><a href="#3-3-2-将Cookie响应给刘篮球" class="headerlink" title="3.3.2 将Cookie响应给刘篮球"></a>3.3.2 将Cookie响应给刘篮球</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response对象.addCookie(c);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-3-获取请求中的Cookie信息"><a href="#3-3-3-获取请求中的Cookie信息" class="headerlink" title="3.3.3 获取请求中的Cookie信息"></a>3.3.3 获取请求中的Cookie信息</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Cookie[] cs = request对象.getCookies();</span><br><span class="line"><span class="keyword">for</span>(Cookie c:cs)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"usernumber"</span>.equals(c.getName()))&#123;</span><br><span class="line">        String value = c.getValue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-4-修改Cookie中的共享数据"><a href="#3-3-4-修改Cookie中的共享数据" class="headerlink" title="3.3.4 修改Cookie中的共享数据"></a>3.3.4 修改Cookie中的共享数据</h4><pre><code>A. 重新创建一个新的cookie，名称和要修改的数据的Cookie的名称一样
+B. 先获取到要修改的cookie对象，再调用setValue(String newValue)重新设置值
+注意：修改Cookie中的数据，需要再次发送给浏览器</code></pre><h4 id="3-3-5-操作Cookie的生命周期"><a href="#3-3-5-操作Cookie的生命周期" class="headerlink" title="3.3.5 操作Cookie的生命周期"></a>3.3.5 操作Cookie的生命周期</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认是在关闭浏览器的时候销毁</span></span><br><span class="line">c.setMaxAge(<span class="keyword">int</span> expiry)</span><br></pre></td></tr></table></figure>
+
+<pre><code>expiry&gt;0：设置Cookie能够存活expiry秒，即使关闭浏览器，不影响Cookie中的共享数据。比如：十天内免登录：setMaxAge(60*60*24*10)
+expiry=0：立即删除当前的Cookie信息
+expiry&lt;0：缺省值，关闭浏览器的时候销毁</code></pre><p>![image_1cb63umlp1rap1arv1sib4umj4t2b.png-40.8kB][5]</p>
+<h4 id="3-3-6-删除Cookie中的共享数据"><a href="#3-3-6-删除Cookie中的共享数据" class="headerlink" title="3.3.6 删除Cookie中的共享数据"></a>3.3.6 删除Cookie中的共享数据</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setMaxAge(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-7-Cookie中的key和value不支持中文"><a href="#3-3-7-Cookie中的key和value不支持中文" class="headerlink" title="3.3.7 Cookie中的key和value不支持中文"></a>3.3.7 Cookie中的key和value不支持中文</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置编码</span></span><br><span class="line">Cookie c = <span class="keyword">new</span> Cookie(<span class="string">"usernumber"</span>,URLEncoder.encode(number,<span class="string">"UTF-8"</span>));</span><br><span class="line"><span class="comment">//获取的时候设置解码</span></span><br><span class="line">usernumber = URLDecoder.decode(value,<span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-7-Cookie的作用范围"><a href="#3-3-7-Cookie的作用范围" class="headerlink" title="3.3.7 Cookie的作用范围"></a>3.3.7 Cookie的作用范围</h4><p>Cookie在创建的时候会根据当前的Servlet的相对路径设置自己的路径，比如当前Servlet的路径为/login/loginServlet,则相对路径为/login/,那么只有在访问/login/下面的资源的时候，才能够将该Cookie发送到服务器。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置Cookie的路径</span></span><br><span class="line">setPath(String uri);</span><br><span class="line"><span class="comment">//Cookie对象.setPath("/")，表示当前项目中所有的资源都能够共享该Cookie信息</span></span><br></pre></td></tr></table></figure>
+
+<p>多个项目之间共享数据，则需要设置域范围，比如：<br>wenku.baidu.com<br>pan.baidu.com<br>Cookie对象.setDomain(“baidu.com”);</p>
+<h3 id="3-4-Cookie的作用与缺陷"><a href="#3-4-Cookie的作用与缺陷" class="headerlink" title="3.4 Cookie的作用与缺陷"></a>3.4 Cookie的作用与缺陷</h3><h4 id="3-4-1-作用是实现会话跟踪"><a href="#3-4-1-作用是实现会话跟踪" class="headerlink" title="3.4.1 作用是实现会话跟踪"></a>3.4.1 作用是实现会话跟踪</h4><h4 id="3-4-2-Cookie的缺陷"><a href="#3-4-2-Cookie的缺陷" class="headerlink" title="3.4.2 Cookie的缺陷"></a>3.4.2 Cookie的缺陷</h4><pre><code>1. 获取Cookie信息很麻烦
+2. Cookie不支持中文
+3. 一个Cookie只能存储一个字符串类型的数据
+4. Cookie在浏览器中有数量的限制
+   一个浏览器对一个站点最多存储20条Cookie信息
+   一个浏览器最多只能存储300个Cookie
+5. 共享数据是保存在浏览器中的，很容易造成数据的泄露（不安全）</code></pre><h2 id="4-Session"><a href="#4-Session" class="headerlink" title="4. Session"></a>4. Session</h2><h3 id="4-1-Session是什么"><a href="#4-1-Session是什么" class="headerlink" title="4.1 Session是什么"></a>4.1 Session是什么</h3><pre><code>Session是服务端的会话技术，是将数据保存在服务端。其实底层就是Cookie。</code></pre><h3 id="4-2-Session的操作"><a href="#4-2-Session的操作" class="headerlink" title="4.2 Session的操作"></a>4.2 Session的操作</h3><h4 id="4-2-1-获取Session对象"><a href="#4-2-1-获取Session对象" class="headerlink" title="4.2.1 获取Session对象"></a>4.2.1 获取Session对象</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request对象.getSession()：和参数为<span class="keyword">true</span>的一样</span><br><span class="line">request对象.getSession(<span class="keyword">true</span>)：获取Session对象，如果没有session对象，直接创建一个新的返回，缺省值</span><br><span class="line">request对象.getSession(<span class="keyword">false</span>)：获取Session对象，如果没有返回<span class="keyword">null</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-2-设置共享数据"><a href="#4-2-2-设置共享数据" class="headerlink" title="4.2.2 设置共享数据"></a>4.2.2 设置共享数据</h4><pre><code>Session对象.setAttribute(String name,Object value)
+Session可以存储任何类型的数据，比如登录用户的信息，可以封装到User对象中。</code></pre><h4 id="4-2-3-修改Session中的共享数据"><a href="#4-2-3-修改Session中的共享数据" class="headerlink" title="4.2.3 修改Session中的共享数据"></a>4.2.3 修改Session中的共享数据</h4><pre><code>重新设置一个同名的共享数据即可</code></pre><h4 id="4-2-4-获取共享数据"><a href="#4-2-4-获取共享数据" class="headerlink" title="4.2.4 获取共享数据"></a>4.2.4 获取共享数据</h4><pre><code>Object value = Session对象.getAttribute(String name);</code></pre><h4 id="4-2-5-删除Session中的共享数据"><a href="#4-2-5-删除Session中的共享数据" class="headerlink" title="4.2.5 删除Session中的共享数据"></a>4.2.5 删除Session中的共享数据</h4><pre><code>Session对象.removeAttribute(String name);</code></pre><h4 id="4-2-6-销毁Session"><a href="#4-2-6-销毁Session" class="headerlink" title="4.2.6 销毁Session"></a>4.2.6 销毁Session</h4><pre><code>Session对象.invalidate()</code></pre><h4 id="4-2-7-Session的命名规范"><a href="#4-2-7-Session的命名规范" class="headerlink" title="4.2.7 Session的命名规范"></a>4.2.7 Session的命名规范</h4><pre><code>Session中共享数据的属性名的命名规范：XXX_IN_SESSION
+Session对象.setAttribute(&quot;USER_IN_SESSION&quot;,user)</code></pre><h4 id="4-2-8-Session中的序列化与反序列化"><a href="#4-2-8-Session中的序列化与反序列化" class="headerlink" title="4.2.8 Session中的序列化与反序列化"></a>4.2.8 Session中的序列化与反序列化</h4><p>Session中存储的对象通常需要实现序列化接口</p>
+<pre><code>在网络之间传输的数据格式为二进制数据
+序列化：将对象转换成二进制数据
+反序列化：将二进制数据转换成对象</code></pre><h4 id="4-2-9-Session的超时管理"><a href="#4-2-9-Session的超时管理" class="headerlink" title="4.2.9 Session的超时管理"></a>4.2.9 Session的超时管理</h4><p>超时：在访问当前的资源的过程中，不和网页进行任何交互，超过设定的时间就是超时</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setMaxInactiveInterval(<span class="keyword">int</span> interval)</span><br></pre></td></tr></table></figure>
+
+<p>在服务器中默认的配置为30分钟，通常不需要修改。</p>
+<h2 id="5-Cookie与Session的区别"><a href="#5-Cookie与Session的区别" class="headerlink" title="5. Cookie与Session的区别"></a>5. Cookie与Session的区别</h2><ol>
+<li>Cookie中只能保存ASCII字符串，Session中可以保存任意类型的数据，甚至Java Bean乃至任何Java类、对象等</li>
+<li>隐私策略不同。Cookie存储在客户端，对客户端是可见的，可被客户端窥探、复制、修改。而Session存储在服务器上，不存在敏感信息泄露的风险</li>
+<li>有效期不同。Cookie的过期时间可以被设置很长。Session依赖于名为JSESSIONI的Cookie，其过期时间默认为-1，只要关闭了浏览器窗口，该Session就会过期，因此Session不能完成信息永久有效。如果Session的超时时间过长，服务器累计的Session就会越多，越容易导致内存溢出。</li>
+<li>服务器压力不同。每个用户都会产生一个session，如果并发访问的用户过多，就会产生非常多的session，耗费大量的内存。因此，诸如Google、Baidu这样的网站，不太可能运用Session来追踪客户会话。</li>
+<li>浏览器支持不同。Cookie运行在浏览器端，若浏览器不支持Cookie，需要运用Session和URL地址重写。</li>
+<li>跨域支持不同。Cookie支持跨域访问（设置domain属性实现跨子域），Session不支持跨域访问</li>
+</ol>
+<p>  <img src="http://static.zybuluo.com/zhangwen100/hr8rfwtbbklois5v8h3xkufu/image_1cb61m8u313dp1ipq172mbqb1vpsp.png" alt="1"><br>  <img src="http://static.zybuluo.com/zhangwen100/bpdh2ecpnjpn74d3bmq8889p/%E6%97%A0%E6%A0%87%E9%A2%98.png" alt="2"><br>  <img src="http://static.zybuluo.com/zhangwen100/b08y5lr89hx35ebmn1ds97uk/%E6%97%A0%E6%A0%87%E9%A2%98.png" alt="3"><br>  <img src="http://static.zybuluo.com/zhangwen100/cqsbdpcq7zfq56i0gww8sig8/image_1cfn8nm3e13e1d8ubf47kl1rl59.png" alt="4"><br>  <img src="http://static.zybuluo.com/zhangwen100/0zpjhk8oe9ve6df7ru9yees5/image_1cb63umlp1rap1arv1sib4umj4t2b.png" alt="5"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javase/" rel="tag"><i class="fa fa-tag"></i> Javase</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/1_CDH安装文档/" rel="next" title="CDH安装文档-Cloudera Manager">
+                <i class="fa fa-chevron-left"></i> CDH安装文档-Cloudera Manager
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/1_ETL之Kettle/" rel="prev" title="ETL之Kettle">
+                ETL之Kettle <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzQ4MC8yMDAyMA"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/ggg.jpg" alt="Ckm_zz">
+            
+              <p class="site-author-name" itemprop="name">Ckm_zz</p>
+              <p class="site-description motion-element" itemprop="description">—— not too bad luck</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zzckm" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.totree.cn" target="_blank" title="To树商城">
+                      
+                        <i class="fa fa-fw fa-skype"></i></a>
+                  </span>
+                
+            </div>
+          
+<!-- 音乐播放器 -->
+ 
+           <div>
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="210" height="110" src="//music.163.com/outchain/player?type=2&id=3932159&auto=1&height=66"></iframe>
+           </div>
+ 
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie与Session"><span class="nav-number">1.</span> <span class="nav-text">Cookie与Session</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Servlet后续详解"><span class="nav-number">1.1.</span> <span class="nav-text">1. Servlet后续详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-一个Servlet可以有多个-lt-url-pattern-gt"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 一个Servlet可以有多个 &lt;url-pattern&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-配置Servlet可以使用通配符（-）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 配置Servlet可以使用通配符（*）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-自定义的-lt-servlet-name-gt"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 自定义的&lt;servlet-name&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-自定义启动Servlet启动时刻"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 自定义启动Servlet启动时刻</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-HTTP协议无状态问题"><span class="nav-number">1.2.</span> <span class="nav-text">2. HTTP协议无状态问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-什么是会话"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 什么是会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-无状态"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 无状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-会话跟踪技术"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 会话跟踪技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-无状态问题解决方案"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 无状态问题解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Cookie"><span class="nav-number">1.3.</span> <span class="nav-text">3. Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Cookie是什么？"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Cookie是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Cookie的解释"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Cookie的解释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-创建Cookie对象，设置共享数据"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">3.3.1 创建Cookie对象，设置共享数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-将Cookie响应给刘篮球"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3.3.2 将Cookie响应给刘篮球</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-3-获取请求中的Cookie信息"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">3.3.3 获取请求中的Cookie信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-4-修改Cookie中的共享数据"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">3.3.4 修改Cookie中的共享数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-5-操作Cookie的生命周期"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">3.3.5 操作Cookie的生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-6-删除Cookie中的共享数据"><span class="nav-number">1.3.2.6.</span> <span class="nav-text">3.3.6 删除Cookie中的共享数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-7-Cookie中的key和value不支持中文"><span class="nav-number">1.3.2.7.</span> <span class="nav-text">3.3.7 Cookie中的key和value不支持中文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-7-Cookie的作用范围"><span class="nav-number">1.3.2.8.</span> <span class="nav-text">3.3.7 Cookie的作用范围</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Cookie的作用与缺陷"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.4 Cookie的作用与缺陷</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-作用是实现会话跟踪"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3.4.1 作用是实现会话跟踪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-Cookie的缺陷"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">3.4.2 Cookie的缺陷</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Session"><span class="nav-number">1.4.</span> <span class="nav-text">4. Session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Session是什么"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 Session是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Session的操作"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 Session的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-获取Session对象"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">4.2.1 获取Session对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-设置共享数据"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">4.2.2 设置共享数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-3-修改Session中的共享数据"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">4.2.3 修改Session中的共享数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-4-获取共享数据"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">4.2.4 获取共享数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-5-删除Session中的共享数据"><span class="nav-number">1.4.2.5.</span> <span class="nav-text">4.2.5 删除Session中的共享数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-6-销毁Session"><span class="nav-number">1.4.2.6.</span> <span class="nav-text">4.2.6 销毁Session</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-7-Session的命名规范"><span class="nav-number">1.4.2.7.</span> <span class="nav-text">4.2.7 Session的命名规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-8-Session中的序列化与反序列化"><span class="nav-number">1.4.2.8.</span> <span class="nav-text">4.2.8 Session中的序列化与反序列化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-9-Session的超时管理"><span class="nav-number">1.4.2.9.</span> <span class="nav-text">4.2.9 Session的超时管理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Cookie与Session的区别"><span class="nav-number">1.5.</span> <span class="nav-text">5. Cookie与Session的区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by ZZckm</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+<!-- 鼠标点击爆炸烟花效果 -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":120,"height":270},"mobile":{"show":true},"log":false});</script></body>
+</html>

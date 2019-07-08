@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入查看该篇文章的密码') !== ''){
+                alert('密码错误，请咨询博主');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "39f09b08"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Storm,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Storm为何使用Storm？Apache Storm是一个免费的开源分布式实时计算系统。Storm可以轻松可靠地处理无限数据流，实时处理Hadoop为批处理所做的工作。Storm非常简单，可以与任何编程语言一起使用，并且使用起来很有趣！ Storm有许多用例：实时分析，在线机器学习，连续计算，分布式RPC，ETL等。Storm很快：一个基准测试表示每个节点每秒处理超过一百万个元组。它具有可扩展性">
+<meta name="keywords" content="Storm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storm">
+<meta property="og:url" content="http://yoursite.com/2019/04/25/1_Storm/index.html">
+<meta property="og:site_name" content="To树-HOME">
+<meta property="og:description" content="Storm为何使用Storm？Apache Storm是一个免费的开源分布式实时计算系统。Storm可以轻松可靠地处理无限数据流，实时处理Hadoop为批处理所做的工作。Storm非常简单，可以与任何编程语言一起使用，并且使用起来很有趣！ Storm有许多用例：实时分析，在线机器学习，连续计算，分布式RPC，ETL等。Storm很快：一个基准测试表示每个节点每秒处理超过一百万个元组。它具有可扩展性">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-26T08:58:42.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Storm">
+<meta name="twitter:description" content="Storm为何使用Storm？Apache Storm是一个免费的开源分布式实时计算系统。Storm可以轻松可靠地处理无限数据流，实时处理Hadoop为批处理所做的工作。Storm非常简单，可以与任何编程语言一起使用，并且使用起来很有趣！ Storm有许多用例：实时分析，在线机器学习，连续计算，分布式RPC，ETL等。Storm很快：一个基准测试表示每个节点每秒处理超过一百万个元组。它具有可扩展性">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/25/1_Storm/">
+
+
+
+
+
+  <title>Storm | To树-HOME</title>
+  
+
+
+
+
+
+
+
+
+
+<!-- katex样式 -->
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+  <a href="https://github.com/zzckm" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">To树-HOME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">只可意会</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/25/1_Storm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ckm_zz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/ggg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="To树-HOME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Storm</h1>
+        
+
+        <div class="post-meta">
+        <!-- TOP -->
+        
+
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-26T16:58:42+08:00">
+                2019-05-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Storm/" itemprop="url" rel="index">
+                    <span itemprop="name">Storm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.9k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  24 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Storm"><a href="#Storm" class="headerlink" title="Storm"></a>Storm</h1><h2 id="为何使用Storm？"><a href="#为何使用Storm？" class="headerlink" title="为何使用Storm？"></a>为何使用Storm？</h2><p>Apache Storm是一个免费的开源分布式实时计算系统。Storm可以轻松可靠地处理无限数据流，实时处理Hadoop为批处理所做的工作。Storm非常简单，可以与任何编程语言一起使用，并且使用起来很有趣！</p>
+<p>Storm有许多用例：实时分析，在线机器学习，连续计算，分布式RPC，ETL等。Storm很快：一个基准测试表示每个节点每秒处理超过一百万个元组。它具有可扩展性，容错性，可确保您的数据得到处理，并且易于设置和操作。</p>
+<p>Storm集成了您已经使用的排队和数据库技术。Storm拓扑消耗数据流并以任意复杂的方式处理这些流，然后在计算的每个阶段之间重新划分流。阅读教程中的更多内容。</p>
+<h2 id="Storm架构"><a href="#Storm架构" class="headerlink" title="Storm架构"></a>Storm架构</h2><ol>
+<li>Nimbus：master节点：监控topo的运行状态，分发task给supervisor</li>
+<li>supervisor：从节点。每个这个节点都会有多个worker进程，负责代理task给worker</li>
+<li>worker：执行特定的task，但是本身不执行任务，创建一个executor，然executor执行</li>
+<li>task：实际要处理的业务逻辑</li>
+<li>executor：运行task</li>
+</ol>
+<h2 id="Storm与Hadoop的区别"><a href="#Storm与Hadoop的区别" class="headerlink" title="Storm与Hadoop的区别"></a>Storm与Hadoop的区别</h2><table>
+<thead>
+<tr>
+<th>storm</th>
+<th>Hadoop</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实时流处理</td>
+<td>批处理</td>
+</tr>
+<tr>
+<td>无状态</td>
+<td>有状态</td>
+</tr>
+<tr>
+<td>使用zookeeper协同的主从架构</td>
+<td>不需要zookeeper的主从架构</td>
+</tr>
+<tr>
+<td>每秒处理数万消息</td>
+<td>MR好几分钟甚至好几个小时</td>
+</tr>
+<tr>
+<td>不会主动停止</td>
+<td>终有完成的时候</td>
+</tr>
+</tbody></table>
+<h2 id="storm的优点"><a href="#storm的优点" class="headerlink" title="storm的优点"></a>storm的优点</h2><ul>
+<li>跨平台</li>
+<li>可伸缩</li>
+<li>低延迟，秒级</li>
+<li>高容错</li>
+</ul>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p><a href="http://storm.apache.org/releases/1.2.2/Concepts.html" target="_blank" rel="noopener">http://storm.apache.org/releases/1.2.2/Concepts.html</a></p>
+<ul>
+<li>Topologies<br>实时应用程序的逻辑被打包到Storm拓扑中。Storm拓扑类似于MapReduce作业。一个关键的区别是MapReduce作业最终完成，而拓扑结构永远运行（当然，直到你杀死它）。拓扑是与流分组连接的spouts 和Bolts的图形。形成一个有向图，边就是stream</li>
+<li>Tuple（元组）<br>主要的数据结构，有序元素的列表</li>
+<li>Stream<br>Tuple的序列。流是Storm中的核心抽象。流是无限的元组序列，以分布式方式并行处理和创建。流定义了一个模式，该模式命名流的元组中的字段。默认情况下，元组可以包含整数，长整数，短整数，字节，字符串，双精度数，浮点数，布尔值和字节数组。您还可以定义自己的序列化程序，以便可以在元组中本机使用自定义类型。</li>
+<li>Spouts<br>数据流源头，可以读取kafka队列消息，可以自定义。通常，spouts将从外部源读取元组并将它们发送到拓扑中（例如，Kestrel队列或Twitter API）。Spouts可以发出多个流。</li>
+<li>Bolts<br>转接头，逻辑处理单元。spout的数据传递给bolt，bolt计算完成后产生新的数据。可以执行过滤，函数，聚合，连接，与数据库交互等操作。</li>
+<li>Task<br>每个Spouts或Bolts在整个集群中执行任意数量的Task。执行实际的任务处理。</li>
+<li>Workers<br>Topologies在一个或多个worker 进程中执行。每个worker 进程都是物理JVM，并执行Topologies的所有Task的子集。例如，如果Topologies的组合并行度为300且分配了50个worker，则每个worker将执行6个任务（作为工作线程中的线程）。Storm试图在所有worker之间平均分配任务。</li>
+<li>Nimbus<br>master节点：监控topo的运行状态，分发task给supervisor，分析top并收集需要运行的task。本身无状态，依靠ZK获取集群的状态</li>
+<li>supervisor<br>从节点。每个这个节点都会有多个worker进程，负责代理task给worker，worker再孵化执行线程最终运行task，storm使用内部消息系统在nimbus和supervisor之间进行通信。接受nimbus指令，管理worker进程完成task派发。</li>
+<li>Executor<br>本质上由worker进行孵化出来的一个进程而已，Executor运行任务都属于同一个Spout或bolt</li>
+</ul>
+<h2 id="Storm工作流程"><a href="#Storm工作流程" class="headerlink" title="Storm工作流程"></a>Storm工作流程</h2><p>一个工作的Storm集群应该有一个Nimbus和一个或多个supervisors。另一个重要的节点是Apache ZooKeeper，它将用于nimbus和supervisors之间的协调。现在让我们仔细看看Apache Storm的工作流程 </p>
+<ul>
+<li><p>最初，nimbus将等待“Storm拓扑”提交给它。</p>
+</li>
+<li><p>一旦提交拓扑，它将处理拓扑并收集要执行的所有任务和任务将被执行的顺序。</p>
+</li>
+<li><p>然后，nimbus将任务均匀分配给所有可用的supervisors。</p>
+</li>
+<li><p>在特定的时间间隔，所有supervisor将向nimbus发送心跳以通知它们仍然活着。</p>
+</li>
+<li><p>当supervisor终止并且不向心跳发送心跳时，则nimbus将任务分配给另一个supervisor。</p>
+</li>
+<li><p>当nimbus本身终止时，supervisor将在没有任何问题的情况下对已经分配的任务进行工作。说白了就是继续执行自己的任务</p>
+</li>
+<li><p>一旦所有的任务都完成后，supervisor将等待新的任务进去。</p>
+</li>
+<li><p>同时，终止nimbus将由服务监控工具自动重新启动。</p>
+</li>
+<li><p>重新启动的网络将从停止的地方继续。同样，终止supervisor也可以自动重新启动。由于网络管理程序和supervisor都可以自动重新启动，并且两者将像以前一样继续，因此Storm保证至少处理所有任务一次。</p>
+</li>
+<li><p>一旦处理了所有拓扑，则nimbus等待新的拓扑到达，并且类似地，管理器等待新的任务。</p>
+</li>
+</ul>
+<p>默认情况下，Storm集群中有两种模式：</p>
+<ul>
+<li><p>本地模式<br>此模式用于开发，测试和调试，因为它是查看所有拓扑组件协同工作的最简单方法。在这种模式下，我们可以调整参数，使我们能够看到我们的拓扑如何在不同的Storm配置环境中运行。在本地模式下，storm拓扑在本地机器上在单个JVM中运行。</p>
+</li>
+<li><p>生产模式<br>在这种模式下，我们将拓扑提交到工作Storm集群，该集群由许多进程组成，通常运行在不同的机器上。如在storm的工作流中所讨论的，工作集群将无限地运行，直到它被关闭。</p>
+</li>
+</ul>
+<h2 id="Storm工作实例"><a href="#Storm工作实例" class="headerlink" title="Storm工作实例"></a>Storm工作实例</h2><p><strong>移动呼叫日志分析器</strong></p>
+<blockquote>
+<p>移动呼叫及其持续时间将作为对Storm的输入，Storm将处理和分组在相同呼叫者和接收者之间的呼叫及其呼叫总数。</p>
+</blockquote>
+<p>在我们的场景中，我们需要收集呼叫日志详细信息。呼叫日志的信息包含。</p>
+<ul>
+<li>主叫号码</li>
+<li>接收号码</li>
+<li>持续时间</li>
+</ul>
+<p>由于我们没有呼叫日志的实时信息，我们将生成假呼叫日志。假信息将使用Random类创建。完整的程序代码如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.tuple.Fields;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.tuple.Values;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> backtype.storm.topology.IRichSpout;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.topology.OutputFieldsDeclarer;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.spout.SpoutOutputCollector;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.task.TopologyContext;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Spout类，负责产生数据流</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallLogReaderSpout</span> <span class="keyword">implements</span> <span class="title">IRichSpout</span> </span>&#123;</span><br><span class="line">   <span class="comment">//Spout输出收集器</span></span><br><span class="line">   <span class="keyword">private</span> SpoutOutputCollector collector;</span><br><span class="line">   <span class="comment">//是否完成</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">boolean</span> completed = <span class="keyword">false</span>;</span><br><span class="line">	</span><br><span class="line">   <span class="comment">//上下文</span></span><br><span class="line">   <span class="keyword">private</span> TopologyContext context;</span><br><span class="line">	</span><br><span class="line">   <span class="comment">//随机数生成器</span></span><br><span class="line">   <span class="keyword">private</span> Random random = <span class="keyword">new</span> Random();</span><br><span class="line">   <span class="keyword">private</span> Integer idx = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(Map conf, TopologyContext context, SpoutOutputCollector collector)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.context = context;</span><br><span class="line">      <span class="keyword">this</span>.collector = collector;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="comment">//下一个元组</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextTuple</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.idx &lt;= <span class="number">1000</span>) &#123;</span><br><span class="line">         List&lt;String&gt; mobileNumbers = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">         mobileNumbers.add(<span class="string">"101"</span>);</span><br><span class="line">         mobileNumbers.add(<span class="string">"102"</span>);</span><br><span class="line">         mobileNumbers.add(<span class="string">"103"</span>);</span><br><span class="line">         mobileNumbers.add(<span class="string">"104"</span>);</span><br><span class="line"></span><br><span class="line">         Integer localIdx = <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">while</span>(localIdx++ &lt; <span class="number">100</span> &amp;&amp; <span class="keyword">this</span>.idx++ &lt; <span class="number">1000</span>) &#123;</span><br><span class="line">            <span class="comment">//主叫</span></span><br><span class="line">            String caller = mobileNumbers.get(random.nextInt(<span class="number">4</span>));</span><br><span class="line">            <span class="comment">//被叫</span></span><br><span class="line">            String callee = mobileNumbers.get(random.nextInt(<span class="number">4</span>));</span><br><span class="line">				</span><br><span class="line">            <span class="keyword">while</span>(caller == callee) &#123;</span><br><span class="line">               callee = mobileNumbers.get(random.nextInt(<span class="number">4</span>));</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="comment">//模拟通话时长	</span></span><br><span class="line">            Integer duration = randomGenerator.nextInt(<span class="number">60</span>);</span><br><span class="line">            <span class="comment">//输出的元组数据</span></span><br><span class="line">            <span class="keyword">this</span>.collector.emit(<span class="keyword">new</span> Values(caller, callee, duration));</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="comment">//定义输出的字段名称</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">declareOutputFields</span><span class="params">(OutputFieldsDeclarer declarer)</span> </span>&#123;</span><br><span class="line">      declarer.declare(<span class="keyword">new</span> Fields(<span class="string">"from"</span>, <span class="string">"to"</span>, <span class="string">"duration"</span>));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isDistributed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">activate</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span> </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deactivate</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ack</span><span class="params">(Object msgId)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fail</span><span class="params">(Object msgId)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getComponentConfiguration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> backtype.storm.tuple.Fields;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.tuple.Values;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.task.OutputCollector;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.task.TopologyContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> backtype.storm.topology.IRichBolt;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.topology.OutputFieldsDeclarer;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.tuple.Tuple;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建通话记录的bolt</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallLogCreatorBolt</span> <span class="keyword">implements</span> <span class="title">IRichBolt</span> </span>&#123;</span><br><span class="line">   <span class="comment">//创建OutputCollector实例，收集并发出元组以产生输出</span></span><br><span class="line">   <span class="keyword">private</span> OutputCollector collector;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(Map conf, TopologyContext context, OutputCollector collector)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.collector = collector;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(Tuple tuple)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//获取主叫</span></span><br><span class="line">      String from = tuple.getString(<span class="number">0</span>);</span><br><span class="line">      <span class="comment">//获取被叫</span></span><br><span class="line">      String to = tuple.getString(<span class="number">1</span>);</span><br><span class="line">      <span class="comment">//获取通话时长</span></span><br><span class="line">      Integer duration = tuple.getInteger(<span class="number">2</span>);</span><br><span class="line">      <span class="comment">//产生新的元组</span></span><br><span class="line">      collector.emit(<span class="keyword">new</span> Values(from + <span class="string">" - "</span> + to, duration));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cleanup</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">   <span class="comment">//重新定义输出字段的名称</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">declareOutputFields</span><span class="params">(OutputFieldsDeclarer declarer)</span> </span>&#123;</span><br><span class="line">      declarer.declare(<span class="keyword">new</span> Fields(<span class="string">"call"</span>, <span class="string">"duration"</span>));</span><br><span class="line">   &#125;</span><br><span class="line">	</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getComponentConfiguration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> backtype.storm.tuple.Fields;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.tuple.Values;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.task.OutputCollector;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.task.TopologyContext;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.topology.IRichBolt;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.topology.OutputFieldsDeclarer;</span><br><span class="line"><span class="keyword">import</span> backtype.storm.tuple.Tuple;</span><br><span class="line"><span class="comment">//通话记录计数器</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallLogCounterBolt</span> <span class="keyword">implements</span> <span class="title">IRichBolt</span> </span>&#123;</span><br><span class="line">   Map&lt;String, Integer&gt; counterMap;</span><br><span class="line">   <span class="keyword">private</span> OutputCollector collector;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(Map conf, TopologyContext context, OutputCollector collector)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.counterMap = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">      <span class="keyword">this</span>.collector = collector;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(Tuple tuple)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//通话记录：</span></span><br><span class="line">      String call = tuple.getString(<span class="number">0</span>);</span><br><span class="line">      <span class="comment">//本次通话时长</span></span><br><span class="line">      Integer duration = tuple.getInteger(<span class="number">1</span>);</span><br><span class="line">		</span><br><span class="line">      <span class="keyword">if</span>(!counterMap.containsKey(call))&#123;</span><br><span class="line">         counterMap.put(call, <span class="number">1</span>);</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         Integer c = counterMap.get(call) + <span class="number">1</span>;</span><br><span class="line">         counterMap.put(call, c);</span><br><span class="line">      &#125;</span><br><span class="line">	  <span class="comment">//消息被确认</span></span><br><span class="line">      collector.ack(tuple);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cleanup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">for</span>(Map.Entry&lt;String, Integer&gt; entry:counterMap.entrySet())&#123;</span><br><span class="line">         System.out.println(entry.getKey()+<span class="string">" : "</span> + entry.getValue());</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">declareOutputFields</span><span class="params">(OutputFieldsDeclarer declarer)</span> </span>&#123;</span><br><span class="line">      declarer.declare(<span class="keyword">new</span> Fields(<span class="string">"call"</span>));</span><br><span class="line">   &#125;</span><br><span class="line">	</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getComponentConfiguration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    TopologyBuilder builder = <span class="keyword">new</span> TopologyBuilder();</span><br><span class="line">    <span class="comment">//设置spout</span></span><br><span class="line">    builder.setSpout(<span class="string">"spout"</span>, <span class="keyword">new</span> CallLogReaderSpout());</span><br><span class="line">    <span class="comment">//设置bolt</span></span><br><span class="line">    builder.setBolt(<span class="string">"creator-bolt"</span>, <span class="keyword">new</span> CallLogCreatorBolt()).shuffleGrouping(<span class="string">"spout"</span>);</span><br><span class="line">    builder.setBolt(<span class="string">"counter-bolt"</span>, <span class="keyword">new</span> CallLogCounterBolt()).fieldsGrouping(<span class="string">"creator-bolt"</span>, <span class="keyword">new</span> Fields(<span class="string">"call"</span>));</span><br><span class="line">    </span><br><span class="line">    Config config = <span class="keyword">new</span> Config();</span><br><span class="line">    config.setDebug(<span class="keyword">true</span>);</span><br><span class="line">    <span class="comment">//本地模式运行</span></span><br><span class="line">    LocalCluster cluster = <span class="keyword">new</span> LocalCluster();</span><br><span class="line">    <span class="comment">//集群模式</span></span><br><span class="line">    StormSubmitter.submitTopology(<span class="string">"mytopo"</span>, conf, builder.createTopology());</span><br><span class="line">      cluster.submitTopology(<span class="string">"LogAnalyserStorm"</span>, config, builder.createTopology());</span><br><span class="line">      Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">		</span><br><span class="line">      <span class="comment">//停止集群（类似于kill）</span></span><br><span class="line">		</span><br><span class="line">      cluster.shutdown();</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在集群上部署topology，导出jar</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm jar path/to/allmycode.jar org.me.MyTopology arg1 arg2 arg3</span><br></pre></td></tr></table></figure>
+
+<h2 id="Storm-实现wordcount"><a href="#Storm-实现wordcount" class="headerlink" title="Storm 实现wordcount"></a>Storm 实现wordcount</h2><h2 id="Stream-Grouping详解"><a href="#Stream-Grouping详解" class="headerlink" title="Stream Grouping详解"></a>Stream Grouping详解</h2><p>Storm里面有7种类型的stream grouping</p>
+<ul>
+<li>Shuffle Grouping: 随机分组， 随机派发stream里面的tuple，保证每个bolt接收到的tuple数目大致相同。</li>
+<li>Fields Grouping：按字段分组，比如按userid来分组，具有同样userid的tuple会被分到相同的Bolts里的一个task，而不同的userid则会被分配到不同的bolts里的task。</li>
+<li>All Grouping：广播发送，对于每一个tuple，所有的bolts都会收到。</li>
+<li>Global Grouping：全局分组， 这个tuple被分配到storm中的一个bolt的其中一个task。再具体一点就是分配给id值最低的那个task。</li>
+<li>Non Grouping：不分组，这stream grouping个分组的意思是说stream不关心到底谁会收到它的tuple。目前这种分组和Shuffle grouping是一样的效果， 有一点不同的是storm会把这个bolt放到这个bolt的订阅者同一个线程里面去执行。</li>
+<li>Direct Grouping： 直接分组， 这是一种比较特别的分组方法，用这种分组意味着消息的发送者指定由消息接收者的哪个task处理这个消息。只有被声明为Direct Stream的消息流可以声明这种分组方法。而且这种消息tuple必须使用emitDirect方法来发射。消息处理者可以通过TopologyContext来获取处理它的消息的task的id （OutputCollector.emit方法也会返回task的id）。</li>
+<li>Local or shuffle grouping：如果目标bolt有一个或者多个task在同一个工作进程中，tuple将会被随机发生给这些tasks。否则，和普通的Shuffle Grouping行为一致。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">version</span>=<span class="string">"1.1"</span> <span class="attr">id</span>=<span class="string">"anim1"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"100%"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">x</span>=<span class="string">"0px"</span> <span class="attr">y</span>=<span class="string">"0px"</span> <span class="attr">viewBox</span>=<span class="string">"0 0 552 350"</span> <span class="attr">style</span>=<span class="string">"enable-background:new 0 0 552 350;"</span> <span class="attr">xml:space</span>=<span class="string">"preserve"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    #anim1 .st2&#123;opacity:0.5502;filter:url(#filter);enable-background:new ;&#125;</span></span><br><span class="line"><span class="undefined">    #anim1 .st3&#123;fill:#FFFFFF;&#125;</span></span><br><span class="line"><span class="undefined">    #anim1 .st4&#123;fill:none;stroke:#E6E6E6;stroke-width:2;stroke-linecap:round;&#125;</span></span><br><span class="line"><span class="undefined">    #anim1 .st5&#123;fill:none;stroke:url(#green-path-1);stroke-width:2;stroke-linecap:round;&#125;</span></span><br><span class="line"><span class="undefined">    #anim1 .st6&#123;fill:none;stroke:url(#green-path-2);stroke-width:2;stroke-linecap:round;&#125;</span></span><br><span class="line"><span class="undefined">    #anim1 .st7&#123;fill:none;stroke:url(#green-path-3);stroke-width:2;stroke-linecap:round;&#125;</span></span><br><span class="line"><span class="undefined">    #anim1 .st8&#123;fill:none;stroke:url(#green-path-4);stroke-width:2;stroke-linecap:round;&#125;</span></span><br><span class="line"><span class="undefined">    #anim1 .st9&#123;fill:#FFFFFF;stroke:#E6E6E6;stroke-width:2;&#125;</span></span><br><span class="line"><span class="undefined">    #anim1 .st10&#123;fill:none;stroke:#E6E6E6;stroke-width:2;&#125;</span></span><br><span class="line"><span class="undefined">    #anim1 .st20&#123;fill:none;stroke:#999999;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter</span> <span class="attr">width</span>=<span class="string">"200%"</span> <span class="attr">height</span>=<span class="string">"200%"</span> <span class="attr">id</span>=<span class="string">"filter"</span> <span class="attr">filterUnits</span>=<span class="string">"objectBoundingBox"</span> <span class="attr">y</span>=<span class="string">"-50%"</span> <span class="attr">x</span>=<span class="string">"-50%"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">feGaussianBlur</span> <span class="attr">in</span>=<span class="string">"SourceGraphic"</span> <span class="attr">stdDeviation</span>=<span class="string">"18.8378906"</span>&gt;</span><span class="tag">&lt;/<span class="name">feGaussianBlur</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">g</span> <span class="attr">id</span>=<span class="string">"a2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"white-circle-bg-1"</span> <span class="attr">class</span>=<span class="string">"st3"</span> <span class="attr">d</span>=<span class="string">"M7.5,65.3A50,50 0,1,1 107.5,65.3A50,50 0,1,1 7.5,65.3"</span> <span class="attr">style</span>=<span class="string">"stroke-dasharray: 315, 355; stroke-dashoffset: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"white-circle-bg-2"</span> <span class="attr">class</span>=<span class="string">"st3"</span> <span class="attr">d</span>=<span class="string">"M154.5,65.3A50,50 0,1,1 254.5,65.3A50,50 0,1,1 154.5,65.3"</span> <span class="attr">style</span>=<span class="string">"stroke-dasharray: 315, 355; stroke-dashoffset: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"white-circle-bg-3"</span> <span class="attr">class</span>=<span class="string">"st3"</span> <span class="attr">d</span>=<span class="string">"M300.5,65.3A50,50 0,1,1 400.5,65.3A50,50 0,1,1 300.5,65.3"</span> <span class="attr">style</span>=<span class="string">"stroke-dasharray: 315, 355; stroke-dashoffset: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"white-circle-bg-4"</span> <span class="attr">class</span>=<span class="string">"st3"</span> <span class="attr">d</span>=<span class="string">"M443.5,65.3A50,50 0,1,1 543.5,65.3A50,50 0,1,1 443.5,65.3"</span> <span class="attr">style</span>=<span class="string">"stroke-dasharray: 315, 355; stroke-dashoffset: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-outline-1"</span> <span class="attr">class</span>=<span class="string">"st4"</span> <span class="attr">d</span>=<span class="string">"M56.9,114.6C29.5,114.3,7.5,92,7.5,64.6c0-27.6,22.4-50,50-50s50,22.4,50,50c0,27.6-22.4,50-50,50v15c0,5.5,4.5,10,10,10h15l148-0.1"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-outline-2"</span> <span class="attr">class</span>=<span class="string">"st4"</span> <span class="attr">d</span>=<span class="string">"M203.5,114.6c-27.2-0.5-49-22.7-49-50c0-27.6,22.4-50,50-50s50,22.4,50,50c0,27.6-22.4,50-50,50v15c0,5.5,4.5,10,10,10h15h38c5.5,0,10,4.5,10,10v15"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-outline-3"</span> <span class="attr">class</span>=<span class="string">"st4"</span> <span class="attr">d</span>=<span class="string">"M349.7,114.6c-27.3-0.4-49.2-22.6-49.2-50c0-27.6,22.4-50,50-50s50,22.4,50,50c0,27.6-22.4,50-50,50v15c0,5.5-4.5,10-10,10h-15h-38c-5.5,0-10,4.5-10,10v15"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-outline-4"</span> <span class="attr">class</span>=<span class="string">"st4"</span> <span class="attr">d</span>=<span class="string">"M494,114.6c-0.2,0-0.4,0-0.5,0c-27.6,0-50-22.4-50-50c0-27.6,22.4-50,50-50s50,22.4,50,50c0,27.3-21.8,49.5-49,50v15c0,5.5-4.5,10-10,10h-15h-87.3h-47.7"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">g</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">g</span> <span class="attr">id</span>=<span class="string">"a1"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">"green-path-1"</span> <span class="attr">gradientUnits</span>=<span class="string">"userSpaceOnUse"</span> <span class="attr">x1</span>=<span class="string">"-93.7909"</span> <span class="attr">y1</span>=<span class="string">"220.2818"</span> <span class="attr">x2</span>=<span class="string">"-93.7909"</span> <span class="attr">y2</span>=<span class="string">"219.1985"</span> <span class="attr">gradientTransform</span>=<span class="string">"matrix(-100 0 0 100 -9260.0879 -21896.832)"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"0"</span> <span class="attr">style</span>=<span class="string">"stop-color:#00BFB3"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"1"</span> <span class="attr">style</span>=<span class="string">"stop-color:#31C8FA"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"green-path-1b"</span> <span class="attr">class</span>=<span class="string">"st5"</span> <span class="attr">d</span>=<span class="string">"M56.9,114.6C29.5,114.3,7.5,92,7.5,64.6c0-27.6,22.4-50,50-50s50,22.4,50,50c0,27.6-22.4,50-50,50v15c0,5.5,4.5,10,10,10h15l148-0.1"</span> <span class="attr">style</span>=<span class="string">"stroke-dasharray: 508, 548; stroke-dashoffset: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">id</span>=<span class="string">"Bitmap-1"</span> <span class="attr">opacity</span>=<span class="string">"1"</span> <span class="attr">x</span>=<span class="string">"20"</span> <span class="attr">y</span>=<span class="string">"25"</span> <span class="attr">width</span>=<span class="string">"80"</span> <span class="attr">height</span>=<span class="string">"80"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">xlink:href</span>=<span class="string">"/cn/assets/blt96a73ceabd7b6203/beats-01.svg"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">"green-path-2"</span> <span class="attr">gradientUnits</span>=<span class="string">"userSpaceOnUse"</span> <span class="attr">x1</span>=<span class="string">"-93.2909"</span> <span class="attr">y1</span>=<span class="string">"220.4485"</span> <span class="attr">x2</span>=<span class="string">"-93.2909"</span> <span class="attr">y2</span>=<span class="string">"219.2818"</span> <span class="attr">gradientTransform</span>=<span class="string">"matrix(-100 0 0 100 -9113.0879 -21896.832)"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"0"</span> <span class="attr">style</span>=<span class="string">"stop-color:#00BFB3"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"1"</span> <span class="attr">style</span>=<span class="string">"stop-color:#31C8FA"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"green-path-2b"</span> <span class="attr">class</span>=<span class="string">"st6"</span> <span class="attr">d</span>=<span class="string">"M203.5,114.6c-27.2-0.5-49-22.7-49-50c0-27.6,22.4-50,50-50s50,22.4,50,50c0,27.6-22.4,50-50,50v15c0,5.5,4.5,10,10,10h15h38c5.5,0,10,4.5,10,10v15"</span> <span class="attr">style</span>=<span class="string">"stroke-dasharray: 428, 468; stroke-dashoffset: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">id</span>=<span class="string">"Bitmap-2"</span> <span class="attr">opacity</span>=<span class="string">"1"</span> <span class="attr">x</span>=<span class="string">"165"</span> <span class="attr">y</span>=<span class="string">"25"</span> <span class="attr">width</span>=<span class="string">"80"</span> <span class="attr">height</span>=<span class="string">"80"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">xlink:href</span>=<span class="string">"/cn/assets/bltf7e873716e4478cb/GitHub-01.svg"</span> <span class="attr">style</span>=<span class="string">"display: inline; opacity: 0.129832;"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">"green-path-3"</span> <span class="attr">gradientUnits</span>=<span class="string">"userSpaceOnUse"</span> <span class="attr">x1</span>=<span class="string">"-91.8022"</span> <span class="attr">y1</span>=<span class="string">"220.4485"</span> <span class="attr">x2</span>=<span class="string">"-91.8022"</span> <span class="attr">y2</span>=<span class="string">"219.2818"</span> <span class="attr">gradientTransform</span>=<span class="string">"matrix(100 0 0 100 9519.2246 -21896.832)"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"0"</span> <span class="attr">style</span>=<span class="string">"stop-color:#00BFB3"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"1"</span> <span class="attr">style</span>=<span class="string">"stop-color:#31C8FA"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"green-path-3b"</span> <span class="attr">class</span>=<span class="string">"st7"</span> <span class="attr">d</span>=<span class="string">"M349.7,114.6c-27.3-0.4-49.2-22.6-49.2-50c0-27.6,22.4-50,50-50s50,22.4,50,50c0,27.6-22.4,50-50,50v15c0,5.5-4.5,10-10,10h-15h-38c-5.5,0-10,4.5-10,10v15"</span> <span class="attr">style</span>=<span class="string">"stroke-dasharray: 428, 468; stroke-dashoffset: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">id</span>=<span class="string">"Bitmap-3"</span> <span class="attr">opacity</span>=<span class="string">"1"</span> <span class="attr">x</span>=<span class="string">"310"</span> <span class="attr">y</span>=<span class="string">"25"</span> <span class="attr">width</span>=<span class="string">"80"</span> <span class="attr">height</span>=<span class="string">"80"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">xlink:href</span>=<span class="string">"/cn/assets/blt9be07c84e4c2bc10/http-01.svg"</span> <span class="attr">style</span>=<span class="string">"display: inline; opacity: 0.137673;"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">"green-path-4"</span> <span class="attr">gradientUnits</span>=<span class="string">"userSpaceOnUse"</span> <span class="attr">x1</span>=<span class="string">"-92.2322"</span> <span class="attr">y1</span>=<span class="string">"220.2818"</span> <span class="attr">x2</span>=<span class="string">"-92.2322"</span> <span class="attr">y2</span>=<span class="string">"219.1985"</span> <span class="attr">gradientTransform</span>=<span class="string">"matrix(100 0 0 100 9662.2246 -21896.832)"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"0"</span> <span class="attr">style</span>=<span class="string">"stop-color:#00BFB3"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"1"</span> <span class="attr">style</span>=<span class="string">"stop-color:#31C8FA"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"green-path-4b"</span> <span class="attr">class</span>=<span class="string">"st8"</span> <span class="attr">d</span>=<span class="string">"M494,114.6c-0.2,0-0.4,0-0.5,0c-27.6,0-50-22.4-50-50c0-27.6,22.4-50,50-50s50,22.4,50,50c0,27.3-21.8,49.5-49,50v15c0,5.5-4.5,10-10,10h-15h-87.3h-47.7"</span> <span class="attr">style</span>=<span class="string">"stroke-dasharray: 495, 535; stroke-dashoffset: 0;"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">id</span>=<span class="string">"Bitmap-4"</span> <span class="attr">opacity</span>=<span class="string">"1"</span> <span class="attr">x</span>=<span class="string">"455"</span> <span class="attr">y</span>=<span class="string">"25"</span> <span class="attr">width</span>=<span class="string">"80"</span> <span class="attr">height</span>=<span class="string">"80"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">xlink:href</span>=<span class="string">"/cn/assets/bltb4167870b42fce56/IRC-01.svg"</span> <span class="attr">style</span>=<span class="string">"display: inline; opacity: 0.143497;"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">g</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">g</span> <span class="attr">id</span>=<span class="string">"a3"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-circle-1"</span> <span class="attr">class</span>=<span class="string">"st9"</span> <span class="attr">d</span>=<span class="string">"M128.5,348.3c19.3,0,35-15.7,35-35s-15.7-35-35-35s-35,15.7-35,35S109.2,348.3,128.5,348.3z"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">id</span>=<span class="string">"Bitmap-5"</span> <span class="attr">opacity</span>=<span class="string">"1"</span> <span class="attr">x</span>=<span class="string">"103"</span> <span class="attr">y</span>=<span class="string">"288"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">xlink:href</span>=<span class="string">"https://www.elastic.co/cn/assets/bltb5d092d864eb080d/Elasticsearch-02.svg"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-circle-2"</span> <span class="attr">class</span>=<span class="string">"st9"</span> <span class="attr">d</span>=<span class="string">"M228.5,348.3c19.3,0,35-15.7,35-35s-15.7-35-35-35s-35,15.7-35,35S209.2,348.3,228.5,348.3z"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">id</span>=<span class="string">"Bitmap-6"</span> <span class="attr">opacity</span>=<span class="string">"1"</span> <span class="attr">x</span>=<span class="string">"203"</span> <span class="attr">y</span>=<span class="string">"288"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">xlink:href</span>=<span class="string">"https://www.elastic.co/cn/assets/blt08e6eee450ecd75e/Email-02.svg"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-circle-3"</span> <span class="attr">class</span>=<span class="string">"st9"</span> <span class="attr">d</span>=<span class="string">"M326.5,348.3c19.3,0,35-15.7,35-35s-15.7-35-35-35s-35,15.7-35,35S307.2,348.3,326.5,348.3z"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">id</span>=<span class="string">"Bitmap-7"</span> <span class="attr">opacity</span>=<span class="string">"1"</span> <span class="attr">x</span>=<span class="string">"302"</span> <span class="attr">y</span>=<span class="string">"288"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">xlink:href</span>=<span class="string">"/cn/assets/bltf361d26f5edc8763/S3-02.svg"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-circle-4"</span> <span class="attr">class</span>=<span class="string">"st9"</span> <span class="attr">d</span>=<span class="string">"M428.5,348.3c19.3,0,35-15.7,35-35s-15.7-35-35-35s-35,15.7-35,35S409.2,348.3,428.5,348.3z"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">id</span>=<span class="string">"Bitmap-8"</span> <span class="attr">opacity</span>=<span class="string">"1"</span> <span class="attr">x</span>=<span class="string">"400"</span> <span class="attr">y</span>=<span class="string">"283"</span> <span class="attr">width</span>=<span class="string">"60"</span> <span class="attr">height</span>=<span class="string">"60"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">xlink:href</span>=<span class="string">"https://www.elastic.co/cn/products/logstash/cn/assets/blt3076bd904482ae55/HDFS-02.svg"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-circle-path-1"</span> <span class="attr">class</span>=<span class="string">"st10"</span> <span class="attr">d</span>=<span class="string">"M248.5,254.3h-105h-5c-5.5,0-10,4.5-10,10v15"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-circle-path-2"</span> <span class="attr">class</span>=<span class="string">"st10"</span> <span class="attr">d</span>=<span class="string">"M277.5,229.3v15c0,5.5-4.5,10-10,10h-24h-5c-5.5,0-10,4.5-10,10v15"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-circle-path-3"</span> <span class="attr">class</span>=<span class="string">"st10"</span> <span class="attr">d</span>=<span class="string">"M308.3,254.3h105.2h5c5.5,0,10,4.5,10,10v15"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"gray-circle-path-4"</span> <span class="attr">class</span>=<span class="string">"st10"</span> <span class="attr">d</span>=<span class="string">"M277.5,229.3v15c0,5.5,4.5,10,10,10h24h5c5.5,0,10,4.5,10,10v15"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"center-sq"</span> <span class="attr">class</span>=<span class="string">"st9"</span> <span class="attr">d</span>=<span class="string">"M313.5,172.3c0-5.5-4.5-10-10-10h-50c-5.5,0-10,4.5-10,10v50c0,5.5,4.5,10,10,10h50c5.5,0,10-4.5,10-10V172.3z"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">g</span> <span class="attr">id</span>=<span class="string">"Group-4"</span> <span class="attr">transform</span>=<span class="string">"translate(515.000000, 306.000000)"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"Stroke-1_1_"</span> <span class="attr">class</span>=<span class="string">"st20"</span> <span class="attr">d</span>=<span class="string">"M-221.5-88.5v-11"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"Stroke-3_1_"</span> <span class="attr">class</span>=<span class="string">"st20"</span> <span class="attr">d</span>=<span class="string">"M-231.5-88.5v-11"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"Stroke-5"</span> <span class="attr">class</span>=<span class="string">"st20"</span> <span class="attr">d</span>=<span class="string">"M-241.5-88.5v-11"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"Stroke-7"</span> <span class="attr">class</span>=<span class="string">"st20"</span> <span class="attr">d</span>=<span class="string">"M-251.5-88.5v-11"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"Stroke-9"</span> <span class="attr">class</span>=<span class="string">"st20"</span> <span class="attr">d</span>=<span class="string">"M-251.5-107.5h30"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"Stroke-11"</span> <span class="attr">class</span>=<span class="string">"st20"</span> <span class="attr">d</span>=<span class="string">"M-249.5-128.5h26c1.1,0,2,0.9,2,2v9c0,1.1-0.9,2-2,2h-26c-1.1,0-2-0.9-2-2v-9</span></span></span><br><span class="line"><span class="tag"><span class="string">C-251.5-127.6-250.6-128.5-249.5-128.5L-249.5-128.5z"</span> <span class="attr">data-ignore</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">g</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">g</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Storm/" rel="tag"><i class="fa fa-tag"></i> Storm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/1_Spark 第四天之Spark Streaming/" rel="next" title="Spark 第四天之Spark Streaming">
+                <i class="fa fa-chevron-left"></i> Spark 第四天之Spark Streaming
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/1_Tomcat/" rel="prev" title="Tomcat">
+                Tomcat <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzQ4MC8yMDAyMA"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/ggg.jpg" alt="Ckm_zz">
+            
+              <p class="site-author-name" itemprop="name">Ckm_zz</p>
+              <p class="site-description motion-element" itemprop="description">—— not too bad luck</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zzckm" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.totree.cn" target="_blank" title="To树商城">
+                      
+                        <i class="fa fa-fw fa-skype"></i></a>
+                  </span>
+                
+            </div>
+          
+<!-- 音乐播放器 -->
+ 
+           <div>
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="210" height="110" src="//music.163.com/outchain/player?type=2&id=3932159&auto=1&height=66"></iframe>
+           </div>
+ 
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Storm"><span class="nav-number">1.</span> <span class="nav-text">Storm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为何使用Storm？"><span class="nav-number">1.1.</span> <span class="nav-text">为何使用Storm？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storm架构"><span class="nav-number">1.2.</span> <span class="nav-text">Storm架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storm与Hadoop的区别"><span class="nav-number">1.3.</span> <span class="nav-text">Storm与Hadoop的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#storm的优点"><span class="nav-number">1.4.</span> <span class="nav-text">storm的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念"><span class="nav-number">1.5.</span> <span class="nav-text">核心概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storm工作流程"><span class="nav-number">1.6.</span> <span class="nav-text">Storm工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storm工作实例"><span class="nav-number">1.7.</span> <span class="nav-text">Storm工作实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storm-实现wordcount"><span class="nav-number">1.8.</span> <span class="nav-text">Storm 实现wordcount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stream-Grouping详解"><span class="nav-number">1.9.</span> <span class="nav-text">Stream Grouping详解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by ZZckm</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+<!-- 鼠标点击爆炸烟花效果 -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":120,"height":270},"mobile":{"show":true},"log":false});</script></body>
+</html>

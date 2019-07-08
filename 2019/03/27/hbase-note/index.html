@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入查看该篇文章的密码') !== ''){
+                alert('密码错误，请咨询博主');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "39f09b08"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hbase,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Hbase基础理论HBase以表的形式存储数据。表有行和列组成。划分为若干个列族。 1.HBase简介Hbase是什么？ Hbase是一个高可靠性、高性能、列存储、面向列、可伸缩、实时读写的分布式存储系统，利用HBASE技术，可以让我们在廉价便宜的PC Server上搭建大规模结构化存储的集群。 HBase仅需使用普通的硬件配置，就可以能够处理，由成千上万的行和列所组成的大型数据库（非关系型数据库">
+<meta name="keywords" content="Hbase">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" hbase-note">
+<meta property="og:url" content="http://yoursite.com/2019/03/27/hbase-note/index.html">
+<meta property="og:site_name" content="To树-HOME">
+<meta property="og:description" content="Hbase基础理论HBase以表的形式存储数据。表有行和列组成。划分为若干个列族。 1.HBase简介Hbase是什么？ Hbase是一个高可靠性、高性能、列存储、面向列、可伸缩、实时读写的分布式存储系统，利用HBASE技术，可以让我们在廉价便宜的PC Server上搭建大规模结构化存储的集群。 HBase仅需使用普通的硬件配置，就可以能够处理，由成千上万的行和列所组成的大型数据库（非关系型数据库">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cc53dab741.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cc4ea0eda5.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9c3ee7d6480.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cd22317e20.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/29/5c9d793353fb7.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae56bbd0f6.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9c907e03219.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cd22317e20.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9c310e6cd91.png">
+<meta property="og:updated_time" content="2019-05-26T08:58:42.574Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" hbase-note">
+<meta name="twitter:description" content="Hbase基础理论HBase以表的形式存储数据。表有行和列组成。划分为若干个列族。 1.HBase简介Hbase是什么？ Hbase是一个高可靠性、高性能、列存储、面向列、可伸缩、实时读写的分布式存储系统，利用HBASE技术，可以让我们在廉价便宜的PC Server上搭建大规模结构化存储的集群。 HBase仅需使用普通的硬件配置，就可以能够处理，由成千上万的行和列所组成的大型数据库（非关系型数据库">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/28/5c9cc53dab741.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/27/hbase-note/">
+
+
+
+
+
+  <title> hbase-note | To树-HOME</title>
+  
+
+
+
+
+
+
+
+
+
+<!-- katex样式 -->
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+  <a href="https://github.com/zzckm" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">To树-HOME</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">只可意会</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/hbase-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ckm_zz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/ggg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="To树-HOME">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"> hbase-note</h1>
+        
+
+        <div class="post-meta">
+        <!-- TOP -->
+        
+
+          <span class="post-time">
+            
+
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-26T16:58:42+08:00">
+                2019-05-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.7k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Hbase基础理论"><a href="#Hbase基础理论" class="headerlink" title="Hbase基础理论"></a>Hbase基础理论</h1><p>HBase以表的形式存储数据。表有行和列组成。划分为若干个列族。</p>
+<h2 id="1-HBase简介"><a href="#1-HBase简介" class="headerlink" title="1.HBase简介"></a>1.HBase简介</h2><h3 id="Hbase是什么？"><a href="#Hbase是什么？" class="headerlink" title="Hbase是什么？"></a>Hbase是什么？</h3><blockquote>
+<p>Hbase是一个高可靠性、高性能、列存储、面向列、可伸缩、实时读写的分布式存储系统，利用HBASE技术，可以让我们在廉价便宜的PC Server上搭建大规模结构化存储的集群。<br> HBase仅需使用普通的硬件配置，就可以能够处理，由成千上万的行和列所组成的大型数据库（非关系型数据库）</p>
+</blockquote>
+<p><strong>存储形式</strong><br> HBase以表的形式存储数据。表有行和列组成。列划分为若干个列族(column-family)。<br> <img src="https://i.loli.net/2019/03/28/5c9cc53dab741.png" alt></p>
+<p><strong>Hbase与Hdfs的关系</strong><br>Hbase依托于Hadoop的HDFS作为最基本存储基础单元，通过使用hadoop的DFS工具就可以看到这些这些数据存储文件夹的结构。<br><strong>Hbase与MR的关系</strong><br>Hadoop可以通过Map/Reduce的框架(算法)对HBase进行操作。<br><img src="https://i.loli.net/2019/03/28/5c9cc4ea0eda5.png" alt></p>
+<p>#1</p>
+<h3 id="HBase的几大组件"><a href="#HBase的几大组件" class="headerlink" title="HBase的几大组件"></a>HBase的几大组件</h3><h4 id="HMaster"><a href="#HMaster" class="headerlink" title="HMaster"></a>HMaster</h4><p><strong>功能：</strong></p>
+<ul>
+<li>监控RegionServer</li>
+<li>处理RefionServer故障转移</li>
+<li>处理元数据的变更</li>
+<li>处理region的分配和移除</li>
+<li>在空闲时间进行数据的负载均衡</li>
+<li>通过Zookeeper发布自己得位置给客户端</li>
+</ul>
+<h4 id="RegionServer"><a href="#RegionServer" class="headerlink" title="RegionServer"></a>RegionServer</h4><p><strong>功能：</strong></p>
+<ul>
+<li>负责存储HBase的实际数据</li>
+<li>处理分配给它的Region</li>
+<li>刷新缓存到HDFS</li>
+<li>维护HLog</li>
+<li>执行压缩</li>
+<li>负责处理Region分片</li>
+</ul>
+<h4 id="其他组件"><a href="#其他组件" class="headerlink" title="其他组件"></a>其他组件</h4><p><strong>1.Write-Ahead logs</strong><br>HBase的修改记录，当对Hbase读写数据的时候，数据不是直接写进磁盘的，它会在内存中保留一段时间。但把数据保存在内存中可能有更高的概率引起数据丢失，为了解决这个问题，<strong>数据会先写在一个叫做Write-Ahead logfile的文件当中，然后再写入内存中</strong>，所以在系统出现故障的时候，数据可以通过日志文件重建数据</p>
+<p><strong>2.HFile</strong><br>这是在磁盘上保存原始数据的实际物理文件，是实际的存储文件</p>
+<p><strong>3.Store</strong><br>HFile存储在Store中，一个Store对应HBase表 中的一个列族。</p>
+<p><strong>4.MemStore</strong><br>内存存储，位于内存中，用来保存当前的数据操作，所以当数据保存在Write-Ahead-Logs中会后，RegionServer会在内存中存储键值对</p>
+<p><strong>5.Region</strong><br>Hbase表的分片：Hbase表会根据RowKey值的不同，被切分成不同的region，存储在RegionServer中，在一个RegionServer中可以有多个不同的region。</p>
+<h3 id="HBase架构"><a href="#HBase架构" class="headerlink" title="HBase架构"></a>HBase架构</h3><p> Hbase之所以可以很快的进行读写操作<br> 是因为以空间换时间。 Hbase所进行的命令操作，会一开始存放在内存当中，当达到一定峰值64M/128M的时候会提交进磁盘当中。且也在写入内存之前，先写入log当中，以防宕机数据丢失，log是顺序读写，因此也不占性能，很快。</p>
+<p><strong>下图为Hbase架构图</strong></p>
+<p> <img src="https://i.loli.net/2019/03/28/5c9c3ee7d6480.png" alt></p>
+<h2 id="HBase-数据结构"><a href="#HBase-数据结构" class="headerlink" title="HBase 数据结构"></a>HBase 数据结构</h2><h3 id="Row-Key"><a href="#Row-Key" class="headerlink" title="Row Key"></a>Row Key</h3><p>Row key是用来检索记录的主键。<br><strong>访问HBASE table中的行</strong>，只有三种方式：</p>
+<ol>
+<li>通过单个row key 访问</li>
+<li>通过row key 的range（正则访问）</li>
+<li>全表扫描</li>
+</ol>
+<p><strong>Row key</strong>保存为字节数组，存储时，数据按照Row key的字典序排序存储，<br>Ps.设计Row key时，将经常一起读取的行存储在一起（位置相关性）</p>
+<p><strong>Hbase Rowkey设计</strong><br>在hbase当中rowkey是唯一的索引<br>a. 将经常需要查询的条件，放入rowkey中<br>b. hash rowkey为了避免读写热点<br>    rowkey=hash(userkey)+userkey<br>    反转rowkey reverse(rowkey)<br>    ps：随机数不行，查询时无法获取</p>
+<h3 id="Columns-Family"><a href="#Columns-Family" class="headerlink" title="Columns Family"></a>Columns Family</h3><p>列族：Hbase表中的每个列都属于某个列族，列族想相当于一些列的map集合，列族是表的schema的一部分（而列不是），必须在使用表之前定义，列名都以列族作为前缀。</p>
+<h3 id="Cell"><a href="#Cell" class="headerlink" title="Cell"></a>Cell</h3><p>由{row key,columnFamily,version} 唯一确定的单元</p>
+<ul>
+<li>HBase中通过row和columns确定的唯一一个存贮单元称为cell。</li>
+<li>由{row key, column(=<family> + <label>), version} 唯一确定的单元。</label></family></li>
+<li>cell中的数据是没有类型的，全部是字节码形式存贮。</li>
+<li>每一个cell可以存储多个数据。</li>
+</ul>
+<h3 id="TimeStamp"><a href="#TimeStamp" class="headerlink" title="TimeStamp"></a>TimeStamp</h3><p>   Hbase中通过rowkey和columns确定的唯一一个存贮单元成为cell。每个cell都保存着同一份数据的多个版本（创建表的时候可以设定版本数量，当存储相同列数据时，显示出来的是按照时间戳排序显示最新put的数据）。版本同构时间戳来索引，时间戳的类型是64位整型。<br>   为了避免数据存放过多版本造成管理负担，Hbase提供了两种数据版本回收方式。</p>
+<ol>
+<li>一是保存数据的最后N个版本，</li>
+<li>二是存储一段时间内的版本。用可针对每个列族进行设置<br><img src="https://i.loli.net/2019/03/28/5c9cd22317e20.png" alt></li>
+</ol>
+<p>###hbase 预分区<br>默认情况下，hbase会为了新创建的表创建一个region。因此会带来热点问题。<br>可通过在创建表的时候，指定多个region解决热点问题。<br>方法有两种：</p>
+<ul>
+<li>命令方式：create ‘t2’,’cf1’,SPILTS=&gt;[‘b’,’c’,’d’,’e’]</li>
+<li>代码方式:<br><img src="https://i.loli.net/2019/03/29/5c9d793353fb7.png" alt></li>
+</ul>
+<h3 id="HBase索引"><a href="#HBase索引" class="headerlink" title="HBase索引"></a>HBase索引</h3><p>Row key 唯一的一级索引；<br>因此对于列值的查询，只能扫描全表，效率低。<br>因此可以借助：</p>
+<ul>
+<li>hbase 协处理器</li>
+<li>solr 分布式索引</li>
+</ul>
+<p><strong>实现二级索引</strong>：使用协处理器，将需要的二级索引和一级索性 处理成 二级索引对应所有的一级索引，然后由solr分布式索引存储，以备使用 </p>
+<h3 id="协处理器（coprocesser）"><a href="#协处理器（coprocesser）" class="headerlink" title="协处理器（coprocesser）"></a>协处理器（coprocesser）</h3><p>触发器 （trigger）当我们在进行某些操作如增删改查的时候，执行的某个操作<br>当向Hbase进行写操作的时候，使用触发器进行中途拦截，触发-预处理-实现二级索引的实现<br>a. 继承BaseRegionObserver<br>b. 重写preput,predelete方法<br>c. 打包上传hbase lib 目录<br>d. 为表添加协处理器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter &apos;t3&apos;,&apos;coprocessor&apos;=&gt;&apos;/develop/hbase/hbase-1.4.8/lib/hbasedemo-1.0-SNAPSHOT.jar|com.demo.SecondIndexObserver|1001|&apos;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Hbase安装与使用"><a href="#Hbase安装与使用" class="headerlink" title="Hbase安装与使用"></a>Hbase安装与使用</h1><h2 id="Hbase-伪分布部署"><a href="#Hbase-伪分布部署" class="headerlink" title="Hbase 伪分布部署"></a>Hbase 伪分布部署</h2><p>伪分布模式需要用到hadoop文件系统 ，所以配置会比单机模式麻烦很多</p>
+<p><strong>(1)、修改conf/hbase-env.sh</strong><br><code>export HBASE_CLASSPATH=/home/lin/hadoop/hadoop-2.6.1/etc/hadoop</code></p>
+<p><strong>(2)、编辑hbase-site.xml</strong><br>hbase.rootdir 要配置为hdfs上的路径；hdfs://master:9000/hbase</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>hbase.rootdir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://master:9000/hbase<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>hbase.cluster.distributed<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> (3)、启动hbase</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/start-hbase.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>jps</strong><br>出现三个H开启的进程则ok<br><img src="https://i.loli.net/2019/03/27/5c9ae56bbd0f6.png" alt></p>
+<p><strong>然后就可以进入shell进行对hbase的操作。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hbase shell</span><br></pre></td></tr></table></figure>
+
+<h2 id="Quick-Start（Shell操作）"><a href="#Quick-Start（Shell操作）" class="headerlink" title="Quick Start（Shell操作）"></a>Quick Start（Shell操作）</h2><p><code>create &#39;test&#39;,&#39;cf1&#39;,&#39;cf2&#39;</code><br>创建表test 列族cf1,cf2   </p>
+<p><code>list</code><br>查看表</p>
+<p><code>describe &#39;test&#39;</code><br>查看表test结构</p>
+<p><code>put &#39;test&#39;,&#39;jack&#39;,&#39;cf1:age&#39;,&#39;18&#39;</code><br>根据表名、行键以列族进行插入某行数据</p>
+<p><code>get &#39;test&#39;,&#39;jack&#39;</code><br>根据键值查询数据 只能查一行</p>
+<p><code>get &#39;test&#39;,&#39;jack&#39;，&#39;cf1:name&#39;</code><br>根据列族中的列查询数据 只能查一行</p>
+<p><code>scan &#39;test&#39;</code><br>扫描全表数据</p>
+<p><code>scan &#39;test&#39;,{STARTROW=&gt;&#39;jack&#39;}</code><br>从头开始扫描rowkey为jack的行的数据</p>
+<p><img src="https://i.loli.net/2019/03/28/5c9c907e03219.png" alt></p>
+<p><code>count &#39;test&#39;</code><br>读取表数据行数 </p>
+<p><code>deleteall &#39;test&#39;,&#39;jack&#39;</code><br>删除某rowkey的全部数据</p>
+<p><code>delete&#39;test&#39;,&#39;jack&#39;，&#39;cf1:name&#39;</code><br>删除某rowkey的某一列数据</p>
+<p><code>disable &#39;test&#39;</code><br><code>truncate &#39;test&#39;</code><br>清空表数据（清空标的操作顺序为先disable，然后再truncate）</p>
+<p><code>disable &#39;test&#39;</code><br><code>drop &#39;test&#39;</code><br>删除表，也要先让表处于disable状态才能删除</p>
+<p><code>create  &#39;test&#39; ,{name=&gt;&#39;cf1&#39;,versions=&gt;3}</code><br>创建test表 列族名为cf1并存放在3个版本里</p>
+<p><img src="https://i.loli.net/2019/03/28/5c9cd22317e20.png" alt></p>
+<p><code>alter &#39;student&#39;,{Name=&gt;&#39;cf1&#39;,versions=&gt;3}</code><br>修改表的信息：将cf1列族的数据存放在3个版本里<br>修改我的我 </p>
+<p>tips:HBase只支持单行事务，也就是说对一行数据进行修改的时候会对行进行锁定，不想sql可以进行多行锁定</p>
+<p><strong>Zookeeper 存储了 Hbase元数据的位置</strong><br> Hbase的元数据存放在自己身上，我们通过连接Zookeeper获取HBase元数据在HBase的位置，</p>
+<p> <strong>Hmaster管理表-增删改查</strong><br> <strong>RegionServer具体管理表的读写</strong><br>Store是由Region创建<br> <img src="https://i.loli.net/2019/03/28/5c9c310e6cd91.png" alt></p>
+<h1 id="HBase-API"><a href="#HBase-API" class="headerlink" title="HBase API"></a>HBase API</h1><h2 id="Hbase读写扫描"><a href="#Hbase读写扫描" class="headerlink" title="Hbase读写扫描"></a>Hbase读写扫描</h2><blockquote>
+<p>pom.xml加入依赖</p>
+</blockquote>
+<!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase-client -->
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+  &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
+  &lt;version&gt;1.2.6&lt;/version&gt;
+&lt;/dependency&gt;</code></pre><p>配置Hbase.properties</p>
+<blockquote>
+<p>hbase.master=192.168.200.129:60000<br>hbase.zookeeper.quorum=192.168.200.129</p>
+</blockquote>
+<p>添加config类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Properties conf=<span class="keyword">new</span> Properties();</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        InputStream resource = Config.class.getClassLoader().getResourceAsStream(<span class="string">"hbase.properties"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            conf.load(resource);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> conf.getProperty(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>读写、批量写入、扫描查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhiyou100.kafka.Hbase;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.Cell;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.HBaseConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.TableName;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.client.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.util.Bytes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HbaseCurd</span> </span>&#123;</span><br><span class="line">   <span class="keyword">static</span> Connection connection = <span class="keyword">null</span>;</span><br><span class="line">   <span class="comment">//静态块为连接驱动的固定写法</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        Configuration hbaseConfig = HBaseConfiguration.create();</span><br><span class="line">        hbaseConfig.set(<span class="string">"hbase.master"</span>, Config.getProperty(<span class="string">"hbase.master"</span>));</span><br><span class="line">        hbaseConfig.set(<span class="string">"hbase.zookeeper.quorum"</span>, Config.getProperty(<span class="string">"hbase.zookeeper.quorum"</span>));</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection = ConnectionFactory.createConnection(hbaseConfig);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//readDemo();</span></span><br><span class="line">        <span class="comment">//writeDemo();</span></span><br><span class="line">        batchWriteDemo();</span><br><span class="line">        <span class="comment">//scanDemo();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">scanDemo</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Table test = connection.getTable(TableName.valueOf(<span class="string">"test"</span>));</span><br><span class="line">        Scan scan = <span class="keyword">new</span> Scan();</span><br><span class="line">        scan.setStartRow(Bytes.toBytes(<span class="string">"tom1000"</span>));</span><br><span class="line">        scan.setStopRow(Bytes.toBytes(<span class="string">"tom10000"</span>));</span><br><span class="line">        ResultScanner scanner = test.getScanner(scan);</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">            Result result = scanner.next();</span><br><span class="line">            List&lt;Cell&gt; cells = result.listCells();</span><br><span class="line">            Iterator&lt;Cell&gt; iterator = cells.iterator();</span><br><span class="line">            <span class="keyword">while</span> (iterator.hasNext())&#123;</span><br><span class="line">                Cell cell = iterator.next();</span><br><span class="line">                System.out.println(Bytes.toString(cell.getValue()));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">batchWriteDemo</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Table test = connection.getTable(TableName.valueOf(<span class="string">"test"</span>));</span><br><span class="line">        <span class="keyword">long</span> start=System.currentTimeMillis();</span><br><span class="line">        ArrayList&lt;Put&gt; puts = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1000</span>*<span class="number">1000</span>;i++) &#123;</span><br><span class="line">            Put tom = <span class="keyword">new</span> Put(Bytes.toBytes(<span class="string">"tom"</span>+i));</span><br><span class="line">            tom.addColumn(Bytes.toBytes(<span class="string">"cf1"</span>), Bytes.toBytes(<span class="string">"hobby"</span>), Bytes.toBytes(<span class="string">"zhuolaoshu"</span>));</span><br><span class="line">            tom.addColumn(Bytes.toBytes(<span class="string">"cf1"</span>), Bytes.toBytes(<span class="string">"age"</span>), Bytes.toBytes(<span class="string">"2"</span>));</span><br><span class="line">            tom.addColumn(Bytes.toBytes(<span class="string">"cf1"</span>), Bytes.toBytes(<span class="string">"gender"</span>), Bytes.toBytes(<span class="string">"xiong"</span>));</span><br><span class="line">            puts.add(tom);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(i%<span class="number">1000</span>==<span class="number">0</span>) &#123;</span><br><span class="line">                test.put(puts);</span><br><span class="line">                puts.clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        test.close();</span><br><span class="line">        connection.close();</span><br><span class="line">        <span class="keyword">long</span> end=System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">"cost :"</span> +(end-start)/<span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//增加数据操作</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeDemo</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Table test = connection.getTable(TableName.valueOf(<span class="string">"test"</span>));</span><br><span class="line">        Put tom = <span class="keyword">new</span> Put(Bytes.toBytes(<span class="string">"tom"</span>));</span><br><span class="line">        tom.addColumn(Bytes.toBytes(<span class="string">"cf1"</span>),Bytes.toBytes(<span class="string">"hobby"</span>),Bytes.toBytes(<span class="string">"zhuolaoshu"</span>));</span><br><span class="line">        tom.addColumn(Bytes.toBytes(<span class="string">"cf1"</span>),Bytes.toBytes(<span class="string">"age"</span>),Bytes.toBytes(<span class="string">"2"</span>));</span><br><span class="line">        tom.addColumn(Bytes.toBytes(<span class="string">"cf1"</span>),Bytes.toBytes(<span class="string">"gender"</span>),Bytes.toBytes(<span class="string">"xiong"</span>));</span><br><span class="line"></span><br><span class="line">        test.put(tom);</span><br><span class="line"></span><br><span class="line">        test.close();</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取数据操作</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readDemo</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Table test = connection.getTable(TableName.valueOf(<span class="string">"test"</span>));</span><br><span class="line">        <span class="comment">//rowkey jack</span></span><br><span class="line">        Get get = <span class="keyword">new</span> Get(Bytes.toBytes(<span class="string">"jack"</span>));</span><br><span class="line">        Result result = test.get(get);</span><br><span class="line">        List&lt;Cell&gt; cells = result.listCells();</span><br><span class="line">        <span class="keyword">for</span> (Cell cell : cells) &#123;</span><br><span class="line">            String key = Bytes.toString(cell.getQualifier());</span><br><span class="line">            String value = Bytes.toString(cell.getValue());</span><br><span class="line">            System.out.println(<span class="string">"key: "</span>+key+<span class="string">" value: "</span>+value);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//byte[] value = result.getValue(Bytes.toBytes("cf1"), Bytes.toBytes("age"));</span></span><br><span class="line">        <span class="comment">//byte[] value = result.getValue(Bytes.toBytes("cf1"), Bytes.toBytes("age"));</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//System.out.println("age: "+Bytes.toString(value));</span></span><br><span class="line">        test.close();</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HBase过滤器"><a href="#HBase过滤器" class="headerlink" title="HBase过滤器"></a>HBase过滤器</h2><p><strong>同上配置的config类，在此不做详解</strong></p>
+<p>下列为过滤指定的列以及列族，类似于查询条件语句</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HbaseFilterDemo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> Connection connection = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">//静态块为连接驱动的固定写法</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        Configuration hbaseConfig = HBaseConfiguration.create();</span><br><span class="line">        hbaseConfig.set(<span class="string">"hbase.master"</span>, Config.getProperty(<span class="string">"hbase.master"</span>));</span><br><span class="line">        hbaseConfig.set(<span class="string">"hbase.zookeeper.quorum"</span>, Config.getProperty(<span class="string">"hbase.zookeeper.quorum"</span>));</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection = ConnectionFactory.createConnection(hbaseConfig);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//过滤指定列</span></span><br><span class="line">            rowFilterDemo();</span><br><span class="line">            <span class="comment">//过滤指定列族的</span></span><br><span class="line">            <span class="comment">//familyFilterDemo();</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">familyFilterDemo</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">        Table test = connection.getTable(TableName.valueOf(<span class="string">"test"</span>));</span><br><span class="line"></span><br><span class="line">        FamilyFilter cf1 = <span class="keyword">new</span> FamilyFilter(CompareFilter.CompareOp.EQUAL, <span class="keyword">new</span> BinaryComparator(Bytes.toBytes(<span class="string">"cf1"</span>)));</span><br><span class="line">        Scan scan = <span class="keyword">new</span> Scan();</span><br><span class="line">        scan.setFilter(cf1);</span><br><span class="line">        ResultScanner scanner = test.getScanner(scan);</span><br><span class="line">        Iterator&lt;Result&gt; iterator = scanner.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext())</span><br><span class="line">        &#123;</span><br><span class="line">            Thread.sleep(<span class="number">100</span>);</span><br><span class="line">            <span class="comment">//打印列</span></span><br><span class="line">            System.out.println(Bytes.toString(iterator.next().getRow()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//过滤rowKey</span></span><br><span class="line">    <span class="comment">//得到比tom2大比tom3小的rowkey</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">rowFilterDemo</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">        Table test = connection.getTable(TableName.valueOf(<span class="string">"test"</span>));</span><br><span class="line">        <span class="comment">//创建一个rowkeyfilter                          操作符&gt;                  比较器：按字典集的tom2 进行</span></span><br><span class="line">        Filter filter1 = <span class="keyword">new</span> RowFilter(CompareFilter.CompareOp.GREATER,<span class="keyword">new</span> BinaryComparator(Bytes.toBytes(<span class="string">"tom2900"</span>)));</span><br><span class="line">        Filter filter2 = <span class="keyword">new</span> RowFilter(CompareFilter.CompareOp.LESS,<span class="keyword">new</span> BinaryComparator(Bytes.toBytes(<span class="string">"tom4"</span>)));</span><br><span class="line">        List&lt;Filter&gt; rowFilters = Arrays.asList(<span class="keyword">new</span> Filter[]&#123;filter1, filter2&#125;);</span><br><span class="line">        <span class="comment">//List&lt;Filter&gt; rowFilters = Arrays.asList(new Filter[]&#123;filter1, filter2&#125;);</span></span><br><span class="line">        Scan scan = <span class="keyword">new</span> Scan();</span><br><span class="line">        <span class="comment">//scan.setFilter(filter1);</span></span><br><span class="line">        <span class="comment">//scan.setFilter(filter2);</span></span><br><span class="line">        FilterList list = <span class="keyword">new</span> FilterList(rowFilters);</span><br><span class="line">        <span class="comment">//list.addFilter(rowFilters);</span></span><br><span class="line">        scan.setFilter(list);</span><br><span class="line">        ResultScanner scanner = test.getScanner(scan);</span><br><span class="line">        Iterator&lt;Result&gt; iterator = scanner.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext())</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="comment">// Thread.sleep(100);</span></span><br><span class="line">            <span class="comment">//打印列</span></span><br><span class="line">            System.out.println(Bytes.toString(iterator.next().getRow()));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JAVA-第二索引的配置及使用方法"><a href="#JAVA-第二索引的配置及使用方法" class="headerlink" title="JAVA 第二索引的配置及使用方法"></a>JAVA 第二索引的配置及使用方法</h2><p><strong>加依赖</strong></p>
+<blockquote>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hbase<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hbase-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.Cell;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.TableName;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.client.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.coprocessor.BaseRegionObserver;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.coprocessor.ObserverContext;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.coprocessor.RegionCoprocessorEnvironment;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.regionserver.wal.WALEdit;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hbase.util.Bytes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: 张峥</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: 2019/3/29 10:34</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondIndexObserver</span> <span class="keyword">extends</span> <span class="title">BaseRegionObserver</span> </span>&#123;</span><br><span class="line">    <span class="comment">//在数据进入Hbase之前，可以进行的操作</span></span><br><span class="line">    <span class="comment">//提取数据 建立二级索引</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prePut</span><span class="params">(ObserverContext&lt;RegionCoprocessorEnvironment&gt; e, Put put, WALEdit edit, Durability durability)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">/***</span></span><br><span class="line"><span class="comment">         *         获取操作表中的rowkey</span></span><br><span class="line"><span class="comment">         *         获取操作表中的age信息</span></span><br><span class="line"><span class="comment">         *         获取索引表的表名</span></span><br><span class="line"><span class="comment">         *         通过age从索引表中获取rowkey数据，</span></span><br><span class="line"><span class="comment">         *         再通过字符串拼接的形式追加“，+ ‘新的rowkey’”（加判断如果没有数据就不用追加 直接等于）</span></span><br><span class="line"><span class="comment">         *         再将索引及value写入索引表中</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">byte</span>[] rowkey = put.getRow();</span><br><span class="line">        <span class="comment">//获取操作表中的age</span></span><br><span class="line">        List&lt;Cell&gt; cells = put.get(Bytes.toBytes(<span class="string">"cf"</span>), Bytes.toBytes(<span class="string">"age"</span>));</span><br><span class="line">        Cell kv = cells.get(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] age = kv.getValue();</span><br><span class="line">        HTableInterface index_t3 = e.getEnvironment().getTable(TableName.valueOf(<span class="string">"index_t3"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//以age为索引</span></span><br><span class="line">        Get get = <span class="keyword">new</span> Get(age);</span><br><span class="line">        <span class="comment">//获取get有关的所有信息</span></span><br><span class="line">        Result result = index_t3.get(get);</span><br><span class="line">        <span class="keyword">byte</span>[] rkvalue = result.getValue(Bytes.toBytes(<span class="string">"cf"</span>), Bytes.toBytes(<span class="string">"rk"</span>));</span><br><span class="line">        String newrkvalue;</span><br><span class="line">        <span class="keyword">if</span>(rkvalue!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            newrkvalue = Bytes.toString(rkvalue) + <span class="string">","</span> + Bytes.toString(rowkey);&#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            newrkvalue =Bytes.toString(rowkey);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//以age为索引</span></span><br><span class="line">        Put index = <span class="keyword">new</span> Put(age);</span><br><span class="line">        <span class="comment">//将rowkey的值传入以age为索引的表的相对应的列族‘rk’中</span></span><br><span class="line">        index.addColumn(Bytes.toBytes(<span class="string">"cf"</span>), Bytes.toBytes(<span class="string">"rk"</span>),Bytes.toBytes( newrkvalue));</span><br><span class="line">        index_t3.put(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除操作</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preDelete</span><span class="params">(ObserverContext&lt;RegionCoprocessorEnvironment&gt; e, Delete delete, WALEdit edit, Durability durability)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         *  获取rowkey值</span></span><br><span class="line"><span class="comment">         *  获取年龄（索引）</span></span><br><span class="line"><span class="comment">         *  获取索引表</span></span><br><span class="line"><span class="comment">         *  通过索引查询获取索引表中的相关数据</span></span><br><span class="line"><span class="comment">         *  再从中获取对应的rowkey信息，并转换成字符串的形式</span></span><br><span class="line"><span class="comment">         *  将需要删除的“，rowkey”替换成空</span></span><br><span class="line"><span class="comment">         *  并通过该索引将改过的数据写入索引表中</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">//获取数据表中的索引 rowkey</span></span><br><span class="line">        <span class="keyword">byte</span>[] row = delete.getRow();</span><br><span class="line">        <span class="comment">//通过上下文环境以及rowkey获取删除操作的相关数据</span></span><br><span class="line">        <span class="comment">//e.getEnvironment().getRegion() 相当于表：因为是上下文操作关系</span></span><br><span class="line">        Result result = e.getEnvironment().getRegion().get(<span class="keyword">new</span> Get(row));</span><br><span class="line">        <span class="comment">//获取操作信息表中的age信息</span></span><br><span class="line">        <span class="keyword">byte</span>[] age = result.getValue(Bytes.toBytes(<span class="string">"cf"</span>), Bytes.toBytes(<span class="string">"age"</span>));</span><br><span class="line">        <span class="comment">//获取索引表</span></span><br><span class="line">        HTableInterface index_t3 = e.getEnvironment().getTable(TableName.valueOf(<span class="string">"index_t3"</span>));</span><br><span class="line">        Get get = <span class="keyword">new</span> Get(age);</span><br><span class="line">        Result index_result = index_t3.get(get);</span><br><span class="line">        <span class="keyword">byte</span>[] value = index_result.getValue(Bytes.toBytes(<span class="string">"cf"</span>), Bytes.toBytes(<span class="string">"rk"</span>));</span><br><span class="line">        String rkvalue=Bytes.toString(value);</span><br><span class="line">        <span class="keyword">byte</span>[] newrkvalue = Bytes.toBytes(rkvalue.replace(<span class="string">","</span> + Bytes.toString(row), <span class="string">""</span>));</span><br><span class="line">        Put index = <span class="keyword">new</span> Put(age);</span><br><span class="line">        index.addColumn(Bytes.toBytes(<span class="string">"cf"</span>),Bytes.toBytes(<span class="string">"rk"</span>),newrkvalue);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//将索引写入索引表中</span></span><br><span class="line">        index_t3.put(index);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>做好之后，打包 放入Hbase文件夹中（注意如果放入HBase lib中，运行alter时报错无法找到此文件的话，就上传jar包至Hdfs一定可以）<br>然后再<br>创建 </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hbase/" rel="tag"><i class="fa fa-tag"></i> Hbase</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/Hexo-DaoVice/" rel="next" title="Hexo-DaoVice">
+                <i class="fa fa-chevron-left"></i> Hexo-DaoVice
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/28/zookeeper/" rel="prev" title="zookeeper部分笔记">
+                zookeeper部分笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzQ4MC8yMDAyMA"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/ggg.jpg" alt="Ckm_zz">
+            
+              <p class="site-author-name" itemprop="name">Ckm_zz</p>
+              <p class="site-description motion-element" itemprop="description">—— not too bad luck</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zzckm" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.totree.cn" target="_blank" title="To树商城">
+                      
+                        <i class="fa fa-fw fa-skype"></i></a>
+                  </span>
+                
+            </div>
+          
+<!-- 音乐播放器 -->
+ 
+           <div>
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="210" height="110" src="//music.163.com/outchain/player?type=2&id=3932159&auto=1&height=66"></iframe>
+           </div>
+ 
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hbase基础理论"><span class="nav-number">1.</span> <span class="nav-text">Hbase基础理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HBase简介"><span class="nav-number">1.1.</span> <span class="nav-text">1.HBase简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hbase是什么？"><span class="nav-number">1.1.1.</span> <span class="nav-text">Hbase是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase的几大组件"><span class="nav-number">1.1.2.</span> <span class="nav-text">HBase的几大组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HMaster"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">HMaster</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RegionServer"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">RegionServer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他组件"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">其他组件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase架构"><span class="nav-number">1.1.3.</span> <span class="nav-text">HBase架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-数据结构"><span class="nav-number">1.2.</span> <span class="nav-text">HBase 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Row-Key"><span class="nav-number">1.2.1.</span> <span class="nav-text">Row Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Columns-Family"><span class="nav-number">1.2.2.</span> <span class="nav-text">Columns Family</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cell"><span class="nav-number">1.2.3.</span> <span class="nav-text">Cell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TimeStamp"><span class="nav-number">1.2.4.</span> <span class="nav-text">TimeStamp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase索引"><span class="nav-number">1.2.5.</span> <span class="nav-text">HBase索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协处理器（coprocesser）"><span class="nav-number">1.2.6.</span> <span class="nav-text">协处理器（coprocesser）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hbase安装与使用"><span class="nav-number">2.</span> <span class="nav-text">Hbase安装与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase-伪分布部署"><span class="nav-number">2.1.</span> <span class="nav-text">Hbase 伪分布部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start（Shell操作）"><span class="nav-number">2.2.</span> <span class="nav-text">Quick Start（Shell操作）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HBase-API"><span class="nav-number">3.</span> <span class="nav-text">HBase API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hbase读写扫描"><span class="nav-number">3.1.</span> <span class="nav-text">Hbase读写扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase过滤器"><span class="nav-number">3.2.</span> <span class="nav-text">HBase过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA-第二索引的配置及使用方法"><span class="nav-number">3.3.</span> <span class="nav-text">JAVA 第二索引的配置及使用方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by ZZckm</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+<!-- 鼠标点击爆炸烟花效果 -->
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":120,"height":270},"mobile":{"show":true},"log":false});</script></body>
+</html>
