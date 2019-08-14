@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://static.zybuluo.com/zhangwen100/zeztb837gxqhohhrzyf2c9yh/image_1cmii65i5aag1oki16471cim15an13.png">
 <meta property="og:image" content="http://static.zybuluo.com/zhangwen100/zfa4lhmltdajso4f2cv5xl2s/image_1cmijhqbhvah35c1732coqil1t.png">
 <meta property="og:image" content="http://static.zybuluo.com/zhangwen100/gybdgnqsjwm369enug5n322l/image_1cmijpghevfi1i5eduohg61ifh2a.png">
-<meta property="og:updated_time" content="2019-05-26T08:58:42.554Z">
+<meta property="og:updated_time" content="2019-08-14T06:15:49.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark第二天之RDD">
 <meta name="twitter:description" content="Spark 第二天之RDD1. RDD概念1.1 为什么要学习RDD&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;RDD是Spark的基石，是实现Spark数据处理的核心抽象。那么RDD为什么会产生呢？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Hadoop的MapReduce是一种基于数据集的工作模式，面向数据，这种工">
@@ -378,8 +378,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-26T16:58:42+08:00">
-                2019-05-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-14T14:15:49+08:00">
+                2019-08-14
               </time>
             
           </span>
@@ -648,7 +648,51 @@
 
 </li>
 </ul>
-<dl><dt>数值型RDD的统计操作</dt><dd>Spark 对包含数值数据的 RDD 提供了一些描述性的统计操作。 Spark 的数值操作是通过流式算法实现的，允许以每次一个元素的方式构建出模型。这些 统计数据都会在调用 stats() 时通过一次遍历数据计算出来，并以 StatsCounter 对象返回。<br>    |函数名|描述|<br>    |—|—|<br>    |count()|    RDD中的元素个数|<br>    |mean()|    元素的平均值|<br>    |sum()|    总和|<br>    |max()|    最大值|<br>    |min()|    最小值|<br>    |variance()    |元素的方差|<br>    |sampleVariance()|    从采样中计算出方差|<br>    |stdev()    |标准差|<br>    |sampleStdev()|    采样的标准差|</dd></dl><h3 id="2-4-RDD的依赖关系"><a href="#2-4-RDD的依赖关系" class="headerlink" title="2.4 RDD的依赖关系"></a><strong>2.4 RDD的依赖关系</strong></h3><p>RDD和它依赖的父RDD（s）的关系有两种不同的类型，即窄依赖（narrow dependency）和宽依赖（wide dependency）。<br>![image_1cmihabfmvg4lnb1fd41cme18ou9.png-62.8kB][7]</p>
+<dl><dt>数值型RDD的统计操作</dt><dd>Spark 对包含数值数据的 RDD 提供了一些描述性的统计操作。 Spark 的数值操作是通过流式算法实现的，允许以每次一个元素的方式构建出模型。这些 统计数据都会在调用 stats() 时通过一次遍历数据计算出来，并以 StatsCounter 对象返回。</dd></dl><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>count()</td>
+<td>RDD中的元素个数</td>
+</tr>
+<tr>
+<td>mean()</td>
+<td>元素的平均值</td>
+</tr>
+<tr>
+<td>sum()</td>
+<td>总和</td>
+</tr>
+<tr>
+<td>max()</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>min()</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>variance()</td>
+<td>元素的方差</td>
+</tr>
+<tr>
+<td>sampleVariance()</td>
+<td>从采样中计算出方差</td>
+</tr>
+<tr>
+<td>stdev()</td>
+<td>标准差</td>
+</tr>
+<tr>
+<td>sampleStdev()</td>
+<td>采样的标准差</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-RDD的依赖关系"><a href="#2-4-RDD的依赖关系" class="headerlink" title="2.4 RDD的依赖关系"></a><strong>2.4 RDD的依赖关系</strong></h3><p>RDD和它依赖的父RDD（s）的关系有两种不同的类型，即窄依赖（narrow dependency）和宽依赖（wide dependency）。<br>![image_1cmihabfmvg4lnb1fd41cme18ou9.png-62.8kB][7]</p>
 <dl><dt>窄依赖</dt><dd>窄依赖指的是每一个父RDD的Partition最多被子RDD的一个Partition使用。因此，窄依赖我们形象的比喻为独生子女</dd></dl><dl><dt>宽依赖</dt><dd>宽依赖指的是多个子RDD的Partition会依赖同一个父RDD的Partition，会引起shuffle。因此，宽依赖我们形象的比喻为超生</dd></dl><h3 id="2-5-有向无环图DAG"><a href="#2-5-有向无环图DAG" class="headerlink" title="2.5 有向无环图DAG"></a><strong>2.5 有向无环图DAG</strong></h3><dl><dt>概念</dt><dd>![image_1cmihm7oc64odrp1sm1qkuhldm.png-215.6kB][8]</dd></dl><p>DAG(Directed Acyclic Graph)叫做有向无环图，原始的RDD通过一系列的转换就就形成了DAG，根据RDD之间的依赖关系的不同将DAG划分成不同的Stage，对于窄依赖，partition的转换处理在Stage中完成计算。对于宽依赖，由于有Shuffle的存在，只能在parent RDD处理完成后，才能开始接下来的计算，因此宽依赖是划分Stage的依据。</p>
 <h3 id="2-6-RDD-的规划"><a href="#2-6-RDD-的规划" class="headerlink" title="2.6 RDD 的规划"></a><strong>2.6 RDD 的规划</strong></h3><p>关系<br>: </p>
 <ul>
@@ -894,7 +938,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -905,7 +949,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -916,7 +960,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

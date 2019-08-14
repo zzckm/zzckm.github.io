@@ -121,7 +121,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/04/19/5cb9d759c0260.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/19/5cb9d775b41ec.png">
 <meta property="og:image" content="https://i.loli.net/2019/04/19/5cb9d77f960a7.png">
-<meta property="og:updated_time" content="2019-05-26T08:58:42.572Z">
+<meta property="og:updated_time" content="2019-08-14T06:21:46.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Springboot入门学习">
 <meta name="twitter:description" content="Springboot入门介绍Spring 框架对于很多 Java 开发人员来说都不陌生。自从 2002 年发布以来，Spring 框架已经成为企业应用开发领域非常流行的基础框架。有大量的企业应用基于 Spring 框架来开发。Spring 框架包含几十个不同的子项目，涵盖应用开发的不同方面。如此多的子项目和组件，一方面方便了开发人员的使用，另外一个方面也带来了使用方面的问题。每个子项目都有一定的学">
@@ -371,8 +371,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-26T16:58:42+08:00">
-                2019-05-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-14T14:21:46+08:00">
+                2019-08-14
               </time>
             
           </span>
@@ -572,7 +572,7 @@
 <p>在com.gyf.web.exception包中定义一个全局异常类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span><span class="comment">//控制器切面</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalExceptionHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(RuntimeException.class)<span class="comment">//捕获运行时异常</span></span><br><span class="line">    <span class="meta">@ResponseBody</span><span class="comment">//返回json</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">exceptionHander</span><span class="params">()</span></span>&#123;<span class="comment">//处理异常方法</span></span><br><span class="line">        Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">        map.put(<span class="string">"errorCode"</span>, <span class="string">"101"</span>);</span><br><span class="line">        map.put(<span class="string">"errorMsg"</span>, <span class="string">"系統错误!"</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在启动spring中，配置扫描包为com.gyf.web<br><img src="https://i.loli.net/2019/04/19/5cb9d759c0260.png" alt><br>在某个映射的方法中添加个int i = 10/0的算术异常<br><img src="https://i.loli.net/2019/04/19/5cb9d775b41ec.png" alt><br>访问上的个路径结果为<br><img src="https://i.loli.net/2019/04/19/5cb9d77f960a7.png" alt></p>
+<p>在启动spring中，配置扫描包为com.gyf.web<br><img src="https://i.loli.net/2019/04/19/5cb9d759c0260.png" alt="1"><br>在某个映射的方法中添加个int i = 10/0的算术异常<br><img src="https://i.loli.net/2019/04/19/5cb9d775b41ec.png" alt><br>访问上的个路径结果为<br><img src="https://i.loli.net/2019/04/19/5cb9d77f960a7.png" alt></p>
 <h2 id="传参方方式"><a href="#传参方方式" class="headerlink" title="传参方方式"></a>传参方方式</h2><h3 id="后端向前端传值-加判断-列表排序"><a href="#后端向前端传值-加判断-列表排序" class="headerlink" title="后端向前端传值 加判断-列表排序"></a>后端向前端传值 加判断-列表排序</h3><p><strong>建立一个控制器</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@RestController</span> 用于写ApI, 给移动客户端提供数据，一般返回json数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Controller</span>一般用于写后台）（）</span></span><br><span class="line"><span class="comment">* 本demo 介绍如何后端向前端传值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"stu"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentController</span> </span>&#123;</span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"list"</span>)</span><br><span class="line"><span class="comment">//Model 是springmvc的传数据至前端的，只要在方法的参数里写了这个参数对象，前端就可以获取该Model参数对象的值，</span></span><br><span class="line"><span class="comment">//springBoot可以直接使用map 也可以达到Model的效果，并且 springboot也可以使用Model</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">list</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">model.addAttribute(<span class="string">"username"</span>,<span class="string">"zz"</span>);</span><br><span class="line">model.addAttribute(<span class="string">"age"</span>,<span class="string">"22"</span>);</span><br><span class="line">ArrayList&lt;Student&gt; students = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">students.add(<span class="keyword">new</span> Student(<span class="number">110</span>,<span class="string">"张峥"</span>,<span class="string">"男"</span>));</span><br><span class="line">students.add(<span class="keyword">new</span> Student(<span class="number">110</span>,<span class="string">"lisi"</span>,<span class="string">"男"</span>));</span><br><span class="line">students.add(<span class="keyword">new</span> Student(<span class="number">110</span>,<span class="string">"wangwu"</span>,<span class="string">"男"</span>));</span><br><span class="line">model.addAttribute(<span class="string">"stuList"</span>,students);</span><br><span class="line"><span class="keyword">return</span> <span class="string">"stu/list"</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -728,7 +728,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -739,7 +739,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -750,7 +750,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

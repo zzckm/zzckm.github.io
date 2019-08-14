@@ -118,7 +118,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.zybuluo.com/zhangwen100/e3f7343atttccfyebj5j33rp/image_1cmdes1api2akv1194gsr0hnj9.png">
 <meta property="og:image" content="http://static.zybuluo.com/zhangwen100/9jubl5d55y5010bq746nlbyj/image_1cmdevnb21s9kbj0rss1ae9js0m.png">
-<meta property="og:updated_time" content="2019-05-26T08:58:42.550Z">
+<meta property="og:updated_time" content="2019-08-14T06:21:44.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark第一天">
 <meta name="twitter:description" content="Spark第一天1. Spark概述1.1 什么是Spark&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Spark是一种快速、通用、可扩展的大数据分析引擎，2009年诞生于加州大学伯克利分校AMPLab，2010年开源，2013年6月成为Apache孵化项目，2014年2月成为Apache顶级项目。项目是用Scala进行编写。&amp;nbsp;&amp;nbsp;&amp;nbs">
@@ -368,8 +368,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-26T16:58:42+08:00">
-                2019-05-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-14T14:21:44+08:00">
+                2019-08-14
               </time>
             
           </span>
@@ -475,7 +475,7 @@
 <h2 id="4-Spark-Shell"><a href="#4-Spark-Shell" class="headerlink" title="4. Spark Shell"></a><strong>4. Spark Shell</strong></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]# /opt/apps/Spark/spark-2.2.2-bin-hadoop2.7/bin/spark-shell</span><br><span class="line"><span class="meta">#</span># 在不指定集群的时候（master），可以正常启动shell，但是这种模式只是启动了本地模式。没有与集群建立连接</span><br><span class="line"></span><br><span class="line"><span class="meta">scala&gt;</span> sc.textFile("hdfs://master:9000/wc.txt").flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).saveAsTextFile("hdfs://master:9000/out2")</span><br></pre></td></tr></table></figure>
 
 <p>在Shell中可以直接编写Spark代码。SparkContext类会默认初始化为sc对象。</p>
-<h2 id="5-本地模式执行SPark程序"><a href="#5-本地模式执行SPark程序" class="headerlink" title="5. 本地模式执行SPark程序"></a><strong>5. 本地模式执行SPark程序</strong></h2><p>  <img src="http://static.zybuluo.com/zhangwen100/e3f7343atttccfyebj5j33rp/image_1cmdes1api2akv1194gsr0hnj9.png" alt="1"><br>  <img src="http://static.zybuluo.com/zhangwen100/9jubl5d55y5010bq746nlbyj/image_1cmdevnb21s9kbj0rss1ae9js0m.png" alt="2"></p>
+<h2 id="5-本地模式执行SPark程序"><a href="#5-本地模式执行SPark程序" class="headerlink" title="5. 本地模式执行SPark程序"></a><strong>5. 本地模式执行SPark程序</strong></h2><p><img src="http://static.zybuluo.com/zhangwen100/e3f7343atttccfyebj5j33rp/image_1cmdes1api2akv1194gsr0hnj9.png" alt="1"><br><img src="http://static.zybuluo.com/zhangwen100/9jubl5d55y5010bq746nlbyj/image_1cmdevnb21s9kbj0rss1ae9js0m.png" alt="2"></p>
 
       
     </div>
@@ -618,7 +618,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -629,7 +629,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -640,7 +640,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
